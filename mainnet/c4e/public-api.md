@@ -1,0 +1,18 @@
+---
+cover: ../../.gitbook/assets/cascadia-banner.jpeg
+coverY: 0
+---
+
+# Public API
+
+### **RPC Endpoint**
+
+```bash
+https://c4e-rpc.stake-town.com:443
+```
+
+### **API Endpoint**
+
+```bash
+https://c4e-api.stake-town.com:443
+```
