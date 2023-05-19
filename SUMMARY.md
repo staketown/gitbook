@@ -70,9 +70,9 @@
 
 ## Archived
 
-* [Nolus](archived/nolus/README.md)
-  * [Installation](archived/nolus/installation.md)
-  * [Updates](archived/nolus/updates.md)
-  * [Sync](archived/nolus/sync.md)
-  * [Public API](archived/nolus/public-api.md)
-  * [Cheat Sheet](archived/nolus/cheat-sheet.md)
+* [Nolus](testnet/nolus/README.md)
+  * [Installation](testnet/nolus/installation.md)
+  * [Updates](testnet/nolus/updates.md)
+  * [Sync](testnet/nolus/sync.md)
+  * [Public API](testnet/nolus/public-api.md)
+  * [Cheat Sheet](testnet/nolus/cheat-sheet.md)

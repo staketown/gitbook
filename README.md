@@ -8,7 +8,7 @@
 * [Nibiru](testnet/nibiru/)
 * [Source](testnet/source/)
 * [Lava](testnet/lava/)
-* [Nolus](archived/nolus/)
+* [Nolus](testnet/nolus/)
 * [Babylon](testnet/babylon/)
 * [Defund](testnet/defund/)
 * [Cascadia](testnet/cascadia/)

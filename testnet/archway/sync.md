@@ -1,5 +1,5 @@
 ---
-cover: ../../.gitbook/assets/cascadia-banner.jpeg
+cover: ../../.gitbook/assets/archway-banner.jpeg
 coverY: 0
 ---
 
