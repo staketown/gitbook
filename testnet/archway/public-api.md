@@ -20,5 +20,5 @@ https://archway-testnet-api.stake-town.com:443
 ### **GRPC Endpoint**
 
 ```bash
-archway-testnet-grpc.stake-town.com:9890
+archway-testnet-grpc.stake-town.com:9590
 ```
