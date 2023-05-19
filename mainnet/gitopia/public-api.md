@@ -8,17 +8,17 @@ coverY: 0
 ### **RPC Endpoint**
 
 ```bash
-https://gitopia-testnet-rpc.stake-town.com:443
+https://gitopia-rpc.stake-town.com:443
 ```
 
 ### **API Endpoint**
 
 ```bash
-https://gitopia-testnet-api.stake-town.com
+https://gitopia-api.stake-town.com
 ```
 
 ### **GRPC Endpoint**
 
 ```bash
-gitopia-testnet-grpc.stake-town.com:9090
+gitopia-grpc.stake-town.com:9090
 ```

@@ -10,15 +10,15 @@
   * [Sync](mainnet/c4e/sync.md)
   * [Public API](mainnet/c4e/public-api.md)
   * [Cheat Sheet](mainnet/c4e/cheat-sheet.md)
+* [Gitopia](mainnet/gitopia/README.md)
+  * [Installation](mainnet/gitopia/installation.md)
+  * [Updates](mainnet/gitopia/updates.md)
+  * [Sync](mainnet/gitopia/sync.md)
+  * [Public API](mainnet/gitopia/public-api.md)
+  * [Cheat Sheet](mainnet/gitopia/cheat-sheet.md)
 
 ## Testnet
 
-* [Gitopia](testnet/gitopia/README.md)
-  * [Installation](testnet/gitopia/installation.md)
-  * [Updates](testnet/gitopia/updates.md)
-  * [Sync](testnet/gitopia/sync.md)
-  * [Public API](testnet/gitopia/public-api.md)
-  * [Cheat Sheet](testnet/gitopia/cheat-sheet.md)
 * [Nibiru](testnet/nibiru/README.md)
   * [Installation](testnet/nibiru/installation.md)
   * [Updates](testnet/nibiru/updates.md)

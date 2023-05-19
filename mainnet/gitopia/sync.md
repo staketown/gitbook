@@ -19,7 +19,7 @@ sudo systemctl stop gitopiad
 cp $HOME/.gitopia/data/priv_validator_state.json $HOME/.gitopia/priv_validator_state.json.backup
 rm -rf $HOME/.gitopia/data
 
-URL="https://snapshots-testnet.stake-town.com/gitopia/gitopia-janus-testnet-2_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/gitopia/gitopia_latest.tar.lz4"
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.gitopia
 
 mv $HOME/.gitopia/priv_validator_state.json.backup $HOME/.gitopia/data/priv_validator_state.json
@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="f13a4cb3ca18c1de6232e901c8feb209f0945954@65.109.65.248:26656"
+PEERS="9aade02f6edd362eee8731bc0a7e469ee7ea180a@65.109.65.248:26656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.gitopia/config/config.toml
 
 CONFIG_TOML=$HOME/.gitopia/config/config.toml

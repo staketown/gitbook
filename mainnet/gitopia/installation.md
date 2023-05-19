@@ -20,17 +20,19 @@ sudo apt install -y curl git jq lz4 build-essential unzip
 bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/go_install.sh")
 source .bash_profile
 
-cd || return
+
+cd $HOME || return
 rm -rf gitopia
-git clone gitopia://Gitopia/gitopia
+git clone https://github.com/gitopia/gitopia
 cd gitopia || return
-git checkout v1.2.0
+git checkout v2.0.0
 make install
-gitopiad version # v1.2.0
+
+gitopiad version # v2.0.0
 
 gitopiad config keyring-backend os
-gitopiad config chain-id gitopia-janus-testnet-2
-gitopiad init "<Your moniker>" --chain-id gitopia-janus-testnet-2
+gitopiad config chain-id gitopia
+gitopiad init "<Your moniker>" --chain-id gitopia
 
 curl -Ls https://snapshots-testnet.stake-town.com/gitopia/genesis.json > $HOME/.gitopia/config/genesis.json
 curl -Ls https://snapshots-testnet.stake-town.com/gitopia/addrbook.json > $HOME/.gitopia/config/addrbook.json
@@ -39,16 +41,16 @@ APP_TOML="~/.gitopia/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
 sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 1000|g' $APP_TOML
+sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.gitopia/config/config.toml"
-SEEDS="399d4e19186577b04c23296c4f7ecc53e61080cb@seed.gitopia.com:26656"
+SEEDS="400f3d9e30b69e78a7fb891f60d76fa3c73f0ecc@gitopia.rpc.kjnodes.com:14159"
 PEERS=""
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.025utlore"|g' $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.025ulore"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
 sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 30/g' $CONFIG_TOML
 sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 30/g' $CONFIG_TOML
@@ -69,7 +71,7 @@ WantedBy=multi-user.target
 EOF
 
 # Snapshot
-URL="https://snapshots-testnet.stake-town.com/gitopia/gitopia-janus-testnet-2_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/gitopia/gitopia_latest.tar.lz4"
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.gitopia
 ```
 
@@ -132,7 +134,7 @@ Create validator
 
 ```bash
 gitopiad tx staking create-validator \
---amount=1000000utlore \
+--amount=1000000ulore \
 --pubkey=$(gitopiad tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \

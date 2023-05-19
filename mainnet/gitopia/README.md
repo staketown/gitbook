@@ -7,12 +7,12 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `gitopia-janus-testnet-2`
-* Denom: `utlore`
+* Network Chain ID: `gitopia`
+* Denom: `ulore`
 * Binary: `gitopiad`
 * Working directory: `.gitopia`
 * Explorers: [https://gitopia.explorers.guru/](https://gitopia.explorers.guru/)
-* Faucet: [https://gitopia.com/home](https://gitopia.com/home)
+* Faucet: -
 
 ## Overview
 
