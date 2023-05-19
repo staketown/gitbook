@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="21ca2712116138429aed3d72422379397c53fa86@65.109.65.248:34656"
+PEERS="d1334258b592ebccb85a917aa65976b74e254a60@65.109.65.248:31656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.cascadiad/config/config.toml
 
 CONFIG_TOML=$HOME/.archway/config/config.toml
