@@ -20,5 +20,5 @@ https://ojo-testnet-api.stake-town.com
 ### **GRPC Endpoint**
 
 ```bash
-ojo-testnet-grpc.stake-town.com:10190
+ojo-testnet-grpc.stake-town.com:10090
 ```

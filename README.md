@@ -4,7 +4,7 @@
 
 ### Testnets
 
-* [Gitopia](mainnet/gitopia/)
+* [Gitopia](testnet/gitopia/)
 * [Nibiru](testnet/nibiru/)
 * [Source](testnet/source/)
 * [Lava](testnet/lava/)
