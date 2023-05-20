@@ -67,6 +67,12 @@
   * [Sync](testnet/ojo/sync.md)
   * [Public API](testnet/ojo/public-api.md)
   * [Cheat Sheet](testnet/ojo/cheat-sheet.md)
+* [Composable](testnet/composable/README.md)
+  * [Installation](testnet/composable/installation.md)
+  * [Updates](testnet/composable/updates.md)
+  * [Sync](testnet/composable/sync.md)
+  * [Public API](testnet/composable/public-api.md)
+  * [Cheat Sheet](testnet/composable/cheat-sheet.md)
 
 ## Archived
 
