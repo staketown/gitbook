@@ -19,7 +19,7 @@ sudo systemctl stop gitopiad
 cp $HOME/.gitopia/data/priv_validator_state.json $HOME/.gitopia/priv_validator_state.json.backup
 rm -rf $HOME/.gitopia/data
 
-URL="https://snapshots-testnet.stake-town.com/gitopia/gitopia_latest.tar.lz4"
+URL="https://snapshots.stake-town.com/gitopia/gitopia_latest.tar.lz4"
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.gitopia
 
 mv $HOME/.gitopia/priv_validator_state.json.backup $HOME/.gitopia/data/priv_validator_state.json
@@ -35,7 +35,7 @@ sudo systemctl stop gitopiad
 cp $HOME/.gitopia/data/priv_validator_state.json $HOME/.gitopia/priv_validator_state.json.backup
 gitopiad tendermint unsafe-reset-all --home $HOME/.gitopia --keep-addr-book
 
-SNAP_RPC="https://gitopia-testnet-rpc.stake-town.com:443"
+SNAP_RPC="https://gitopia-rpc.stake-town.com:443"
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
@@ -60,11 +60,11 @@ sudo systemctl restart gitopiad && sudo journalctl -u gitopiad -f -o cat
 ## **Address Book**
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/gitopia/addrbook.json > $HOME/.gitopia/config/addrbook.json
+curl -Ls https://snapshots.stake-town.com/gitopia/addrbook.json > $HOME/.gitopia/config/addrbook.json
 ```
 
 ## Genesis
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/gitopia/genesis.json > $HOME/.gitopia/config/genesis.json
+curl -Ls https://snapshots.stake-town.com/gitopia/genesis.json > $HOME/.gitopia/config/genesis.json
 ```

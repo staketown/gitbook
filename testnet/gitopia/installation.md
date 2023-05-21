@@ -34,8 +34,8 @@ gitopiad config keyring-backend os
 gitopiad config chain-id gitopia
 gitopiad init "<Your moniker>" --chain-id gitopia
 
-curl -Ls https://snapshots-testnet.stake-town.com/gitopia/genesis.json > $HOME/.gitopia/config/genesis.json
-curl -Ls https://snapshots-testnet.stake-town.com/gitopia/addrbook.json > $HOME/.gitopia/config/addrbook.json
+curl -Ls https://snapshots.stake-town.com/gitopia/genesis.json > $HOME/.gitopia/config/genesis.json
+curl -Ls https://snapshots.stake-town.com/gitopia/addrbook.json > $HOME/.gitopia/config/addrbook.json
 
 APP_TOML="~/.gitopia/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
@@ -71,7 +71,7 @@ WantedBy=multi-user.target
 EOF
 
 # Snapshot
-URL="https://snapshots-testnet.stake-town.com/gitopia/gitopia_latest.tar.lz4"
+URL="https://snapshots.stake-town.com/gitopia/gitopia_latest.tar.lz4"
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.gitopia
 ```
 
