@@ -11,7 +11,7 @@ coverY: 0
 * Denom: `ulore`
 * Binary: `gitopiad`
 * Working directory: `.gitopia`
-* Explorers: [https://gitopia.explorers.guru/](https://gitopia.explorers.guru/)
+* Explorers: [https://gitopia.exploreme.pro](https://gitopia.exploreme.pro/validators)
 * Faucet: -
 
 ## Overview
