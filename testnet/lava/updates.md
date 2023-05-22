@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-> ⚠️ Version v0.10.1 is available
+> ⚠️ Version v0.11.2 is available
 
 ```bash
 cd $HOME/lava
 git fetch --all
-git checkout v0.10.1
+git checkout v0.11.2
 make install
 lavad version --long | head
-#version: v0.10.1
+#version: v0.11.2
 sudo systemctl restart lavad && sudo journalctl -u lavad -f -o cat
 ```
