@@ -9,6 +9,7 @@
 
 ### Testnets
 
+* [Archway](testnet/archway/)
 * [Nibiru](testnet/nibiru/)
 * [Source](testnet/source/)
 * [Lava](testnet/lava/)
