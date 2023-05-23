@@ -16,3 +16,9 @@ https://c4e-rpc.stake-town.com:443
 ```bash
 https://c4e-api.stake-town.com:443
 ```
+
+### **GRPC Endpoint**
+
+```
+c4e-grpc.stake-town.com:9990
+```
