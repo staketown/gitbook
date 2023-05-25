@@ -4,18 +4,22 @@
 
 ### Mainnet
 
-* [Gitopia](testnet/gitopia/)
 * [C4E](mainnet/c4e/)
+* [Gitopia](testnet/gitopia/)
 
 ### Testnets
 
 * [Archway](testnet/archway/)
-* [Nibiru](testnet/nibiru/)
-* [Source](testnet/source/)
-* [Lava](testnet/lava/)
-* [Nolus](testnet/nolus/)
 * [Babylon](testnet/babylon/)
-* [Defund](testnet/defund/)
 * [Cascadia](testnet/cascadia/)
-* [Ojo](testnet/ojo/)
 * [Composable](testnet/composable/)
+* [Defund](testnet/defund/)
+* [Elys](testnet/elys/)
+* [Lava](testnet/lava/)
+* [Nibiru](testnet/nibiru/)
+* [Ojo](testnet/ojo/)
+* [Source](testnet/source/)
+
+### Archived
+
+* [Nolus](testnet/nolus/)
