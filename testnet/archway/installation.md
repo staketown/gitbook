@@ -31,7 +31,7 @@ archwayd version # v0.5.2
 
 archwayd config keyring-backend os
 archwayd config chain-id constantine-3
-archwayd init "<Your moniker>" --chain-id cconstantine-3
+archwayd init "<Your moniker>" --chain-id constantine-3
 
 curl -s https://snapshots-testnet.stake-town.com/archway/genesis.json > $HOME/.archway/config/genesis.json
 curl -s https://snapshots-testnet.stake-town.com/archway/addrbook.json > $HOME/.archway/config/addrbook.json
@@ -44,7 +44,7 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = "19"|g' $APP_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 indexer="null"
 sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0025aCC"|g' $APP_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0aconst"|g' $APP_TOML
 
 CONFIG_TOML=$HOME/.archway/config/config.toml
 PEERS=""
@@ -135,7 +135,7 @@ archwayd tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<your identity> \
 --details="<Your details>" \
---chain-id=cascadia_6102-1 \
+--chain-id=constantine-3 \
 --commission-rate=0.10 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.01 \

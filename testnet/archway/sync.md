@@ -33,7 +33,7 @@ sudo systemctl restart archwayd && sudo journalctl -u archwayd -f -o cat
 sudo systemctl stop archwayd
 
 cp $HOME/.archway/data/priv_validator_state.json $HOME/.archway/priv_validator_state.json.backup
-cascadiad tendermint unsafe-reset-all --home $HOME/.archway --keep-addr-book
+archwayd tendermint unsafe-reset-all --home $HOME/.archway --keep-addr-book
 
 SNAP_RPC="https://archway-testnet-rpc.stake-town.com:443"
 
@@ -44,7 +44,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
 PEERS="d1334258b592ebccb85a917aa65976b74e254a60@65.109.65.248:31656"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.cascadiad/config/config.toml
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.archway/config/config.toml
 
 CONFIG_TOML=$HOME/.archway/config/config.toml
 sed -i 's|^enable *=.*|enable = true|' $CONFIG_TOML
@@ -54,8 +54,7 @@ sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $CONFIG_TOML
 
 mv $HOME/.archway/priv_validator_state.json.backup $HOME/.archway/data/priv_validator_state.json
 
-sudo systemctl restart archwayd
-sudo journalctl -u archwayd -f -o cat
+sudo systemctl restart archwayd && sudo journalctl -u archwayd -f -o cat
 ```
 
 ## **Address Book**

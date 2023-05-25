@@ -151,7 +151,7 @@ archwayd tx staking delegate <VALOPER_ADDRESS> 1000000aconst --from <YOUR_WALLET
 Redelegate tokens to another validator
 
 ```bash
-cascadiad tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000aCC --from <WALLET> --chain-id cascadia_6102-1 --gas-prices 0.1aCC --gas-adjustment 1.5 --gas auto -y
+archwayd tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000aconst --from <WALLET> --gas-prices 0.1aconst --gas-adjustment 1.5 --gas auto -y
 ```
 
 Unbound tokens from validator
