@@ -202,6 +202,12 @@ Check proposal info by proposal id
 babylond query gov proposal <proposal_id>
 ```
 
+Deposit proposal by proposal id
+
+```bash
+babylond tx gov deposit 1 1000000ubbn --from <YOUR_WALLET> --gas-prices 0.1ubbn --gas-adjustment 1.5 --gas auto -y
+```
+
 Vote as, **YES**
 
 ```bash

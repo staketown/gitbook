@@ -203,6 +203,12 @@ Check proposal info by proposal id
 cascadiad query gov proposal <proposal_id>
 ```
 
+Deposit proposal by proposal id
+
+```bash
+cascadiad tx gov deposit 1 1000000aCC --from <YOUR_WALLET> --gas-prices 0.1aCC --gas-adjustment 1.5 --gas auto -y
+```
+
 Vote as, **YES**
 
 ```bash

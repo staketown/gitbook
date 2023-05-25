@@ -205,6 +205,12 @@ Check proposal info by proposal id
 sourced query gov proposal <proposal_id>
 ```
 
+Deposit proposal by proposal id
+
+```bash
+sourced tx gov deposit 1 1000000usource --from <YOUR_WALLET> --gas-prices 0.1usource --gas-adjustment 1.5 --gas auto -y
+```
+
 Vote as, **YES**
 
 ```bash

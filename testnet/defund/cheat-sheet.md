@@ -202,6 +202,12 @@ Check proposal info by proposal id
 defundd query gov proposal <proposal_id>
 ```
 
+Deposit proposal by proposal id
+
+```bash
+defundd tx gov deposit 1 1000000ufetf --from <YOUR_WALLET> --gas-prices 0.1ufetf --gas-adjustment 1.5 --gas auto -y
+```
+
 Vote as, **YES**
 
 ```bash
