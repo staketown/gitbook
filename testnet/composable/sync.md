@@ -44,7 +44,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
 PEERS="856492764f16248aa1b843af1ed328700749f593@65.109.65.248:37656"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.ojo/config/config.toml
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.banksy/config/config.toml
 
 CONFIG_TOML=$HOME/.banksy/config/config.toml
 sed -i 's|^enable *=.*|enable = true|' $CONFIG_TOML
@@ -54,8 +54,7 @@ sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $CONFIG_TOML
 
 mv $HOME/.banksy/priv_validator_state.json.backup $HOME/.banksy/data/priv_validator_state.json
 
-sudo systemctl restart banksyd
-sudo journalctl -u banksyd -f -o cat
+sudo systemctl restart banksyd && sudo journalctl -u banksyd -f -o cat
 ```
 
 ## **Address Book**

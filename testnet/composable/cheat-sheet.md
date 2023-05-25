@@ -298,7 +298,7 @@ banksyd status 2>&1 | jq .SyncInfo.latest_block_height
 Reset network
 
 ```bash
-banksyd tendermint unsafe-reset-all --home $HOME/.ojo --keep-addr-book
+banksyd tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
 ```
 
 Delete node
