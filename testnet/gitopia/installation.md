@@ -20,15 +20,14 @@ sudo apt install -y curl git jq lz4 build-essential unzip
 bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/go_install.sh")
 source .bash_profile
 
-
 cd $HOME || return
 rm -rf gitopia
 git clone https://github.com/gitopia/gitopia
 cd gitopia || return
-git checkout v2.0.0
+git checkout v2.1.0
 make install
 
-gitopiad version # v2.0.0
+gitopiad version # v2.1.0
 
 gitopiad config keyring-backend os
 gitopiad config chain-id gitopia
