@@ -324,6 +324,12 @@ defundd q staking params
 defundd q slashing params
 ```
 
+Check validator private key is correct
+
+```bash
+[[ $(defundd q staking validator $(defundd keys show <YOUR_WALLET> --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(defundd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
+
 Search all output transactions by address
 
 ```bash

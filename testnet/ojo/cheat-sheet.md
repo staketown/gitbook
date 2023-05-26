@@ -326,6 +326,12 @@ ojod q staking params
 ojod q slashing params
 ```
 
+Check validator private key is correct
+
+```bash
+[[ $(ojod q staking validator $(ojod keys show <YOUR_WALLET> --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(ojod status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
+
 Search all output transactions by address
 
 ```bash
