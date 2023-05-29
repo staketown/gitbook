@@ -7,8 +7,8 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `banksy-testnet-2`
-* Denom: `upica`
+* Network Chain ID: `banksy-testnet-3`
+* Denom: `ppica`
 * Binary: `banksyd`
 * Working directory: `.banksy`
 * Explorers: [https://explorer.nodestake.top/composable-testnet](https://explorer.nodestake.top/composable-testnet)

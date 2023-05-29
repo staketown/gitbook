@@ -24,13 +24,13 @@ cd $HOME || return
 rm -rf composable-testnet
 git clone https://github.com/notional-labs/composable-testnet.git
 cd $HOME/composable-testnet || return
-git checkout v2.3.1
+git checkout v2.3.5
 make install
-banksyd version # v2.3.1
+banksyd version # v2.3.5
 
 banksyd config keyring-backend os
-banksyd config chain-id banksy-testnet-2
-banksyd init "<Your moniker>" --chain-id banksy-testnet-2
+banksyd config chain-id banksy-testnet-3
+banksyd init "<Your moniker>" --chain-id banksy-testnet-3
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
@@ -43,13 +43,13 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
 sed -i 's|^snapshot-interval *=.*|snapshot-interval = 1000|g' $APP_TOML
 
 CONFIG_TOML="~/.banksy/config/config.toml"
-SEEDS="3f472746f46493309650e5a033076689996c8881@composable-testnet.rpc.kjnodes.com:15959"
+SEEDS="364b8245e72f083b0aa3e0d59b832020b66e9e9d@65.109.80.150:21500"
 PEERS=""
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0upica"|g' $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0ppica"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
 sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 30/g' $CONFIG_TOML
 sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 30/g' $CONFIG_TOML
@@ -71,7 +71,7 @@ WantedBy=multi-user.target
 EOF
 
 # Snapshots
-URL=https://snapshots-testnet.stake-town.com/composable/banksy-testnet-2_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/composable/banksy-testnet-3_latest.tar.lz4
 curl -L $URL | tar -Ilz4 -xf - -C $HOME/.banksy
 ```
 
@@ -134,7 +134,7 @@ Create validator
 
 ```bash
 banksyd tx staking create-validator \
---amount=1000000upica \
+--amount=1000000ppica \
 --pubkey=$(banksyd tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
@@ -144,7 +144,7 @@ banksyd tx staking create-validator \
 --commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.1upica \
+--gas-prices=0.1ppica \
 --gas-adjustment=1.5 \
 --gas=auto \
 -y
