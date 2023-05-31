@@ -5,7 +5,7 @@ coverY: 0
 
 # Updates
 
-> ⚠️ Version v0.12.2 is available
+> ⚠️ Version v0.12.1 is available
 
 ```bash
 cd $HOME/lava

@@ -20,5 +20,5 @@ https://lava-testnet-api.stake-town.com
 ### **GRPC Endpoint**
 
 ```bash
-cascadia-testnet-grpc.stake-town.com:9490
+lava-testnet-grpc.stake-town.com:9490
 ```
