@@ -24,10 +24,10 @@ cd $HOME || return
 rm -rf gitopia
 git clone https://github.com/gitopia/gitopia
 cd gitopia || return
-git checkout v2.1.0
+git checkout v2.1.1
 make install
 
-gitopiad version # v2.1.0
+gitopiad version # v2.1.1
 
 gitopiad config keyring-backend os
 gitopiad config chain-id gitopia
