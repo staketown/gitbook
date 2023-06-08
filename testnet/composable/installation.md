@@ -24,13 +24,13 @@ cd $HOME || return
 rm -rf composable-testnet
 git clone https://github.com/notional-labs/composable-testnet.git
 cd $HOME/composable-testnet || return
-git checkout v2.3.5
+git checkout v3.0.0
 make install
-banksyd version # v2.3.5
+centaurid version # v3.0.0
 
-banksyd config keyring-backend os
-banksyd config chain-id banksy-testnet-3
-banksyd init "<Your moniker>" --chain-id banksy-testnet-3
+centaurid config keyring-backend os
+centaurid config chain-id banksy-testnet-3
+centaurid init "<Your moniker>" --chain-id banksy-testnet-3
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
@@ -55,14 +55,14 @@ sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 30/g' $CONFIG_TOML
 sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 30/g' $CONFIG_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
-sudo tee /etc/systemd/system/banksyd.service > /dev/null << EOF
+sudo tee /etc/systemd/system/centaurid.service > /dev/null << EOF
 [Unit]
 Description=Composable Node
 After=network-online.target
 [Service]
 User=$USER
 WorkingDirectory=$HOME
-ExecStart=$(which banksyd) start
+ExecStart=$(which centaurid) start
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=10000
@@ -93,10 +93,10 @@ Enable and start service
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable banksyd
-sudo systemctl start banksyd
+sudo systemctl enable centaurid
+sudo systemctl start centaurid
 
-sudo journalctl -u banksyd -f -o cat
+sudo journalctl -u centaurid -f -o cat
 ```
 
 > After successful synchronisation we recommend to turn off **snapshot\_interval** and state sync, this will save space on your hardware.
@@ -115,7 +115,7 @@ Create wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-banksyd keys add <YOUR_WALLET_NAME>
+centaurid keys add <YOUR_WALLET_NAME>
 ```
 
 Recover wallet
@@ -123,7 +123,7 @@ Recover wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-banksyd keys add <YOUR_WALLET_NAME> --recover
+centaurid keys add <YOUR_WALLET_NAME> --recover
 ```
 
 ### Validator creation
@@ -133,9 +133,9 @@ After successful synchronisation we can proceed with validation creation.
 Create validator
 
 ```bash
-banksyd tx staking create-validator \
+centaurid tx staking create-validator \
 --amount=1000000ppica \
---pubkey=$(banksyd tendermint show-validator) \
+--pubkey=$(centaurid tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \

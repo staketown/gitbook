@@ -9,7 +9,7 @@ coverY: 0
 
 * Network Chain ID: `banksy-testnet-3`
 * Denom: `ppica`
-* Binary: `banksyd`
+* Binary: `centaurid`
 * Working directory: `.banksy`
 * Explorers: [https://explorer.nodestake.top/composable-testnet](https://explorer.nodestake.top/composable-testnet)
 * Faucet: Ask in discord

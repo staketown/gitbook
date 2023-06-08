@@ -12,7 +12,7 @@ Create wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-banksyd keys add <YOUR_WALLET_NAME>
+centaurid keys add <YOUR_WALLET_NAME>
 ```
 
 Recover wallet
@@ -20,19 +20,19 @@ Recover wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-banksyd keys add <YOUR_WALLET_NAME> --recover
+centaurid keys add <YOUR_WALLET_NAME> --recover
 ```
 
 List of all wallets
 
 ```bash
-banksyd keys list
+centaurid keys list
 ```
 
 Delete wallet
 
 ```bash
-banksyd keys delete <YOUR_WALLET_NAME>
+centaurid keys delete <YOUR_WALLET_NAME>
 ```
 
 Export wallet
@@ -40,19 +40,19 @@ Export wallet
 > ⚠️ save to wallet.backup
 
 ```bash
-banksyd keys export <YOUR_WALLET_NAME>
+centaurid keys export <YOUR_WALLET_NAME>
 ```
 
 Import wallet
 
 ```bash
-banksyd keys import <WALLET_NAME> wallet.backup
+centaurid keys import <WALLET_NAME> wallet.backup
 ```
 
 Check wallet balance
 
 ```bash
-banksyd q bank balances $(banksyd keys show <YOUR_WALLET_NAME> -a)
+centaurid q bank balances $(centaurid keys show <YOUR_WALLET_NAME> -a)
 ```
 
 ### Validator operations
@@ -60,9 +60,9 @@ banksyd q bank balances $(banksyd keys show <YOUR_WALLET_NAME> -a)
 Create validator
 
 ```bash
-banksyd tx staking create-validator \
+centaurid tx staking create-validator \
 --amount=1000000ppica \
---pubkey=$(banksyd tendermint show-validator) \
+--pubkey=$(centaurid tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
@@ -80,7 +80,7 @@ banksyd tx staking create-validator \
 Edit validator
 
 ```bash
-banksyd tx staking edit-validator \
+centaurid tx staking edit-validator \
 --new-moniker="<Your moniker>" \
 --identity=<your identity> \
 --details="<Your details>" \
@@ -95,31 +95,31 @@ banksyd tx staking edit-validator \
 Unjail your validator
 
 ```bash
-banksyd tx slashing unjail --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx slashing unjail --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Check blocks info processed by your validator
 
 ```bash
-banksyd query slashing signing-info $(banksyd tendermint show-validator)
+centaurid query slashing signing-info $(centaurid tendermint show-validator)
 ```
 
 List of active validators
 
 ```bash
-banksyd q staking validators -oj --limit=3000 | jq '.validators[] | select(.status=="BOND_STATUS_BONDED")' | jq -r '(.tokens|tonumber/pow(10; 6)|floor|tostring) + " \t " + .description.moniker' | sort -gr | nl
+centaurid q staking validators -oj --limit=3000 | jq '.validators[] | select(.status=="BOND_STATUS_BONDED")' | jq -r '(.tokens|tonumber/pow(10; 6)|floor|tostring) + " \t " + .description.moniker' | sort -gr | nl
 ```
 
 List of inactive validators
 
 ```bash
-banksyd q staking validators -oj --limit=3000 | jq '.validators[] | select(.status=="BOND_STATUS_UNBONDED") or .status=="BOND_STATUS_UNBONDING")' | jq -r '(.tokens|tonumber/pow(10; 6)|floor|tostring) + " \t " + .description.moniker' | sort -gr | nl
+centaurid q staking validators -oj --limit=3000 | jq '.validators[] | select(.status=="BOND_STATUS_UNBONDED") or .status=="BOND_STATUS_UNBONDING")' | jq -r '(.tokens|tonumber/pow(10; 6)|floor|tostring) + " \t " + .description.moniker' | sort -gr | nl
 ```
 
 Info about your validator
 
 ```bash
-banksyd q staking validator $(banksyd keys show <YOUR_WALLET_NAME> --bech val -a)
+centaurid q staking validator $(centaurid keys show <YOUR_WALLET_NAME> --bech val -a)
 ```
 
 ### Transactions
@@ -127,31 +127,31 @@ banksyd q staking validator $(banksyd keys show <YOUR_WALLET_NAME> --bech val -a
 Get your rewards from all validators
 
 ```bash
-banksyd tx distribution withdraw-all-rewards --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx distribution withdraw-all-rewards --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Get rewards and commissions from your validator
 
 ```bash
-banksyd tx distribution withdraw-rewards $(banksyd keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx distribution withdraw-rewards $(centaurid keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Delegate tokens to your validator
 
 ```bash
-banksyd tx staking delegate $(banksyd keys show <YOUR_WALLET_NAME> --bech val -a) 1000000ppica --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx staking delegate $(centaurid keys show <YOUR_WALLET_NAME> --bech val -a) 1000000ppica --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Delegate tokens to validator
 
 ```bash
-banksyd tx staking delegate <VALOPER_ADDRESS> 1000000ppica --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx staking delegate <VALOPER_ADDRESS> 1000000ppica --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Redelegate tokens to another validator
 
 ```bash
-banksyd tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000ppica --from <WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000ppica --from <WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Unbound tokens from validator
@@ -159,19 +159,19 @@ Unbound tokens from validator
 > ⚠️ it’s can take a while, \~21 days, depends on network’s parameters
 
 ```bash
-banksyd tx staking unbond <VALOPER_ADDRESS> 1000000ppica --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx staking unbond <VALOPER_ADDRESS> 1000000ppica --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Send tokens to another wallet
 
 ```bash
-banksyd tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000ppica --from <YOUR_WALLET_ADDRESS> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000ppica --from <YOUR_WALLET_ADDRESS> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Check info about transaction by hash **TX\_HASH**
 
 ```bash
-banksyd query tx <TX_HASH>
+centaurid query tx <TX_HASH>
 ```
 
 ### Governance
@@ -179,7 +179,7 @@ banksyd query tx <TX_HASH>
 Submit text proposal
 
 ```bash
-banksyd tx gov submit-proposal \
+centaurid tx gov submit-proposal \
 --title="<Your Title>" \
 --description="<Your Description>" \
 --deposit=1000000ppica \
@@ -194,43 +194,43 @@ banksyd tx gov submit-proposal \
 List of all proposals
 
 ```bash
-banksyd query gov proposals
+centaurid query gov proposals
 ```
 
 Check proposal info by proposal id
 
 ```bash
-banksyd query gov proposal <proposal_id>
+centaurid query gov proposal <proposal_id>
 ```
 
 Deposit proposal by proposal id
 
 ```bash
-banksyd tx gov deposit 1 1000000ppica --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx gov deposit 1 1000000ppica --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Vote as, **YES**
 
 ```bash
-banksyd tx gov vote 1 yes --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx gov vote 1 yes --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Vote as, **NO**
 
 ```bash
-banksyd tx gov vote 1 no --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx gov vote 1 no --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Vote as, **NO\_WITH\_VETO**
 
 ```bash
-banksyd tx gov vote 1 no_with_veto --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx gov vote 1 no_with_veto --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 Vote as, **ABSTAIN**
 
 ```bash
-banksyd tx gov vote 1 abstain --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
+centaurid tx gov vote 1 abstain --from <YOUR_WALLET> --gas-prices 0.1ppica --gas-adjustment 1.5 --gas auto -y
 ```
 
 ### Utils
@@ -268,7 +268,7 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|' $APP_TOML
 Check your peer
 
 ```bash
-echo $(banksyd tendermint show-node-id)@$(curl http://ifconfig.me/)$(grep -A 3 "\[p2p\]" ~/.banksy/config/config.toml | egrep -o ":[0-9]+")
+echo $(centaurid tendermint show-node-id)@$(curl http://ifconfig.me/)$(grep -A 3 "\[p2p\]" ~/.banksy/config/config.toml | egrep -o ":[0-9]+")
 ```
 
 Check your RPC
@@ -280,33 +280,33 @@ echo -e "\033[0;32m$(grep -A 3 "\[rpc\]" ~/.banksy/config/config.toml | egrep -o
 Check information about validator
 
 ```bash
-banksyd status 2>&1 | jq .ValidatorInfo
+centaurid status 2>&1 | jq .ValidatorInfo
 ```
 
 Check synchronisation status (**false - synced, true - not synced**)
 
 ```bash
-banksyd status 2>&1 | jq .SyncInfo.catching_up
+centaurid status 2>&1 | jq .SyncInfo.catching_up
 ```
 
 Check the latest block
 
 ```bash
-banksyd status 2>&1 | jq .SyncInfo.latest_block_height
+centaurid status 2>&1 | jq .SyncInfo.latest_block_height
 ```
 
 Reset network
 
 ```bash
-banksyd tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
+centaurid tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
 ```
 
 Delete node
 
 ```bash
-sudo systemctl stop banksyd && \
-sudo systemctl disable banksyd && \
-sudo rm /etc/systemd/system/banksyd.service && \
+sudo systemctl stop centaurid && \
+sudo systemctl disable centaurid && \
+sudo rm /etc/systemd/system/centaurid.service && \
 sudo systemctl daemon-reload && \
 rm -rf $HOME/.banksy && \
 rm -rf $HOME/composable-testnet
@@ -321,26 +321,26 @@ wget -qO- eth0.me
 Check network parameters
 
 ```bash
-banksyd q staking params
-banksyd q slashing params
+centaurid q staking params
+centaurid q slashing params
 ```
 
 Check validator private key is correct
 
 ```bash
-[[ $(banksyd q staking validator $(banksyd keys show <YOUR_WALLET> --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(banksyd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+[[ $(centaurid q staking validator $(centaurid keys show <YOUR_WALLET> --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(centaurid status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
 ```
 
 Search all output transactions by address
 
 ```bash
-banksyd q txs --events transfer.sender=<ADDRESS> 2>&1 | jq | grep txhash
+centaurid q txs --events transfer.sender=<ADDRESS> 2>&1 | jq | grep txhash
 ```
 
 Search all input transactions by address
 
 ```bash
-banksyd q txs --events transfer.recipient=<ADDRESS> 2>&1 | jq | grep txhash
+centaurid q txs --events transfer.recipient=<ADDRESS> 2>&1 | jq | grep txhash
 ```
 
 ### Service management
@@ -354,41 +354,41 @@ sudo systemctl daemon-reload
 Enable service
 
 ```bash
-sudo systemctl enable banksyd
+sudo systemctl enable centaurid
 ```
 
 Disable service
 
 ```bash
-sudo systemctl disable banksyd
+sudo systemctl disable centaurid
 ```
 
 Start service
 
 ```bash
-sudo systemctl start banksyd
+sudo systemctl start centaurid
 ```
 
 Stop service
 
 ```bash
-sudo systemctl stop banksyd
+sudo systemctl stop centaurid
 ```
 
 Restart service
 
 ```bash
-sudo systemctl restart banksyd
+sudo systemctl restart centaurid
 ```
 
 Check service status
 
 ```bash
-sudo systemctl status banksyd
+sudo systemctl status centaurid
 ```
 
 Check service logs
 
 ```bash
-sudo journalctl -u banksyd -f -o cat
+sudo journalctl -u centaurid -f -o cat
 ```
