@@ -22,9 +22,9 @@ source .bash_profile
 
 cd $HOME || return
 rm -rf elys
-URL="https://github.com/elys-network/elys/releases/download/v0.5.4/elys._v0.5.4_linux_amd64.tar.gz"
-wget $URL | tar -xf elys._v0.5.4_linux_amd64.tar.gz -C $HOME/go/bin
-elysd version # v0.5.4
+URL="https://github.com/elys-network/elys/releases/download/v0.7.0/elys._v0.7.0_linux_amd64.tar.gz"
+wget $URL | tar -xf elys._v0.7.0_linux_amd64.tar.gz -C $HOME/go/bin
+elysd version # v0.7.0
 
 elysd config keyring-backend os
 elysd config chain-id elystestnet-1

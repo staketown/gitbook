@@ -24,9 +24,9 @@ cd $HOME || return
 rm -rf composable-testnet
 git clone https://github.com/notional-labs/composable-testnet.git
 cd $HOME/composable-testnet || return
-git checkout v3.0.0
+git checkout v3.0.3-testnet
 make install
-centaurid version # v3.0.0
+centaurid version # v3.0.3-testnet
 
 centaurid config keyring-backend os
 centaurid config chain-id banksy-testnet-3
