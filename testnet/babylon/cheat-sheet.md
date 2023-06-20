@@ -66,7 +66,7 @@ babylond tx checkpointing create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=bbn-test1 \
+--chain-id=bbn-test-2 \
 --commission-rate=0.10 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.01 \

@@ -7,12 +7,12 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `bbn-test1`
+* Network Chain ID: `bbn-test-2`
 * Denom: `ubbn`
 * Binary: `babylond`
 * Working directory: `.babylond`
 * Explorers: [https://babylon.explorers.guru/](https://babylon.explorers.guru/)
-* Faucet:
+* Faucet: ask in discord
 
 ## Overview
 

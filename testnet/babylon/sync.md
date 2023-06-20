@@ -19,7 +19,7 @@ sudo systemctl stop babylond
 cp $HOME/.babylond/data/priv_validator_state.json $HOME/.babylond/priv_validator_state.json.backup
 rm -rf $HOME/.babylond/data
 
-URL="https://snapshots-testnet.stake-town.com/babylon/bbn-test1_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/babylon/bbn-test-2_latest.tar.lz4"
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.babylond
 
 mv $HOME/.babylond/priv_validator_state.json.backup $HOME/.babylond/data/priv_validator_state.json
@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="01ef803d2d738567de7dd67b9b6d965b1d886a1d@65.109.65.248:32656"
+PEERS="5be198ab419cba96d1afafb798a5144179cd659e@65.109.65.248:32656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.babylond/config/config.toml
 
 CONFIG_TOML=$HOME/.babylond/config/config.toml

@@ -24,13 +24,13 @@ cd || return
 rm -rf babylon
 git clone https://github.com/babylonchain/babylon
 cd babylon || return
-git checkout v0.5.0
+git checkout v0.7.2
 make install
-babylond version # v0.5.0
+babylond version # v0.7.2
 
 babylond config keyring-backend test
-babylond config chain-id bbn-test1
-babylond init "<Your moniker>" --chain-id bbn-test1
+babylond config chain-id bbn-test-2
+babylond init "<Your moniker>" --chain-id bbn-test-2
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/babylon/genesis.json > $HOME/.babylond/config/genesis.json
@@ -40,7 +40,8 @@ APP_TOML="~/.babylond/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
 sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 1000|g' $APP_TOML
+sed -i 's|^snapshot-interval *=.*|snapshot-interval = 0|g' $APP_TOML
+sed -i 's|^network *=.*|network = "mainnet"|g' $APP_TOML
 
 CONFIG_TOML="~/.babylond/config/config.toml"
 SEEDS="03ce5e1b5be3c9a81517d415f65378943996c864@18.207.168.204:26656,a5fabac19c732bf7d814cf22e7ffc23113dc9606@34.238.169.221:26656"
@@ -49,8 +50,9 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.025ubbn"|g' $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.00001ubbn"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
+sed -i 's|^timeout_commit *=.*|timeout_commit = "10s"|g' $CONFIG_TOML
 sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 30/g' $CONFIG_TOML
 sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 30/g' $CONFIG_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
@@ -61,7 +63,7 @@ Description=Babylon Node
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which babylond) start
+ExecStart=$(which babylond) start --x-crisis-skip-assert-invariants
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=10000
@@ -70,7 +72,7 @@ WantedBy=multi-user.target
 EOF
 
 # Snapshots
-URL="https://snapshots-testnet.stake-town.com/babylon/bbn-test1_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/babylon/bbn-test-2_latest.tar.lz4"
 curl -L $URL | tar -Ilz4 -xf - -C $HOME/.babylond
 ```
 
@@ -140,17 +142,17 @@ Create validator
 
 ```bash
 babylond tx checkpointing create-validator \
---amount=50ubbn \
+--amount=1000000ubbn \
 --pubkey=$(babylond tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=bbn-test1 \
+--chain-id=bbn-test-2 \
 --commission-rate=0.10 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---fees=20ubbn
+--fees=5000ubbn
 -y
 ```
