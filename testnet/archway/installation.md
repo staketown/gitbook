@@ -24,10 +24,10 @@ cd $HOME || return
 rm -rf archway
 git clone https://github.com/archway-network/archway.git
 cd archway || return
-git checkout $BINARY_VERSION_TAG
+git checkout v1.0.0-rc.2
 make install
 
-archwayd version # v0.5.2
+archwayd version # v1.0.0-rc.2
 
 archwayd config keyring-backend os
 archwayd config chain-id constantine-3
