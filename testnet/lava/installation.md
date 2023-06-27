@@ -24,9 +24,9 @@ cd $HOME || return
 rm -rf lava
 git clone https://github.com/lavanet/lava
 cd $HOME/lava || return
-git checkout v0.13.1
+git checkout v0.15.1
 make install
-lavad version # v0.13.1
+lavad version # v0.15.1
 
 lavad config keyring-backend os
 lavad config chain-id lava-testnet-1
