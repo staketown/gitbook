@@ -5,6 +5,28 @@ coverY: 0
 
 # Sync
 
+## **Snapshot**
+
+> updated every 6 hours, starting from 00:00 UTC
+
+```bash
+# install dependencies, if needed
+sudo apt update && sudo apt install lz4 -y
+```
+
+```bash
+sudo systemctl stop c4ed
+cp $HOME/.c4e-chain/data/priv_validator_state.json $HOME/.c4e-chain/priv_validator_state.json.backup
+rm -rf $HOME/.c4e-chain/data
+
+URL="https://snapshots.stake-town.com/c4e/perun-1_latest.tar.lz4"
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.c4e-chain
+
+mv $HOME/.c4e-chain/priv_validator_state.json.backup $HOME/.c4e-chain/data/priv_validator_state.json
+
+sudo systemctl restart c4ed && sudo journalctl -u c4ed -f -o cat
+```
+
 ## **State Sync**
 
 ```bash
