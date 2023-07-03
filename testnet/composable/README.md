@@ -11,7 +11,7 @@ coverY: 0
 * Denom: `ppica`
 * Binary: `centaurid`
 * Working directory: `.banksy`
-* Explorers: [https://explorer.nodestake.top/composable-testnet](https://explorer.nodestake.top/composable-testnet)
+* Explorers: [https://explorer.kjnodes.com/composable-testnet](https://explorer.kjnodes.com/composable-testnet)
 * Faucet: Ask in discord
 
 ## Overview
