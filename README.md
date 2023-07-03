@@ -5,12 +5,14 @@
 ### Mainnet
 
 * [C4E](mainnet/c4e/)
+* [Composable](mainnet/composable/)
 * [Gitopia](testnet/gitopia/)
 
 ### Testnets
 
 * [Archway](testnet/archway/)
 * [Babylon](testnet/babylon/)
+* [C4E](testnet/c4e/)
 * [Cascadia](testnet/cascadia/)
 * [Composable](testnet/composable/)
 * [Defund](testnet/defund/)
