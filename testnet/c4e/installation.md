@@ -8,7 +8,7 @@ coverY: 0
 Install with one line script
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/c4e/main_install.sh)
+bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/c4e/test_install.sh)
 ```
 
 Manual installation
@@ -24,15 +24,16 @@ cd $HOME || return
 rm -rf c4e-chain
 git clone https://github.com/chain4energy/c4e-chain
 cd $HOME/c4e-chain || return
-git checkout v1.2.1
+git checkout v1.2.0
 make install
-c4ed version # v1.2.1
+c4ed version # v1.2.0
 
 c4ed config keyring-backend os
-c4ed config chain-id perun-1
-c4ed init "<Your moniker>" --chain-id perun-1
+c4ed config chain-id babajaga-1
+c4ed init "<Your moniker>" --chain-id babajaga-1
 
-wget -O $HOME/.c4e-chain/config/genesis.json "https://raw.githubusercontent.com/chain4energy/c4e-chains/main/perun-1/genesis.json"
+curl -s https://snapshots-testnet.stake-town.com/c4e/genesis.json > $HOME/.c4e-chain/config/genesis.json
+curl -s https://snapshots-testnet.stake-town.com/c4e/addrbook.json > $HOME/.c4e-chain/config/addrbook.json
 
 APP_TOML=$HOME/.c4e-chain/config/app.toml
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
@@ -45,9 +46,9 @@ sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $CONFIG_TOML
 sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0025uc4e"|g' $APP_TOML
 
 CONFIG_TOML=$HOME/.c4e-chain/config/config.toml
-PEERS="084a5c788c9c61541152192d7dfe055c153af642@5.135.141.191:26656,81a3c179ee820d291adebc215d5d1af95b887ec8@65.109.30.185:26656,3c6553a3c45477c2a9902e54069bee7109318b9d@163.172.18.144:26656,68a611fc1d17612e4de6b1232d04568ea3c20a19@77.55.216.80:26656"
+PEERS="de18fc6b4a5a76bd30f65ebb28f880095b5dd58b@66.70.177.76:36656,33f90a0ac7e8f48305ea7e64610b789bbbb33224@151.80.19.186:36656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
-SEEDS="30e98bbcf5bb29ed4e4ff685fa8fa84fa0ddff51@tenderseed.ccvalidators.com:26008"
+SEEDS=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 
 sudo tee /etc/systemd/system/c4ed.service > /dev/null << EOF
@@ -67,7 +68,7 @@ EOF
 c4ed tendermint unsafe-reset-all --home $HOME/.c4e-chain --keep-addr-book
 
 # Add snapshot here
-URL="https://snapshots.stake-town.com/c4e/perun-1_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/c4e/babajaga-1_latest.tar.lz4"
 curl $URL | lz4 -dc - | tar -xf - -C $HOME/.c4e-chain
 ```
 
@@ -133,7 +134,7 @@ c4ed tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<your identity> \
 --details="<Your details>" \
---chain-id=perun-1 \
+--chain-id=babajaga-1 \
 --commission-rate=0.10 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.01 \

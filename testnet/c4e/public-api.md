@@ -8,17 +8,17 @@ coverY: 0
 ### **RPC Endpoint**
 
 ```bash
-https://c4e-rpc.stake-town.com:443
+https://c4e-testnet-rpc.stake-town.com:443
 ```
 
 ### **API Endpoint**
 
 ```bash
-https://c4e-api.stake-town.com:443
+https://c4e-testnet-api.stake-town.com:443
 ```
 
 ### **GRPC Endpoint**
 
-```
-c4e-grpc.stake-town.com:9990
+```bash
+c4e-testnet-grpc.stake-town.com:9990
 ```
