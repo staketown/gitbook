@@ -138,19 +138,19 @@ babylond tx distribution withdraw-rewards $(babylond keys show <YOUR_WALLET> --b
 Delegate tokens to your validator
 
 ```bash
-babylond tx staking delegate $(babylond keys show <YOUR_WALLET> --bech val -a) 1000000ubbn --from <YOUR_WALLET> --gas-prices 0.1ubbn --gas-adjustment 1.5 --gas auto -y
+babylond tx epoching delegate $(babylond keys show <YOUR_WALLET> --bech val -a) 1000000ubbn --from <YOUR_WALLET> --gas-prices 0.1ubbn --gas-adjustment 1.5 --gas auto -y
 ```
 
 Delegate tokens to validator
 
 ```bash
-babylond tx staking delegate <VALOPER_ADDRESS> 1000000ubbn --from <YOUR_WALLET> --gas-prices 0.1ubbn --gas-adjustment 1.5 --gas auto -y
+babylond tx epoching delegate <VALOPER_ADDRESS> 1000000ubbn --from <YOUR_WALLET> --gas-prices 0.1ubbn --gas-adjustment 1.5 --gas auto -y
 ```
 
 Redelegate tokens to another validator
 
 ```bash
-babylond tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000ubbn --from <WALLET> --gas-prices 0.1ubbn --gas-adjustment 1.5 --gas auto -y
+babylond tx epoching redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000ubbn --from <WALLET> --gas-prices 0.1ubbn --gas-adjustment 1.5 --gas auto -y
 ```
 
 Unbound tokens from validator
@@ -158,7 +158,7 @@ Unbound tokens from validator
 > ⚠️ it’s can take a while, \~21 days, depends on network’s parameters
 
 ```bash
-babylond tx staking unbond <VALOPER_ADDRESS> 1000000ubbn --from <YOUR_WALLET> --gas-prices 0.1ubbn --gas-adjustment 1.5 --gas auto -y
+babylond tx epoching unbond <VALOPER_ADDRESS> 1000000ubbn --from <YOUR_WALLET> --gas-prices 0.1ubbn --gas-adjustment 1.5 --gas auto -y
 ```
 
 Send tokens to another wallet
