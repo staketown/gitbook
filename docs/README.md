@@ -2,7 +2,7 @@
 
 **StakeTown** - team of trustworthy and high performance validators that provide services like RPC, API, state-sync, snapshots, addrbook, guides and maintain it with high uptime and help people with using it.
 
-### Mainnet l
+### Mainnet
 
 * [Archway](docs/mainnet/archway/)
 * [Band](docs/mainnet/band/)
@@ -12,6 +12,7 @@
 * [Gitopia](docs/mainnet/gitopia/)
 * [Juno](docs/mainnet/juno/)
 * [Osmosis](docs/mainnet/osmosis/)
+* [Quasar](docs/mainnet/quasar/)
 * [Source](docs/mainnet/source/)
 * [Umee](docs/mainnet/umee/)
 
@@ -27,10 +28,10 @@
 * [Elys](docs/testnet/elys/)
 * [Evmos](docs/testnet/evmos/)
 * [Juno](docs/testnet/juno/)
-* [Quasar](docs/testnet/quasar/)
 * [Lava](docs/testnet/lava/)
 * [Nibiru](docs/testnet/nibiru/)
 * [Ojo](docs/testnet/ojo/)
+* [Quasar](docs/testnet/quasar/)
 * [Source](docs/testnet/source/)
 * [Umee](docs/testnet/umee/)
 
