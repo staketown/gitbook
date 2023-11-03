@@ -2,7 +2,7 @@
 
 **StakeTown** - team of trustworthy and high performance validators that provide services like RPC, API, state-sync, snapshots, addrbook, guides and maintain it with high uptime and help people with using it.
 
-### Mainnet
+### Mainnet l
 
 * [Archway](docs/mainnet/archway/)
 * [Band](docs/mainnet/band/)
