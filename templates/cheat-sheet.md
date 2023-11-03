@@ -52,7 +52,7 @@ Import wallet
 Check wallet balance
 
 ```bash
-{{BINARY}} q bank balances $(quasarnoded keys show <YOUR_WALLET_NAME> -a)
+{{BINARY}} q bank balances $({{BINARY}} keys show <YOUR_WALLET_NAME> -a)
 ```
 
 ### Validator operations

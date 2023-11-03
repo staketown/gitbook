@@ -22,7 +22,7 @@ rm -rf $HOME/{{WORKING_DIR}}/data
 URL=https://snapshots{{SNAP_SUBDIR}}.stake-town.com/{{SCRIPT_DIR}}/{{CHAIN_ID}}_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/{{WORKING_DIR}}
 
-mv $HOME/{{WORKING_DIR}}/priv_validator_state.json.backup $HOME/{{WORKING_DIR}}/data/priv_validator_state.json
+mv $HOME/{{WORKING_DIR}}/priv_validator_state.json.backup $HOME/{{WORKING_DIR}}/data/priv_validator_state.json 
 
 sudo systemctl restart {{BINARY}} && sudo journalctl -u {{BINARY}} -f -o cat
 ```
@@ -35,7 +35,7 @@ sudo systemctl stop {{BINARY}}
 cp $HOME/{{WORKING_DIR}}/data/priv_validator_state.json $HOME/{{WORKING_DIR}}/priv_validator_state.json.backup
 {{BINARY}} tendermint unsafe-reset-all --home $HOME/{{WORKING_DIR}} --keep-addr-book
 
-SNAP_RPC="https://{{SCRIPT_DIR}}{{SNAP_SUBDIR}}-rpc.stake-town.com:443"
+SNAP_RPC="https://quasar{{SNAP_SUBDIR}}-rpc.stake-town.com:443"
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
@@ -55,6 +55,15 @@ sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $CONFIG_TOML
 mv $HOME/{{WORKING_DIR}}/priv_validator_state.json.backup $HOME/{{WORKING_DIR}}/data/priv_validator_state.json
 
 sudo systemctl restart {{BINARY}} && sudo journalctl -u {{BINARY}} -f -o cat
+```
+
+## **Wasm**
+
+As far state-sync doesn't support wasm folder we should download it manually
+
+```bash
+URL=https://snapshots{{SNAP_SUBDIR}}.stake-town.com/{{SCRIPT_DIR}}/wasm_latest.tar.lz4
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/{{WORKING_DIR}}
 ```
 
 ## **Address Book**
