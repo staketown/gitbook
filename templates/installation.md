@@ -145,19 +145,19 @@ Create validator
 
 ```bash
 {{BINARY}} tx staking create-validator \
---amount=1000000uqsr \
+--amount={{AMOUNT}} \
 --pubkey=$({{BINARY}} tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
 --chain-id={{CHAIN_ID}} \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.1{{DENOM}} \
---gas-adjustment=1.5 \
+--gas-prices={{GAS_PRICES}} \
+--gas-adjustment={{GAS_ADJUSTMENT}}\
 --gas=auto \
 -y
 ```

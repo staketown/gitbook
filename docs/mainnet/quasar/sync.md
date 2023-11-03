@@ -19,7 +19,7 @@ sudo systemctl stop quasarnoded
 cp $HOME/.quasarnode/data/priv_validator_state.json $HOME/.quasarnode/priv_validator_state.json.backup
 rm -rf $HOME/.quasarnode/data
 
-URL=https://snapshots-testnet.stake-town.com/quasar/quasar-1_latest.tar.lz4
+URL=https://snapshots.stake-town.com/quasar/quasar-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.quasarnode
 
 mv $HOME/.quasarnode/priv_validator_state.json.backup $HOME/.quasarnode/data/priv_validator_state.json 
@@ -35,7 +35,7 @@ sudo systemctl stop quasarnoded
 cp $HOME/.quasarnode/data/priv_validator_state.json $HOME/.quasarnode/priv_validator_state.json.backup
 quasarnoded tendermint unsafe-reset-all --home $HOME/.quasarnode --keep-addr-book
 
-SNAP_RPC="https://quasar-testnet-rpc.stake-town.com:443"
+SNAP_RPC="https://quasar-rpc.stake-town.com:443"
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
@@ -62,18 +62,18 @@ sudo systemctl restart quasarnoded && sudo journalctl -u quasarnoded -f -o cat
 As far state-sync doesn't support wasm folder we should download it manually
 
 ```bash
-URL=https://snapshots-testnet.stake-town.com/quasar/wasm_latest.tar.lz4
+URL=https://snapshots.stake-town.com/quasar/wasm_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.quasarnode
 ```
 
 ## **Address Book**
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/quasar/addrbook.json > $HOME/.quasarnode/config/addrbook.json
+curl -Ls https://snapshots.stake-town.com/quasar/addrbook.json > $HOME/.quasarnode/config/addrbook.json
 ```
 
 ## Genesis
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/quasar/genesis.json > $HOME/.quasarnode/config/genesis.json
+curl -Ls https://snapshots.stake-town.com/quasar/genesis.json > $HOME/.quasarnode/config/genesis.json
 ```

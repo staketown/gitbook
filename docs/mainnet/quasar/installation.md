@@ -8,7 +8,7 @@ coverY: 0
 Install with one line script
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/quasar/test_install.sh)
+bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/quasar/main_install.sh)
 ```
 
 Manual installation
@@ -33,8 +33,8 @@ quasarnoded config chain-id quasar-1
 quasarnoded init "Your Moniker" --chain-id quasar-1
 
 # Download genesis and addrbook
-curl -Ls https://snapshots-testnet.stake-town.com/quasar/genesis.json > $HOME/.quasarnode/config/genesis.json
-curl -Ls https://snapshots-testnet.stake-town.com/quasar/addrbook.json > $HOME/.quasarnode/config/addrbook.json
+curl -Ls https://snapshots.stake-town.com/quasar/genesis.json > $HOME/.quasarnode/config/genesis.json
+curl -Ls https://snapshots.stake-town.com/quasar/addrbook.json > $HOME/.quasarnode/config/addrbook.json
 
 APP_TOML="~/.quasarnode/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
@@ -44,12 +44,12 @@ sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.quasarnode/config/config.toml"
 SEEDS="3f472746f46493309650e5a033076689996c8881@quasar-testnet.rpc.kjnodes.com:14859"
-PEERS=""
+PEERS="5e7b8dda11127e5a08d3480cf763849ef206de1a@65.109.65.248:33656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0uqsr"|g' $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B,0.01ibc/FA0006F056DB6719B8C16C551FC392B62F5729978FC0B125AC9A432DBB2AA1A5,0.01ibc/FA7775734CC73176B7425910DE001A1D2AD9B6D9E93129A5D0750EAD13E4E63A"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 quasarnoded tendermint unsafe-reset-all --home $HOME/.quasarnode --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/quasar/quasar-1_latest.tar.lz4
+URL=https://snapshots.stake-town.com/quasar/quasar-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.quasarnode
 [[ -f $HOME/.quasarnode/data/upgrade-info.json ]] && cp $HOME/.quasarnode/data/upgrade-info.json $HOME/.quasarnode/cosmovisor/genesis/upgrade-info.json
 ```
@@ -145,19 +145,19 @@ Create validator
 
 ```bash
 quasarnoded tx staking create-validator \
---amount=1000000uqsr \
+--amount=1000000usqr \
 --pubkey=$(quasarnoded tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
 --chain-id=quasar-1 \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.1uqsr \
---gas-adjustment=1.5 \
+--gas-prices=0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B \
+--gas-adjustment=1.4\
 --gas=auto \
 -y
 ```
