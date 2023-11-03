@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="5e7b8dda11127e5a08d3480cf763849ef206de1a@65.109.65.248:33656"
+PEERS="d6ca455a4b55b4409e67ec2e0ba11f09f4afcdaa@65.109.65.248:45656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.quasarnode/config/config.toml
 
 CONFIG_TOML=$HOME/.quasarnode/config/config.toml
@@ -69,11 +69,11 @@ curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.quasarnode
 ## **Address Book**
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/quasar/addrbook.json > $HOME/.juno/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/quasar/addrbook.json > $HOME/.quasarnode/config/addrbook.json
 ```
 
 ## Genesis
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/quasar/genesis.json > $HOME/.juno/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/quasar/genesis.json > $HOME/.quasarnode/config/genesis.json
 ```

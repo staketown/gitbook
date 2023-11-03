@@ -30,7 +30,7 @@ make install
 
 quasarnoded config keyring-backend os
 quasarnoded config chain-id quasar-test-1
-quasarnoded init "$NODE_MONIKER" --chain-id quasar-test-1
+quasarnoded init "Your Moniker" --chain-id quasar-test-1
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/quasar/genesis.json > $HOME/.quasarnode/config/genesis.json
@@ -40,11 +40,11 @@ APP_TOML="~/.quasarnode/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
 sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 1000|g' $APP_TOML
+sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.quasarnode/config/config.toml"
 SEEDS="3f472746f46493309650e5a033076689996c8881@quasar-testnet.rpc.kjnodes.com:14859"
-PEERS=""
+PEERS="d6ca455a4b55b4409e67ec2e0ba11f09f4afcdaa@65.109.65.248:45656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
@@ -144,20 +144,20 @@ After successful synchronisation we can proceed with validation creation.
 Create validator
 
 ```bash
-quasarnoded tx staking create-validator 
+quasarnoded tx staking create-validator \
 --amount=1000000uqsr \
 --pubkey=$(quasarnoded tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
 --chain-id=quasar-test-1 \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.1uqsr \
---gas-adjustment=1.5 \
+--gas-prices=0uqsr \
+--gas-adjustment=1.4\
 --gas=auto \
 -y
 ```
