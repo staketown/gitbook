@@ -25,7 +25,6 @@ source $HOME/.bash_profile
 go version
 ```
 
-
 ```bash
 sudo apt update
 sudo apt install -y curl git jq lz4 build-essential unzip
