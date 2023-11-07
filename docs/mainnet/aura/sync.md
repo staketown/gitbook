@@ -22,7 +22,7 @@ rm -rf $HOME/.aura/data
 URL=https://snapshots.stake-town.com/aura/xstaxy-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.aura
 
-mv $HOME/.aura/priv_validator_state.json.backup $HOME/.aura/data/priv_validator_state.json
+mv $HOME/.aura/priv_validator_state.json.backup $HOME/.aura/data/priv_validator_state.json 
 
 sudo systemctl restart aurad && sudo journalctl -u aurad -f -o cat
 ```
@@ -35,7 +35,7 @@ sudo systemctl stop aurad
 cp $HOME/.aura/data/priv_validator_state.json $HOME/.aura/priv_validator_state.json.backup
 aurad tendermint unsafe-reset-all --home $HOME/.aura --keep-addr-book
 
-SNAP_RPC="https://aura-rpc.stake-town.com:443"
+SNAP_RPC="https://quasar-rpc.stake-town.com:443"
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
@@ -55,6 +55,15 @@ sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $CONFIG_TOML
 mv $HOME/.aura/priv_validator_state.json.backup $HOME/.aura/data/priv_validator_state.json
 
 sudo systemctl restart aurad && sudo journalctl -u aurad -f -o cat
+```
+
+## **Wasm**
+
+As far state-sync doesn't support wasm folder we should download it manually
+
+```bash
+URL=https://snapshots.stake-town.com/aura/wasm_latest.tar.lz4
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.aura
 ```
 
 ## **Address Book**
