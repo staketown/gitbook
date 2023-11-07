@@ -157,7 +157,7 @@ Create validator
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
 --gas-prices={{GAS_PRICES}} \
---gas-adjustment={{GAS_ADJUSTMENT}}\
+--gas-adjustment={{GAS_ADJUSTMENT}} \
 --gas=auto \
 -y
 ```
