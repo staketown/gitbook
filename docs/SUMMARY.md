@@ -11,7 +11,7 @@
   * [Sync](mainnet/archway/sync.md)
   * [Public API](mainnet/archway/public-api.md)
   * [Cheat Sheet](mainnet/archway/cheat-sheet.md)
-* [Aura](mainnet/archway/README.md)
+* [Aura](mainnet/aura/README.md)
   * [Installation](mainnet/aura/installation.md)
   * [Updates](mainnet/aura/updates.md)
   * [Sync](mainnet/aura/sync.md)
