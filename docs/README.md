@@ -5,6 +5,7 @@
 ### Mainnet
 
 * [Archway](mainnet/archway/)
+* [Aura](mainnet/aura/)
 * [Band](mainnet/band/)
 * [C4E](mainnet/c4e/)
 * [Composable](mainnet/composable/)
