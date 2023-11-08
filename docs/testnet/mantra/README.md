@@ -11,7 +11,7 @@ coverY: 0
 * Denom: `uaum`
 * Binary: `mantrachaind`
 * Working directory: `.mantrachain`
-* Explorers: [LINK]()
+* Explorers: [LINK](https://explorer.testnet.mantrachain.io/mantrachain)
 * Faucet: Ask in discord channel
 
 ## Overview
