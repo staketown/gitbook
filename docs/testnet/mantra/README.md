@@ -12,7 +12,7 @@ coverY: 0
 * Binary: `mantrachaind`
 * Working directory: `.mantrachain`
 * Explorers: [LINK](https://explorer.testnet.mantrachain.io/mantrachain)
-* Faucet: Ask in discord channel
+* Faucet: https://faucet.testnet.mantrachain.io/
 
 ## Overview
 
