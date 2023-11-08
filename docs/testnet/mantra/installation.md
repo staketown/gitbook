@@ -40,7 +40,7 @@ sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.mantrachain/config/config.toml"
 SEEDS=""
-PEERS="dc0e4f03c75caf3c19474ffbead6f71ba37d96f8@35.192.223.187:26656"
+PEERS="eaeb4872c88fa5d3a3fea9deb93cecb552dbe7a3@65.109.65.248:47656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)

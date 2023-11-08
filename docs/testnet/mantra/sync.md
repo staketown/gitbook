@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="a435339f38ce3f973739a08afc3c3c7feb862dc5@35.192.223.187:26656,7157c4030e6f372807dedc8e9ae408c66882304f@34.172.80.207:26656"
+PEERS="eaeb4872c88fa5d3a3fea9deb93cecb552dbe7a3@65.109.65.248:47656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.mantrachain/config/config.toml
 
 CONFIG_TOML=$HOME/.mantrachain/config/config.toml
