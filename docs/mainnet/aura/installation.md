@@ -5,15 +5,15 @@ coverY: 0
 
 # Installation
 
-Install with one line script
+### Install with one line script
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/aura/main_install.sh)
 ```
 
-Manual installation
+### Manual installation
 
-Install Go
+**Install Go**
 ```bash
 ver="1.19.6"
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -24,7 +24,7 @@ echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 go version
 ```
-
+**Install node**
 ```bash
 sudo apt update
 sudo apt install -y curl git jq lz4 build-essential unzip
