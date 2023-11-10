@@ -20,5 +20,5 @@ https://nibiru-testnet-api.stake-town.com:443
 ### **GRPC Endpoint**
 
 ```bash
-nibiru-testnet-grpc.stake-town.com:443
+nibiru-testnet-grpc.stake-town.com:9190
 ```
