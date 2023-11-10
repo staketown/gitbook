@@ -16,6 +16,6 @@ git checkout v0.14.0
 
 make build
 
-mkdir -p $HOME/.elys/cosmovisor/upgrades/v0.13.0/bin
-mv build/elysd $HOME/.elys/cosmovisor/upgrades/v0.13.0/bin/
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v0.14.0/bin
+mv build/elysd $HOME/.elys/cosmovisor/upgrades/v0.14.0/bin/
 ```
