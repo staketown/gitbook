@@ -8,17 +8,17 @@ coverY: 0
 ### **RPC Endpoint**
 
 ```bash
-https://nibiru-testnet-rpc.stake-town.com:443
+https://nibiru-rpc.stake-town.com:443
 ```
 
 ### **API Endpoint**
 
 ```bash
-https://nibiru-testnet-api.stake-town.com:443
+https://nibiru-api.stake-town.com:443
 ```
 
 ### **GRPC Endpoint**
 
 ```bash
-nibiru-testnet-grpc.stake-town.com:443
+nibiru-grpc.stake-town.com:443
 ```
