@@ -1,21 +1,21 @@
 ---
-cover: ../../.gitbook/assets/banner_cleanup.jpeg
+cover: ../../.gitbook/assets/lava-banner.jpeg
 coverY: 0
 ---
 
 # Updates
 
-> ⚠️ version: v0.26.1
+⚠️ Version **v0.27.0** is available
 
 ```bash
 cd $HOME || return
 rm -rf lava
 git clone https://github.com/lavanet/lava
-cd $HOME/lava || return
-git checkout v0.26.1
+cd lava || return
+git checkout v0.27.0
 
-export LAVA_BINARY=lavad && make build
+make build
 
-mkdir -p $HOME/.lava/cosmovisor/upgrades/v0.26.1/bin
-mv build/lavad $HOME/.lava/cosmovisor/upgrades/v0.26.1/bin/
+mkdir -p $HOME/.lava/cosmovisor/upgrades/v0.27.0/bin
+mv build/lavad $HOME/.lava/cosmovisor/upgrades/v0.27.0/bin/
 ```

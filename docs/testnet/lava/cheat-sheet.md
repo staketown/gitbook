@@ -1,5 +1,5 @@
 ---
-cover: ../../.gitbook/assets/banner_cleanup.jpeg
+cover: ../../.gitbook/assets/lava-banner.jpeg
 coverY: 0
 ---
 
@@ -67,13 +67,13 @@ lavad tx staking create-validator \
 --identity=<Your identity> \
 --details="<Your details>" \
 --chain-id=lava-testnet-2 \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.1ulava \
---gas-adjustment=1.5 \
+--gas-prices=0ulava \
+--gas-adjustment=1.4 \
 --gas=auto \
 -y
 ```
@@ -87,8 +87,8 @@ lavad tx staking edit-validator \
 --details="<Your details>" \
 --commission-rate=0.1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.1ulava \
---gas-adjustment=1.5 \
+--gas-prices=0ulava \
+--gas-adjustment=1.4 \
 --gas=auto \
 -y
 ```
@@ -96,7 +96,7 @@ lavad tx staking edit-validator \
 Unjail your validator
 
 ```bash
-lavad tx slashing unjail --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx slashing unjail --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Check blocks info processed by your validator
@@ -128,31 +128,31 @@ lavad q staking validator $(lavad keys show <YOUR_WALLET_NAME> --bech val -a)
 Get your rewards from all validators
 
 ```bash
-lavad tx distribution withdraw-all-rewards --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx distribution withdraw-all-rewards --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Get rewards and commissions from your validator
 
 ```bash
-lavad tx distribution withdraw-rewards $(lavad keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx distribution withdraw-rewards $(lavad keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Delegate tokens to your validator
 
 ```bash
-lavad tx staking delegate $(lavad keys show <YOUR_WALLET_NAME> --bech val -a) 1000000ulava --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx staking delegate $(lavad keys show <YOUR_WALLET_NAME> --bech val -a) 1000000ulava --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Delegate tokens to validator
 
 ```bash
-lavad tx staking delegate <VALOPER_ADDRESS> 1000000ulava --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx staking delegate <VALOPER_ADDRESS> 1000000ulava --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Redelegate tokens to another validator
 
 ```bash
-lavad tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000ulava --from <WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000ulava --from <WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Unbound tokens from validator
@@ -160,13 +160,13 @@ Unbound tokens from validator
 > ⚠️ it’s can take a while, \~21 days, depends on network’s parameters
 
 ```bash
-lavad tx staking unbond <VALOPER_ADDRESS> 1000000ulava --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx staking unbond <VALOPER_ADDRESS> 1000000ulava --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Send tokens to another wallet
 
 ```bash
-lavad tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000ulava --from <YOUR_WALLET_ADDRESS> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000ulava --from <YOUR_WALLET_ADDRESS> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Check info about transaction by hash **TX\_HASH**
@@ -186,8 +186,8 @@ lavad tx gov submit-proposal \
 --deposit=1000000ulava \
 --type="Text" \
 --from=<WALLET_ADDRESS> \
---gas-prices=0.1ulava \
---gas-adjustment=1.5 \
+--gas-prices=0ulava \
+--gas-adjustment=1.4 \
 --gas=auto \
 -y
 ```
@@ -207,31 +207,31 @@ lavad query gov proposal <proposal_id>
 Deposit proposal by proposal id
 
 ```bash
-lavad tx gov deposit 1 1000000ulava --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx gov deposit 1 1000000ulava --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Vote as, **YES**
 
 ```bash
-lavad tx gov vote 1 yes --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx gov vote 1 yes --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Vote as, **NO**
 
 ```bash
-lavad tx gov vote 1 no --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx gov vote 1 no --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Vote as, **NO\_WITH\_VETO**
 
 ```bash
-lavad tx gov vote 1 no_with_veto --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx gov vote 1 no_with_veto --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 Vote as, **ABSTAIN**
 
 ```bash
-lavad tx gov vote 1 abstain --from <YOUR_WALLET> --gas-prices 0.1ulava --gas-adjustment 1.5 --gas auto -y
+lavad tx gov vote 1 abstain --from <YOUR_WALLET> --gas-prices 0ulava --gas-adjustment 1.4 --gas auto -y
 ```
 
 ### Utils

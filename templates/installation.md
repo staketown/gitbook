@@ -21,9 +21,9 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf {{PROJECT_DIR}}
+rm -rf $HOME/{{PROJECT_DIR}}
 git clone {{PROJECT_GIT_URL}}
-cd {{PROJECT_DIR}} || return
+cd $HOME/{{PROJECT_DIR}} || return
 git checkout {{BINARY_VERSION}}
 
 make install

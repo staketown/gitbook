@@ -1,5 +1,5 @@
 ---
-cover: ../../.gitbook/assets/banner_cleanup.jpeg
+cover: ../../.gitbook/assets/lava-banner.jpeg
 coverY: 0
 ---
 
@@ -19,10 +19,10 @@ sudo systemctl stop lavad
 cp $HOME/.lava/data/priv_validator_state.json $HOME/.lava/priv_validator_state.json.backup
 rm -rf $HOME/.lava/data
 
-URL="https://snapshots-testnet.stake-town.com/lava/lava-testnet-2_latest.tar.lz4"
+URL=https://snapshots-testnet.stake-town.com/lava/lava-testnet-2_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.lava
 
-mv $HOME/.lava/priv_validator_state.json.backup $HOME/.lava/data/priv_validator_state.json 
+mv $HOME/.lava/priv_validator_state.json.backup $HOME/.lava/data/priv_validator_state.json
 
 sudo systemctl restart lavad && sudo journalctl -u lavad -f -o cat
 ```
