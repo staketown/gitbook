@@ -5,26 +5,14 @@ coverY: 0
 
 # Installation
 
-### Install with one line script
+Install with one line script
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/aura/main_install.sh)
 ```
 
-### Manual installation
+Manual installation
 
-**Install Go**
-```bash
-ver="1.19.6"
-wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-rm "go$ver.linux-amd64.tar.gz"
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
-source $HOME/.bash_profile
-go version
-```
-**Install node**
 ```bash
 sudo apt update
 sudo apt install -y curl git jq lz4 build-essential unzip
@@ -36,7 +24,7 @@ cd $HOME || return
 rm -rf aura
 git clone https://github.com/aura-nw/aura.git
 cd aura || return
-git checkout aura_v0.4.5
+git checkout v0.7.1
 
 make install
 
@@ -169,7 +157,7 @@ aurad tx staking create-validator \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
 --gas-prices=0.001uaura \
---gas-adjustment=1.4\
+--gas-adjustment=1.4 \
 --gas=auto \
 -y
 ```
