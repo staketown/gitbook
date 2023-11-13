@@ -26,7 +26,7 @@ git clone https://github.com/lavanet/lava
 cd $HOME/lava || return
 git checkout v0.27.0
 
-make install
+export LAVA_BINARY=lavad && make install
 
 lavad config keyring-backend os
 lavad config chain-id lava-testnet-2
