@@ -7,14 +7,14 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `nibiru-itn-3`
+* Network Chain ID: `nibiru-testnet-1`
 * Denom: `unibi unusd uusdt`
 * Binary: `nibid`
 * Working directory: `.nibid`
-* Explorers: [https://nibiru.explorers.guru/](https://nibiru.explorers.guru/)
-* Faucet: [https://app.nibiru.fi/faucet](https://app.nibiru.fi/faucet)
+* Explorers: [LINK](https://explorer.nibiru.fi/nibiru-testnet-1)
+* Faucet: Ask in discord channel
 
 ## Overview
 
 > **Minimum Hardware Requirements:** 4CPU 8RAM 100GB \
-> **Recommended Hardware Requirements:** 8CPU 32RAM 200GB
+> **Recommended Hardware Requirements:** 8CPU 16RAM 200GB
