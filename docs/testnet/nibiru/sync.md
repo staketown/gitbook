@@ -19,7 +19,7 @@ sudo systemctl stop nibid
 cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
 rm -rf $HOME/.nibid/data
 
-URL=https://snapshots-testnet.stake-town.com/nibiru/nibiru-itn-3_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/nibiru/nibiru-testnet-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.nibid
 
 mv $HOME/.nibid/priv_validator_state.json.backup $HOME/.nibid/data/priv_validator_state.json 
@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="729949706e9947e5b7aa10a411a9d2b96e5fe42b@104.199.24.9:26656"
+PEERS="d092162ed9c61c9921842ff1fb221168c68d4872@65.109.65.248:27656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.nibid/config/config.toml
 
 CONFIG_TOML=$HOME/.nibid/config/config.toml

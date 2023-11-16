@@ -24,13 +24,13 @@ cd $HOME || return
 rm -rf nibiru
 git clone https://github.com/NibiruChain/nibiru
 cd nibiru || return
-git checkout v0.21.11
+git checkout v0.1.0
 
 make install
 
 nibid config keyring-backend os
-nibid config chain-id nibiru-itn-3
-nibid init "Your Moniker" --chain-id nibiru-itn-3
+nibid config chain-id nibiru-testnet-1
+nibid init "Your Moniker" --chain-id nibiru-testnet-1
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/nibiru/genesis.json > $HOME/.nibid/config/genesis.json
@@ -43,8 +43,8 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
 sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.nibid/config/config.toml"
-SEEDS="142142567b8a8ec79075ff3729e8e5b9eb2debb7@35.195.230.189:26656,766ca434a82fe30158845571130ee7106d52d0c2@34.140.226.56:26656"
-PEERS="729949706e9947e5b7aa10a411a9d2b96e5fe42b@104.199.24.9:26656"
+SEEDS=""
+PEERS="d092162ed9c61c9921842ff1fb221168c68d4872@65.109.65.248:27656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/nibiru/nibiru-itn-3_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/nibiru/nibiru-testnet-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.nibid
 [[ -f $HOME/.nibid/data/upgrade-info.json ]] && cp $HOME/.nibid/data/upgrade-info.json $HOME/.nibid/cosmovisor/genesis/upgrade-info.json
 ```
@@ -150,7 +150,7 @@ nibid tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=nibiru-itn-3 \
+--chain-id=nibiru-testnet-1 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
@@ -171,7 +171,7 @@ curl -s https://get.nibiru.fi/pricefeeder@v0.21.6! | bash
 Set variables for pricefeeder
 
 ```shell
-export CHAIN_ID="nibiru-itn-3"
+export CHAIN_ID="nibiru-testnet-1"
 export GRPC_ENDPOINT="localhost:9090"
 export WEBSOCKET_ENDPOINT="ws://localhost:26657/websocket"
 export EXCHANGE_SYMBOLS_MAP='{"bitfinex":{"ubtc:unusd":"tBTCUSD","ubtc:uusd":"tBTCUSD","ueth:unusd":"tETHUSD","ueth:uusd":"tETHUSD","uusdc:uusd":"tUDCUSD","uusdc:unusd":"tUDCUSD"},"coingecko":{"ubtc:uusd":"bitcoin","ubtc:unusd":"bitcoin","ueth:uusd":"ethereum","ueth:unusd":"ethereum","uusdt:uusd":"tether","uusdt:unusd":"tether","uusdc:uusd":"usd-coin","uusdc:unusd":"usd-coin","uatom:uusd":"cosmos","uatom:unusd":"cosmos","ubnb:uusd":"binancecoin","ubnb:unusd":"binancecoin","uavax:uusd":"avalanche-2","uavax:unusd":"avalanche-2","usol:uusd":"solana","usol:unusd":"solana","uada:uusd":"cardano","uada:unusd":"cardano"}}'
