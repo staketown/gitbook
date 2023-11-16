@@ -35,7 +35,7 @@ sudo systemctl stop aurad
 cp $HOME/.aura/data/priv_validator_state.json $HOME/.aura/priv_validator_state.json.backup
 aurad tendermint unsafe-reset-all --home $HOME/.aura --keep-addr-book
 
-SNAP_RPC="https://quasar-rpc.stake-town.com:443"
+SNAP_RPC="https://aura-rpc.stake-town.com:443"
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
