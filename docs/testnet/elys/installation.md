@@ -21,10 +21,10 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf elys
+rm -rf $HOME/elys
 git clone https://github.com/elys-network/elys.git
-cd elys || return
-git checkout v0.14.0
+cd $HOME/elys || return
+git checkout v0.15.0
 
 make install
 
@@ -157,7 +157,7 @@ elysd tx staking create-validator \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
 --gas-prices=0.00025uelys \
---gas-adjustment=1.4\
+--gas-adjustment=1.4 \
 --gas=auto \
 -y
 ```

@@ -22,7 +22,7 @@ rm -rf $HOME/.elys/data
 URL=https://snapshots-testnet.stake-town.com/elys/elystestnet-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.elys
 
-mv $HOME/.elys/priv_validator_state.json.backup $HOME/.elys/data/priv_validator_state.json
+mv $HOME/.elys/priv_validator_state.json.backup $HOME/.elys/data/priv_validator_state.json 
 
 sudo systemctl restart elysd && sudo journalctl -u elysd -f -o cat
 ```
@@ -55,6 +55,15 @@ sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $CONFIG_TOML
 mv $HOME/.elys/priv_validator_state.json.backup $HOME/.elys/data/priv_validator_state.json
 
 sudo systemctl restart elysd && sudo journalctl -u elysd -f -o cat
+```
+
+## **Wasm**
+
+As far state-sync doesn't support wasm folder we should download it manually
+
+```bash
+URL=https://snapshots-testnet.stake-town.com/elys/wasm_latest.tar.lz4
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.elys
 ```
 
 ## **Address Book**
