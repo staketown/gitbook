@@ -24,9 +24,9 @@ cd || return
 rm -rf cascadia
 git clone https://github.com/cascadiafoundation/cascadia
 cd $HOME/cascadia || return
-git checkout v0.1.7
+git checkout v0.1.8
+
 make install
-cascadiad version # v0.1.7
 
 cascadiad config keyring-backend os
 cascadiad config chain-id cascadia_6102-1
