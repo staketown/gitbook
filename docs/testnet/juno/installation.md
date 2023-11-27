@@ -21,15 +21,16 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf juno
-git clone https://github.com/CosmosContracts/juno juno
-cd juno || return
-git checkout v18.0.0-alpha.3
+rm -rf $HOME/juno
+git clone https://github.com/CosmosContracts/juno.git
+cd $HOME/juno || return
+git checkout v18.0.0-alpha.4
+
 make install
 
 junod config keyring-backend os
 junod config chain-id uni-6
-junod init "$NODE_MONIKER" --chain-id uni-6
+junod init "Your Moniker" --chain-id uni-6
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/juno/genesis.json > $HOME/.juno/config/genesis.json
@@ -39,19 +40,17 @@ APP_TOML="~/.juno/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
 sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 1000|g' $APP_TOML
+sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.juno/config/config.toml"
 SEEDS="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:12656"
-PEERS=""
+PEERS="5e7b8dda11127e5a08d3480cf763849ef206de1a@65.109.65.248:33656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.00025ujunox"|g' $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0ujunox"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
-sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 30/g' $CONFIG_TOML
-sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 30/g' $CONFIG_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
 # Install cosmovisor
@@ -82,9 +81,9 @@ EOF
 # Snapshots
 junod tendermint unsafe-reset-all --home $HOME/.juno --keep-addr-book
 
-URL="https://snapshots-testnet.stake-town.com/juno/uni-6_latest.tar.lz4"
+URL=https://snapshots-testnet.stake-town.com/juno/uni-6_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.juno
-[[ -f $HOME/.juno/data/upgrade-info.json ]]  && cp $HOME/.juno/data/upgrade-info.json $HOME/.juno/cosmovisor/genesis/upgrade-info.json
+[[ -f $HOME/.juno/data/upgrade-info.json ]] && cp $HOME/.juno/data/upgrade-info.json $HOME/.juno/cosmovisor/genesis/upgrade-info.json
 ```
 
 **(Optional) Configure timeouts for processing blocks**
@@ -145,16 +144,16 @@ After successful synchronisation we can proceed with validation creation.
 Create validator
 
 ```bash
-junod tx staking create-validator 
+junod tx staking create-validator \
 --amount=1000000ujunox \
 --pubkey=$(junod tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
 --chain-id=uni-6 \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
 --gas-prices=0.1ujunox \
