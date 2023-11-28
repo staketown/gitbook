@@ -11,7 +11,7 @@ coverY: 0
 * Denom: `uband`
 * Binary: `bandd`
 * Working directory: `.band`
-* Explorers: [https://explorer.c4e.io/validators](https://explorer.c4e.io/validators)
+* Explorers: [explorer](https://www.mintscan.io/band)
 * Faucet: -
 
 ## Overview
