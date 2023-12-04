@@ -5,19 +5,19 @@ coverY: 0
 
 # Updates
 
-⚠️ **v15.0.0-rc2 is available**
+⚠️ **v16.0.0-rc1 is available**
 
 ```bash
 cd $HOME || return
 rm -rf evmos
 git clone https://github.com/tharsis/evmos
 cd evmos || return
-git checkout v15.0.0-rc2
+git checkout v16.0.0-rc1
 
 make build
 
-mkdir -p $HOME/.evmosd/cosmovisor/upgrades/v15.0.0-rc2/bin
-mv build/evmosd $HOME/.evmosd/cosmovisor/upgrades/v15.0.0-rc2/bin/
+mkdir -p $HOME/.evmosd/cosmovisor/upgrades/v16.0.0-rc1/bin
+mv build/evmosd $HOME/.evmosd/cosmovisor/upgrades/v16.0.0-rc1/bin/
 
 rm -rf build
 ```
