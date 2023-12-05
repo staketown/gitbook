@@ -19,7 +19,7 @@ sudo systemctl stop cascadiad
 cp $HOME/.cascadiad/data/priv_validator_state.json $HOME/.cascadiad/priv_validator_state.json.backup
 rm -rf $HOME/.cascadiad/data
 
-URL="https://snapshots-testnet.stake-town.com/cascadia/cascadia_6102-1_latest.tar.lz4"
+URL=https://snapshots-testnet.stake-town.com/cascadia/cascadia_11029-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.cascadiad
 
 mv $HOME/.cascadiad/priv_validator_state.json.backup $HOME/.cascadiad/data/priv_validator_state.json
@@ -54,8 +54,7 @@ sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $CONFIG_TOML
 
 mv $HOME/.cascadiad/priv_validator_state.json.backup $HOME/.cascadiad/data/priv_validator_state.json
 
-sudo systemctl restart cascadiad
-sudo journalctl -u cascadiad -f -o cat
+sudo systemctl restart cascadiad && sudo journalctl -u cascadiad -f -o cat
 ```
 
 ## **Address Book**

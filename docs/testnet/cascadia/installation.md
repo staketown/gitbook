@@ -8,7 +8,7 @@ coverY: 0
 Install with one line script
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/cascadia/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/cascadia/test_install.sh)
 ```
 
 Manual installation
@@ -20,45 +20,44 @@ sudo apt install -y curl git jq lz4 build-essential unzip
 bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/go_install.sh")
 source .bash_profile
 
-cd || return
-rm -rf cascadia
-git clone https://github.com/cascadiafoundation/cascadia
+cd $HOME || return
+rm -rf $HOME/cascadia
+git clone https://github.com/cascadiafoundation/cascadia.git
 cd $HOME/cascadia || return
-git checkout v0.1.8
+git checkout v0.1.9
 
 make install
 
 cascadiad config keyring-backend os
-cascadiad config chain-id cascadia_6102-1
-cascadiad init "<Your moniker>" --chain-id cascadia_6102-1
+cascadiad config chain-id cascadia_11029-1
+cascadiad init "Your Moniker" --chain-id cascadia_11029-1
 
-curl -s https://snapshots-testnet.stake-town.com/cascadia/genesis.json > $HOME/.cascadiad/config/genesis.json
-curl -s https://snapshots-testnet.stake-town.com/cascadia/addrbook.json > $HOME/.cascadiad/config/addrbook.json
+# Download genesis and addrbook
+curl -Ls https://snapshots-testnet.stake-town.com/cascadia/genesis.json > $HOME/.cascadiad/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/cascadia/addrbook.json > $HOME/.cascadiad/config/addrbook.json
 
-APP_TOML=$HOME/.cascadiad/config/app.toml
+APP_TOML="~/.cascadiad/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "19"|g' $APP_TOML
-sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
-indexer="null"
-sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0025aCC"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
+sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
-CONFIG_TOML=$HOME/.cascadiad/config/config.toml
-PEERS="b651ea2a0517e82c1a476e25966ab3de3159afe8@34.229.22.39:26656,3b389873f999763d3f937f63f765f0948411e296@44.192.85.92:26656"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
+CONFIG_TOML="~/.cascadiad/config/config.toml"
 SEEDS=""
+PEERS="21ca2712116138429aed3d72422379397c53fa86@65.109.65.248:34656"
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
+external_address=$(wget -qO- eth0.me)
+sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0025aCC"|g' $CONFIG_TOML
+sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
+sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
-# Install and configure cosmovisor...
-
+# Install cosmovisor
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 mkdir -p ~/.cascadiad/cosmovisor/genesis/bin
 mkdir -p ~/.cascadiad/cosmovisor/upgrades
-cp ~/go/bin/cascadiad $HOME/.cascadiad/cosmovisor/genesis/bin
-
-# Starting service and synchronization...
+cp ~/go/bin/cascadiad ~/.cascadiad/cosmovisor/genesis/bin
 
 sudo tee /etc/systemd/system/cascadiad.service > /dev/null << EOF
 [Unit]
@@ -66,7 +65,7 @@ Description=Cascadia Node
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start --chain-id cascadia_6102-1
+ExecStart=$(which cosmovisor) run start --chain-id cascadia_11029-1 
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000
@@ -79,11 +78,12 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 WantedBy=multi-user.target
 EOF
 
+# Snapshots
 cascadiad tendermint unsafe-reset-all --home $HOME/.cascadiad --keep-addr-book
 
-# Add snapshot here
-URL="https://snapshots-testnet.stake-town.com/cascadia/cascadia_6102-1_latest.tar.lz4"
-curl $URL | lz4 -dc - | tar -xf - -C $HOME/.cascadiad
+URL=https://snapshots-testnet.stake-town.com/cascadia/cascadia_11029-1_latest.tar.lz4
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.cascadiad
+[[ -f $HOME/.cascadiad/data/upgrade-info.json ]] && cp $HOME/.cascadiad/data/upgrade-info.json $HOME/.cascadiad/cosmovisor/genesis/upgrade-info.json
 ```
 
 **(Optional) Configure timeouts for processing blocks**
@@ -116,14 +116,14 @@ sudo journalctl -u cascadiad -f -o cat
 snapshot_interval=0
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/.cascadiad/config/app.toml
 sed -i 's|^enable *=.*|enable = false|' $HOME/.cascadiad/config/config.toml
-systemctl restart cascadiad && journalctl -u cascadiad -f -o cat
+sudo systemctl restart cascadiad && sudo journalctl -u cascadiad -f -o cat
 ```
 
-## Wallet creation
+### Wallet creation
 
 Create wallet
 
-> ⚠️  store **seed** phrase, important during recovering
+> ⚠️ store **seed** phrase, important during recovering
 
 ```bash
 cascadiad keys add <YOUR_WALLET_NAME>
@@ -131,31 +131,33 @@ cascadiad keys add <YOUR_WALLET_NAME>
 
 Recover wallet
 
-> ⚠️  store **seed** phrase, important during recovering
+> ⚠️ store **seed** phrase, important during recovering
 
 ```bash
 cascadiad keys add <YOUR_WALLET_NAME> --recover
 ```
 
-## Validator creation
+### Validator creation
 
 After successful synchronisation we can proceed with validation creation.
 
+Create validator
+
 ```bash
 cascadiad tx staking create-validator \
---amount=1000000aCC \
+--amount=1000000000000000000aCC \
 --pubkey=$(cascadiad tendermint show-validator) \
 --moniker="<Your moniker>" \
---identity=<your identity> \
+--identity=<Your identity> \
 --details="<Your details>" \
---chain-id=cascadia_6102-1 \
---commission-rate=0.10 \
+--chain-id=cascadia_11029-1 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.1aCC \
---gas-adjustment=1.5 \
+--gas-prices=7aCC \
+--gas-adjustment=2.5 \
 --gas=auto \
 -y
 ```
