@@ -7,12 +7,12 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `cascadia_6102-1`
+* Network Chain ID: `cascadia_11029-1`
 * Denom: `aCC`
 * Binary: `cascadiad`
 * Working directory: `.cascadiad`
-* Explorers: [https://validator.cascadia.foundation/](https://validator.cascadia.foundation/)
-* Faucet: Ask in discord channel [#faucet](https://discord.com/channels/932501599035732008/1093030023012814948)
+* Explorers: [LINK](https://validator.cascadia.foundation)
+* Faucet: Ask in discord channel
 
 ## Overview
 
