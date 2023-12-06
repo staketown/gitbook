@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf juno
 git clone https://github.com/CosmosContracts/juno juno
 cd juno || return
-git checkout v17.0.0
+git checkout v18.0.0
 make install
 
 junod config keyring-backend os
