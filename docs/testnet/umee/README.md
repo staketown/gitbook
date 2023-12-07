@@ -11,8 +11,8 @@ coverY: 0
 * Denom: `uumee`
 * Binary: `umeed`
 * Working directory: `.umee`
-* Explorers:
-* Faucet:&#x20;
+* Explorers: [LINK](https://explorer.stavr.tech/umee-canon)
+* Faucet: Ask in discord channel
 
 ## Overview
 
