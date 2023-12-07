@@ -21,7 +21,7 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf umee
+rm -rf $HOME/umee
 git clone https://github.com/umee-network/umee.git
 cd $HOME/umee || return
 git checkout v6.2.0
@@ -30,7 +30,7 @@ make install
 
 umeed config keyring-backend os
 umeed config chain-id umee-1
-umeed init "$NODE_MONIKER" --chain-id umee-1
+umeed init "Your Moniker" --chain-id umee-1
 
 # Download genesis and addrbook
 curl -Ls https://snapshots.stake-town.com/umee/genesis.json > $HOME/.umee/config/genesis.json
@@ -40,19 +40,17 @@ APP_TOML="~/.umee/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
 sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 1000|g' $APP_TOML
+sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.umee/config/config.toml"
 SEEDS="400f3d9e30b69e78a7fb891f60d76fa3c73f0ecc@umee.rpc.kjnodes.com:16259"
-PEERS=""
+PEERS="635debe6c5cbcb6861b6c8b32c47d8ee84d99c16@88.99.208.54:29656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
 sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.1uumee"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
-sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 30/g' $CONFIG_TOML
-sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 30/g' $CONFIG_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
 # Install cosmovisor
@@ -83,9 +81,9 @@ EOF
 # Snapshots
 umeed tendermint unsafe-reset-all --home $HOME/.umee --keep-addr-book
 
-URL="https://snapshots.stake-town.com/umee/umee-1_latest.tar.lz4"
+URL=https://snapshots.stake-town.com/umee/umee-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.umee
-[[ -f $HOME/.umee/data/upgrade-info.json ]]  && cp $HOME/.umee/data/upgrade-info.json $HOME/.umee/cosmovisor/genesis/upgrade-info.json
+[[ -f $HOME/.umee/data/upgrade-info.json ]] && cp $HOME/.umee/data/upgrade-info.json $HOME/.umee/cosmovisor/genesis/upgrade-info.json
 ```
 
 **(Optional) Configure timeouts for processing blocks**
@@ -146,16 +144,16 @@ After successful synchronisation we can proceed with validation creation.
 Create validator
 
 ```bash
-umeed tx staking create-validator 
+umeed tx staking create-validator \
 --amount=1000000uumee \
 --pubkey=$(umeed tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
 --chain-id=umee-1 \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
 --gas-prices=0.1uumee \

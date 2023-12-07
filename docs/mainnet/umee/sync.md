@@ -19,10 +19,10 @@ sudo systemctl stop umeed
 cp $HOME/.umee/data/priv_validator_state.json $HOME/.umee/priv_validator_state.json.backup
 rm -rf $HOME/.umee/data
 
-URL="https://snapshots.stake-town.com/umee/umee-1_latest.tar.lz4"
+URL=https://snapshots.stake-town.com/umee/umee-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.umee
 
-mv $HOME/.umee/priv_validator_state.json.backup $HOME/.umee/data/priv_validator_state.json 
+mv $HOME/.umee/priv_validator_state.json.backup $HOME/.umee/data/priv_validator_state.json
 
 sudo systemctl restart umeed && sudo journalctl -u umeed -f -o cat
 ```
@@ -44,7 +44,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
 PEERS="635debe6c5cbcb6861b6c8b32c47d8ee84d99c16@88.99.208.54:29656"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.juno/config/config.toml
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.umee/config/config.toml
 
 CONFIG_TOML=$HOME/.umee/config/config.toml
 sed -i 's|^enable *=.*|enable = true|' $CONFIG_TOML

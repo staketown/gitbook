@@ -5,7 +5,7 @@ coverY: 0
 
 # Updates
 
-> ⚠️ **v6.2.0 is available**
+⚠️ Version **v6.2.0** is available
 
 ```bash
 cd $HOME || return
@@ -18,5 +18,4 @@ make build
 
 mkdir -p $HOME/.umee/cosmovisor/upgrades/v6.2/bin
 mv build/umeed $HOME/.umee/cosmovisor/upgrades/v6.2/bin/
-rm -rf build
 ```
