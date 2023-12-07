@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/umee
 git clone https://github.com/umee-network/umee.git
 cd $HOME/umee || return
-git checkout v6.2-canon
+git checkout v6.2.0-canon
 
 make install
 

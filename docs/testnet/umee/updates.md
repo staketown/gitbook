@@ -12,7 +12,7 @@ cd $HOME || return
 rm -rf umee
 git clone https://github.com/umee-network/umee.git
 cd umee || return
-git checkout v6.2-canon
+git checkout v6.2.0-canon
 
 make build
 
