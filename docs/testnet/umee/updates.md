@@ -5,7 +5,7 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v6.2-canon** is available
+⚠️ Version **v6.2.0-canon** is available
 
 ```bash
 cd $HOME || return
