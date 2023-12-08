@@ -35,6 +35,7 @@
 * [Nibiru](testnet/nibiru)
 * [Ojo](testnet/ojo)
 * [Quasar](testnet/quasar)
+* [Quicksilver](testnet/quicksilver)
 * [Source](testnet/source)
 * [Umee](testnet/umee)
 
