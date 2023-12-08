@@ -21,9 +21,9 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf $HOME/quicksilve
+rm -rf $HOME/quicksilver
 git clone https://github.com/ingenuity-build/quicksilver.git
-cd $HOME/quicksilve || return
+cd $HOME/quicksilver || return
 git checkout v1.2.17
 
 make install
@@ -61,7 +61,7 @@ cp ~/go/bin/quicksilverd ~/.quicksilverd/cosmovisor/genesis/bin
 
 sudo tee /etc/systemd/system/quicksilverd.service > /dev/null << EOF
 [Unit]
-Description=QuickSilver Node
+Description=Quicksilver Node
 After=network-online.target
 [Service]
 User=$USER

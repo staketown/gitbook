@@ -9,9 +9,9 @@ coverY: 0
 
 ```bash
 cd $HOME || return
-rm -rf quicksilve
+rm -rf quicksilver
 git clone https://github.com/ingenuity-build/quicksilver.git
-cd quicksilve || return
+cd quicksilver || return
 git checkout v1.2.17
 
 make build

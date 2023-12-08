@@ -65,7 +65,7 @@
   * [Sync](mainnet/quasar/sync.md)
   * [Public API](mainnet/quasar/public-api.md)
   * [Cheat Sheet](mainnet/quasar/cheat-sheet.md)
-* [Quick Silver](mainnet/quicksilver/README.md)
+* [Quicksilver](mainnet/quicksilver/README.md)
   * [Installation](mainnet/quicksilver/installation.md)
   * [Updates](mainnet/quicksilver/updates.md)
   * [Sync](mainnet/quicksilver/sync.md)
