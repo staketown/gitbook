@@ -14,6 +14,7 @@
 * [Juno](mainnet/juno)
 * [Osmosis](mainnet/osmosis)
 * [Quasar](mainnet/quasar)
+* [Quick Silver](mainnet/quicksilver)
 * [Source](mainnet/source)
 * [Umee](mainnet/umee)
 
