@@ -24,9 +24,9 @@ cd $HOME || return
 rm -rf c4e-chain
 git clone https://github.com/chain4energy/c4e-chain
 cd $HOME/c4e-chain || return
-git checkout v1.2.1
+git checkout v1.3.0
+
 make install
-c4ed version # v1.2.1
 
 c4ed config keyring-backend os
 c4ed config chain-id perun-1
