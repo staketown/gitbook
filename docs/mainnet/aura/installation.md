@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf aura
 git clone https://github.com/aura-nw/aura.git
 cd aura || return
-git checkout v0.7.1
+git checkout v0.7.2
 
 make install
 
