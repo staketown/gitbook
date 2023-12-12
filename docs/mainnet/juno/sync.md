@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="2d447001642d1a455f7539eaf55c0bcbba0e567c@88.99.208.54:33656"
+PEERS="397281b9fa745482127093f08ac05724c2b8d6f8@65.108.195.213:33656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.juno/config/config.toml
 
 CONFIG_TOML=$HOME/.juno/config/config.toml
