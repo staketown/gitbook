@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ **v16.0.0-rc2 is available**
+⚠️ **v16.0.0-rc2.1 is available**
 
 ```bash
 cd $HOME || return
 rm -rf evmos
 git clone https://github.com/tharsis/evmos
 cd evmos || return
-git checkout v16.0.0-rc2
+git checkout v16.0.0-rc2.1
 
 make build
 
