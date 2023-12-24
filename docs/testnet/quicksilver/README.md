@@ -7,7 +7,7 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `rhye-1`
+* Network Chain ID: `rhye-2`
 * Denom: `uqck`
 * Binary: `quicksilverd`
 * Working directory: `.quicksilverd`
