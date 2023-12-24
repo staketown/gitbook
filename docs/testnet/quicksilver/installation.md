@@ -24,13 +24,13 @@ cd $HOME || return
 rm -rf $HOME/quicksilver
 git clone https://github.com/ingenuity-build/quicksilver.git
 cd $HOME/quicksilver || return
-git checkout v1.4.4-rc.3
+git checkout v1.4.5-rc.1
 
 make install
 
 quicksilverd config keyring-backend os
-quicksilverd config chain-id rhye-1
-quicksilverd init "Your Moniker" --chain-id rhye-1
+quicksilverd config chain-id rhye-2
+quicksilverd init "Your Moniker" --chain-id rhye-2
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/quicksilver/genesis.json > $HOME/.quicksilverd/config/genesis.json
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 quicksilverd tendermint unsafe-reset-all --home $HOME/.quicksilverd --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/quicksilver/rhye-1_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/quicksilver/rhye-2_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.quicksilverd
 [[ -f $HOME/.quicksilverd/data/upgrade-info.json ]] && cp $HOME/.quicksilverd/data/upgrade-info.json $HOME/.quicksilverd/cosmovisor/genesis/upgrade-info.json
 ```
@@ -150,7 +150,7 @@ quicksilverd tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=rhye-1 \
+--chain-id=rhye-2 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \

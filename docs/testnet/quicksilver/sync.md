@@ -19,7 +19,7 @@ sudo systemctl stop quicksilverd
 cp $HOME/.quicksilverd/data/priv_validator_state.json $HOME/.quicksilverd/priv_validator_state.json.backup
 rm -rf $HOME/.quicksilverd/data
 
-URL=https://snapshots-testnet.stake-town.com/quicksilver/rhye-1_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/quicksilver/rhye-2_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.quicksilverd
 
 mv $HOME/.quicksilverd/priv_validator_state.json.backup $HOME/.quicksilverd/data/priv_validator_state.json
