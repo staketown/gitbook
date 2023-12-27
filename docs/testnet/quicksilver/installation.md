@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/quicksilver
 git clone https://github.com/ingenuity-build/quicksilver.git
 cd $HOME/quicksilver || return
-git checkout v1.4.5-rc.1
+git checkout v1.4.5-rc.2
 
 make install
 
