@@ -5,6 +5,12 @@
 
 ## Mainnet
 
+* [Andromeda](mainnet/andromeda/README.md)
+  * [Installation](mainnet/andromeda/installation.md)
+  * [Updates](mainnet/andromeda/updates.md)
+  * [Sync](mainnet/andromeda/sync.md)
+  * [Public API](mainnet/andromeda/public-api.md)
+  * [Cheat Sheet](mainnet/andromeda/cheat-sheet.md)
 * [Archway](mainnet/archway/README.md)
   * [Installation](mainnet/archway/installation.md)
   * [Updates](mainnet/archway/updates.md)

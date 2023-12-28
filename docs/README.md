@@ -4,6 +4,7 @@
 
 ### Mainnet
 
+* [Andromeda](mainnet/andromeda)
 * [Archway](mainnet/archway)
 * [Aura](mainnet/aura)
 * [Band](mainnet/band)
