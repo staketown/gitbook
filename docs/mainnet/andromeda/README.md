@@ -7,11 +7,11 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `galileo-3`
+* Network Chain ID: `andromeda-1`
 * Denom: `uandr`
 * Binary: `andromedad`
-* Working directory: `.andromedad`
-* Explorers: [LINK](https://andromeda.explorers.guru/)
+* Working directory: `.andromeda`
+* Explorers: [LINK](https://andromeda.exploreme.pro/dashboard)
 * Faucet: Ask in discord channel
 
 ## Overview

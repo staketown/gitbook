@@ -19,7 +19,7 @@ sudo systemctl stop andromedad
 cp $HOME/.andromedad/data/priv_validator_state.json $HOME/.andromedad/priv_validator_state.json.backup
 rm -rf $HOME/.andromedad/data
 
-URL="https://snapshots-testnet.stake-town.com/andromeda/galileo-3_latest.tar.lz4"
+URL=https://snapshots-testnet.stake-town.com/andromeda/galileo-3_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.andromedad
 
 mv $HOME/.andromedad/priv_validator_state.json.backup $HOME/.andromedad/data/priv_validator_state.json
@@ -60,11 +60,11 @@ sudo systemctl restart andromedad && sudo journalctl -u andromedad -f -o cat
 ## **Address Book**
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/archway/addrbook.json > $HOME/.archway/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/andromeda/addrbook.json > $HOME/.andromedad/config/addrbook.json
 ```
 
 ## Genesis
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/archway/genesis.json > $HOME/.archway/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/andromeda/genesis.json > $HOME/.andromedad/config/genesis.json
 ```

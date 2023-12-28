@@ -66,7 +66,7 @@ andromedad tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=galileo-3 \
+--chain-id=andromeda-1 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
@@ -239,27 +239,27 @@ andromedad tx gov vote 1 abstain --from <YOUR_WALLET> --gas-prices 0.001uandr --
 Change ports to custom
 
 ```bash
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:36658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:36657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:7060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:36656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":36660\"%" $HOME/.andromedad/config/config.toml && \
-sed -i.bak -e "s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:10090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:10091\"%; s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:2317\"%" $HOME/.andromedad/config/app.toml && \
-sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:36657\"%" $HOME/.andromedad/config/client.toml
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:36658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:36657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:7060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:36656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":36660\"%" $HOME/.andromeda/config/config.toml && \
+sed -i.bak -e "s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:10090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:10091\"%; s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:2317\"%" $HOME/.andromeda/config/app.toml && \
+sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:36657\"%" $HOME/.andromeda/config/client.toml
 ```
 
 Turn on indexing
 
 ```bash
-sed -i 's|^indexer *=.*|indexer = "kv"|' $HOME/.andromedad/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "kv"|' $HOME/.andromeda/config/config.toml
 ```
 
 Turn off indexing
 
 ```bash
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.andromedad/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.andromeda/config/config.toml
 ```
 
 Setup custom prunning
 
 ```bash
-APP_TOML="~/.andromedad/config/app.toml"
+APP_TOML="~/.andromeda/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|' $APP_TOML
 sed -i 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' $APP_TOML
 sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' $APP_TOML
@@ -269,13 +269,13 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|' $APP_TOML
 Check your peer
 
 ```bash
-echo $(andromedad tendermint show-node-id)@$(curl http://ifconfig.me/)$(grep -A 3 "\[p2p\]" ~/.andromedad/config/config.toml | egrep -o ":[0-9]+")
+echo $(andromedad tendermint show-node-id)@$(curl http://ifconfig.me/)$(grep -A 3 "\[p2p\]" ~/.andromeda/config/config.toml | egrep -o ":[0-9]+")
 ```
 
 Check your RPC
 
 ```bash
-echo -e "\033[0;32m$(grep -A 3 "\[rpc\]" ~/.andromedad/config/config.toml | egrep -o ":[0-9]+")\033[0m"
+echo -e "\033[0;32m$(grep -A 3 "\[rpc\]" ~/.andromeda/config/config.toml | egrep -o ":[0-9]+")\033[0m"
 ```
 
 Check information about validator
@@ -299,7 +299,7 @@ andromedad status 2>&1 | jq .SyncInfo.latest_block_height
 Reset network
 
 ```bash
-andromedad tendermint unsafe-reset-all --home $HOME/.andromedad --keep-addr-book
+andromedad tendermint unsafe-reset-all --home $HOME/.andromeda --keep-addr-book
 ```
 
 Delete node
@@ -309,7 +309,7 @@ sudo systemctl stop andromedad && \
 sudo systemctl disable andromedad && \
 sudo rm /etc/systemd/system/andromedad.service && \
 sudo systemctl daemon-reload && \
-rm -rf $HOME/.andromedad && \
+rm -rf $HOME/.andromeda && \
 rm -rf $HOME/andromedad
 ```
 
