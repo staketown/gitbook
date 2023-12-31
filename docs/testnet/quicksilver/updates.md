@@ -14,5 +14,5 @@ chmod +x quicksilverd
 mv quicksilverd $HOME/go/bin
 
 mkdir -p $HOME/.quicksilverd/cosmovisor/upgrades/v1.4.5-rc4/bin
-mv  $HOME/go/bin/quicksilverd $HOME/.quicksilverd/cosmovisor/upgrades/v1.4.5-rc4/bin/
+cp $HOME/go/bin/quicksilverd $HOME/.quicksilverd/cosmovisor/upgrades/v1.4.5-rc4/bin/
 ```
