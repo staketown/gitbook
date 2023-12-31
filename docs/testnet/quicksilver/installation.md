@@ -21,7 +21,7 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/$BINARY_BINARY_VERSION_TAG/quicksilverd-$BINARY_BINARY_VERSION_TAG-amd64
+wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.4.5-rc.4/quicksilverd-v1.4.5-rc.4-amd64
 chmod +x quicksilverd
 mv quicksilverd $HOME/go/bin
 

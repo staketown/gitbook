@@ -5,17 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v1.4.5-rc.3** is available
+⚠️ Version **v1.4.5-rc.4** is available
 
 ```bash
 cd $HOME || return
-rm -rf quicksilver
-git clone https://github.com/ingenuity-build/quicksilver.git
-cd quicksilver || return
-git checkout v1.4.5-rc.3
+wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.4.5-rc.4/quicksilverd-v1.4.5-rc.4-amd64
+chmod +x quicksilverd
+mv quicksilverd $HOME/go/bin
 
-make build
-
-mkdir -p $HOME/.quicksilverd/cosmovisor/upgrades/v1.4.5-rc.3/bin
-mv build/quicksilverd $HOME/.quicksilverd/cosmovisor/upgrades/v1.4.5-rc.3/bin/
+mkdir -p $HOME/.quicksilverd/cosmovisor/upgrades/v1.4.5-rc.4/bin
+mv  $HOME/go/bin/quicksilverd $HOME/.quicksilverd/cosmovisor/upgrades/v1.4.5-rc.4/bin/
 ```
