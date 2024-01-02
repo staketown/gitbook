@@ -39,8 +39,8 @@ curl -Ls https://snapshots-testnet.stake-town.com/juno/addrbook.json > $HOME/.ju
 APP_TOML="~/.juno/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
+sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.juno/config/config.toml"
 SEEDS="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:12656"

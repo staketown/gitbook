@@ -14,7 +14,7 @@ https://juno-testnet-rpc.stake-town.com:443
 ### **API Endpoint**
 
 ```bash
-https://juno-testnet-api.stake-town.com
+https://juno-testnet-api.stake-town.com:443
 ```
 
 ### **GRPC Endpoint**
