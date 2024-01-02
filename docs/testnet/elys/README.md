@@ -11,8 +11,8 @@ coverY: 0
 * Denom: `uelys`
 * Binary: `elysd`
 * Working directory: `.elys`
-* Explorers: [https://testnet.elys.network/elys](https://testnet.elys.network/elys)
-* Faucet: -
+* Explorers: [LINK](https://explorer.kjnodes.com/elys-testnet)
+* Faucet: Ask in discord channel
 
 ## Overview
 

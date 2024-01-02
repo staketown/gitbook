@@ -11,7 +11,7 @@ coverY: 0
 * Denom: `uqsr`
 * Binary: `quasarnoded`
 * Working directory: `.quasarnode`
-* Explorers: [https://explorer.kjnodes.com/quasar-testnet](https://explorer.kjnodes.com/quasar-testnet)
+* Explorers: [LINK](https://explorer.kjnodes.com/quasar-testnet)
 * Faucet: Ask in discord channel
 
 ## Overview

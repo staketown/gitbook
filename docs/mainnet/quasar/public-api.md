@@ -8,17 +8,17 @@ coverY: 0
 ### **RPC Endpoint**
 
 ```bash
-https://quasar-testnet-rpc.stake-town.com:443
+https://quasar-rpc.stake-town.com:443
 ```
 
 ### **API Endpoint**
 
 ```bash
-https://quasar-testnet-api.stake-town.com:443
+https://quasar-api.stake-town.com:443
 ```
 
 ### **GRPC Endpoint**
 
 ```bash
-quasar-testnet-grpc.stake-town.com:443
+quasar-grpc.stake-town.com:443
 ```

@@ -39,8 +39,8 @@ curl -Ls https://snapshots-testnet.stake-town.com/elys/addrbook.json > $HOME/.el
 APP_TOML="~/.elys/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
+sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.elys/config/config.toml"
 SEEDS="3f472746f46493309650e5a033076689996c8881@elys-testnet.rpc.kjnodes.com:15359"

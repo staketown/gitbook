@@ -21,9 +21,9 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf quasar
+rm -rf $HOME/quasar
 git clone https://github.com/quasar-finance/quasar.git
-cd quasar || return
+cd $HOME/quasar || return
 git checkout v1.0.0
 
 make install
@@ -39,12 +39,12 @@ curl -Ls https://snapshots.stake-town.com/quasar/addrbook.json > $HOME/.quasarno
 APP_TOML="~/.quasarnode/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
+sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.quasarnode/config/config.toml"
 SEEDS="3f472746f46493309650e5a033076689996c8881@quasar-testnet.rpc.kjnodes.com:14859"
-PEERS="5e7b8dda11127e5a08d3480cf763849ef206de1a@65.109.65.248:33656"
+PEERS="a88db3601c3667b85b640e1c5e703aa11e760b0d@88.99.208.54:45656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
@@ -157,7 +157,7 @@ quasarnoded tx staking create-validator \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
 --gas-prices=0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B \
---gas-adjustment=1.4\
+--gas-adjustment=1.4 \
 --gas=auto \
 -y
 ```
