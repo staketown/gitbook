@@ -11,8 +11,8 @@ coverY: 0
 * Denom: `uumee`
 * Binary: `umeed`
 * Working directory: `.umee`
-* Explorers: [https://umee.explorers.guru/](https://umee.explorers.guru/)
-* Faucet:&#x20;
+* Explorers: [LINK](https://umee.explorers.guru/)
+* Faucet: Ask in discord channel
 
 ## Overview
 
