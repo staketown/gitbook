@@ -5,7 +5,7 @@ coverY: 0
 
 # Updates
 
-⚠️ **v16.0.0-rc4 is available**
+⚠️ **v16.0.0-rc5 is available**
 
 ```bash
 cd $HOME || return
