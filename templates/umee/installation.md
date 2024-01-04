@@ -156,7 +156,9 @@ Create validator
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---fees={{FEES}} \
+--gas-prices={{GAS_PRICES}} \
+--gas-adjustment={{GAS_ADJUSTMENT}} \
+--gas=auto \
 -y
 ```
 
