@@ -1,5 +1,5 @@
 ---
-cover: ../../.gitbook/assets/lava-banner.jpeg
+cover: ../../.gitbook/assets/banner_cleanup.jpeg
 coverY: 0
 ---
 
