@@ -11,8 +11,8 @@ coverY: 0
 * Denom: `atevmos`
 * Binary: `evmosd`
 * Working directory: `.evmosd`
-* Explorers: [https://testnet.evmos.explorers.guru/](https://testnet.evmos.explorers.guru/)
-* Faucet:
+* Explorers: [LINK](https://testnet.evmos.explorers.guru/)
+* Faucet: Ask in discord channel
 
 ## Overview
 
