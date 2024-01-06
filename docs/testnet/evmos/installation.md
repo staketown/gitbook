@@ -22,7 +22,7 @@ source .bash_profile
 
 cd $HOME || return
 rm -rf evmos
-git clone https://github.com/tharsis/evmos
+git clone https://github.com/tharsis/evmos.git
 cd evmos || return
 git checkout v16.0.0-rc5
 
@@ -30,34 +30,32 @@ make install
 
 evmosd config keyring-backend os
 evmosd config chain-id evmos_9000-4
-evmosd init "<Your moniker>" --chain-id evmos_9000-4
+evmosd init "Your Moniker" --chain-id evmos_9000-4
 
 curl -s https://snapshots.polkachu.com/testnet-genesis/evmos/genesis.json > $HOME/.evmosd/config/genesis.json
 
-APP_TOML=$HOME/.evmosd/config/app.toml
+APP_TOML="~/.evmosd/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "19"|g' $APP_TOML
-sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
-indexer="null"
-sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.001atevmos"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
+sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
-CONFIG_TOML=$HOME/.evmosd/config/config.toml
-PEERS=""
+CONFIG_TOML="~/.evmosd/config/config.toml"
+SEEDS=""
+PEERS="dfcad28c8ba5162690b5cc11ef6c3acd4f1da964@65.109.65.248:40656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
-SEEDS="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:13456"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
+external_address=$(wget -qO- eth0.me)
+sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.025atevmos"|g' $CONFIG_TOML
+sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
+sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
-# Install and configure cosmovisor...
-
+# Install cosmovisor
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 mkdir -p ~/.evmosd/cosmovisor/genesis/bin
 mkdir -p ~/.evmosd/cosmovisor/upgrades
 cp ~/go/bin/evmosd ~/.evmosd/cosmovisor/genesis/bin
-
-# Starting service and synchronization...
 
 sudo tee /etc/systemd/system/evmosd.service > /dev/null << EOF
 [Unit]
@@ -78,6 +76,7 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 WantedBy=multi-user.target
 EOF
 
+# Snapshots
 evmosd tendermint unsafe-reset-all --home $HOME/.evmosd --keep-addr-book
 
 # Add snapshot here
@@ -116,14 +115,14 @@ sudo journalctl -u evmosd -f -o cat
 snapshot_interval=0
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/.evmosd/config/app.toml
 sed -i 's|^enable *=.*|enable = false|' $HOME/.evmosd/config/config.toml
-systemctl restart evmosd && journalctl -u evmosd -f -o cat
+sudo systemctl restart evmosd && sudo journalctl -u evmosd -f -o cat
 ```
 
-## Wallet creation
+### Wallet creation
 
 Create wallet
 
-> ⚠️  store **seed** phrase, important during recovering
+> ⚠️ store **seed** phrase, important during recovering
 
 ```bash
 evmosd keys add <YOUR_WALLET_NAME>
@@ -131,31 +130,31 @@ evmosd keys add <YOUR_WALLET_NAME>
 
 Recover wallet
 
-> ⚠️  store **seed** phrase, important during recovering
+> ⚠️ store **seed** phrase, important during recovering
 
 ```bash
 evmosd keys add <YOUR_WALLET_NAME> --recover
 ```
 
-## Validator creation
+### Validator creation
 
 After successful synchronisation we can proceed with validation creation.
+
+Create validator
 
 ```bash
 evmosd tx staking create-validator \
 --amount=1000000000000000000atevmos \
 --pubkey=$(evmosd tendermint show-validator) \
 --moniker="<Your moniker>" \
---identity=<your identity> \
+--identity=<Your identity> \
 --details="<Your details>" \
 --chain-id=evmos_9000-4 \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.001atevmos \
---gas-adjustment=1.5 \
---gas=auto \
+--fees=2000000000000atevmos \
 -y
 ```

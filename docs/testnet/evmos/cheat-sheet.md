@@ -9,7 +9,7 @@ coverY: 0
 
 Create wallet
 
-> ⚠️  store **seed** phrase, important during recovering
+> ⚠️ store **seed** phrase, important during recovering
 
 ```bash
 evmosd keys add <YOUR_WALLET_NAME>
@@ -17,7 +17,7 @@ evmosd keys add <YOUR_WALLET_NAME>
 
 Recover wallet
 
-> ⚠️  store **seed** phrase, important during recovering
+> ⚠️ store **seed** phrase, important during recovering
 
 ```bash
 evmosd keys add <YOUR_WALLET_NAME> --recover
@@ -52,27 +52,27 @@ evmosd keys import <WALLET_NAME> wallet.backup
 Check wallet balance
 
 ```bash
-evmosd q bank balances $(evmosd keys show wallet -a)
+evmosd q bank balances $(evmosd keys show <YOUR_WALLET_NAME> -a)
 ```
 
 ### Validator operations
+
+Create validator
 
 ```bash
 evmosd tx staking create-validator \
 --amount=1000000000000000000atevmos \
 --pubkey=$(evmosd tendermint show-validator) \
 --moniker="<Your moniker>" \
---identity=<your identity> \
+--identity=<Your identity> \
 --details="<Your details>" \
 --chain-id=evmos_9000-4 \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.025atevmos \
---gas-adjustment=1.5 \
---gas=auto \
+--fees=2000000000000atevmos \
 -y
 ```
 
@@ -83,19 +83,16 @@ evmosd tx staking edit-validator \
 --new-moniker="<Your moniker>" \
 --identity=<your identity> \
 --details="<Your details>" \
---chain-id=evmos_9000-4 \
 --commission-rate=0.1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.025atevmos \
---gas-adjustment=1.5 \
---gas=auto \
+--fees=2000000000000atevmos \
 -y
 ```
 
 Unjail your validator
 
 ```bash
-evmosd tx slashing unjail --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx slashing unjail --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 Check blocks info processed by your validator
@@ -127,45 +124,45 @@ evmosd q staking validator $(evmosd keys show <YOUR_WALLET_NAME> --bech val -a)
 Get your rewards from all validators
 
 ```bash
-evmosd tx distribution withdraw-all-rewards --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx distribution withdraw-all-rewards --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 Get rewards and commissions from your validator
 
 ```bash
-evmosd tx distribution withdraw-rewards $(evmosd keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx distribution withdraw-rewards $(evmosd keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 Delegate tokens to your validator
 
 ```bash
-evmosd tx staking delegate $(evmosd keys show <YOUR_WALLET_NAME> --bech val -a) 1000000000000000000atevmos --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx staking delegate $(evmosd keys show <YOUR_WALLET_NAME> --bech val -a) 1000000000000000000atevmos --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 Delegate tokens to validator
 
 ```bash
-evmosd tx staking delegate <VALOPER_ADDRESS> 1000000000000000000atevmos --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx staking delegate <VALOPER_ADDRESS> 1000000000000000000atevmos --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 Redelegate tokens to another validator
 
 ```bash
-evmosd tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000000000000000atevmos --from <WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000000000000000atevmos --from <WALLET> --fees=2000000000000atevmos -y
 ```
 
 Unbound tokens from validator
 
-> ⚠️  it’s can take a while, \~21 days, depends on network’s parameters
+> ⚠️ it’s can take a while, \~21 days, depends on network’s parameters
 
 ```bash
-evmosd tx staking unbond <VALOPER_ADDRESS> 1000000000000000000atevmos --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx staking unbond <VALOPER_ADDRESS> 1000000000000000000atevmos --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 Send tokens to another wallet
 
 ```bash
-evmosd tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000000000000000atevmos --from <YOUR_WALLET_ADDRESS> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000000000000000atevmos --from <YOUR_WALLET_ADDRESS> --fees=2000000000000atevmos -y
 ```
 
 Check info about transaction by hash **TX\_HASH**
@@ -185,9 +182,7 @@ evmosd tx gov submit-proposal \
 --deposit=1000000000000000000atevmos \
 --type="Text" \
 --from=<WALLET_ADDRESS> \
---gas-prices=0.025atevmos \
---gas-adjustment=1.5 \
---gas=auto \
+--fees=2000000000000atevmos \
 -y
 ```
 
@@ -206,31 +201,31 @@ evmosd query gov proposal <proposal_id>
 Deposit proposal by proposal id
 
 ```bash
-evmosd tx gov deposit 1 1000000000000000000atevmos --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx gov deposit 1 1000000000000000000atevmos --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 Vote as, **YES**
 
 ```bash
-evmosd tx gov vote 1 yes --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx gov vote 1 yes --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 Vote as, **NO**
 
 ```bash
-evmosd tx gov vote 1 no --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx gov vote 1 no --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 Vote as, **NO\_WITH\_VETO**
 
 ```bash
-evmosd tx gov vote 1 no_with_veto --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx gov vote 1 no_with_veto --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 Vote as, **ABSTAIN**
 
 ```bash
-evmosd tx gov vote 1 abstain --from <YOUR_WALLET> --gas-prices 0.025atevmos --gas-adjustment 1.5 --gas auto -y
+evmosd tx gov vote 1 abstain --from <YOUR_WALLET> --fees=2000000000000atevmos -y
 ```
 
 ### Utils
