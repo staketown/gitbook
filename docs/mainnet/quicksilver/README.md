@@ -3,7 +3,7 @@ cover: ../../.gitbook/assets/quicksilver-banner.png
 coverY: 0
 ---
 
-# QuickSilver
+# Quicksilver
 
 ## Summary
 

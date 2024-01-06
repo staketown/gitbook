@@ -310,7 +310,7 @@ sudo systemctl disable quicksilverd && \
 sudo rm /etc/systemd/system/quicksilverd.service && \
 sudo systemctl daemon-reload && \
 rm -rf $HOME/.quicksilverd && \
-rm -rf $HOME/quicksilve
+rm -rf $HOME/quicksilver
 ```
 
 Check IP address of the server
