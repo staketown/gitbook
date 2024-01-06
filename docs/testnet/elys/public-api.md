@@ -20,5 +20,5 @@ https://elys-testnet-api.stake-town.com:443
 ### **GRPC Endpoint**
 
 ```bash
-elys-testnet-grpc.stake-town.com:10290
+elys-testnet-grpc.stake-town.com:443
 ```
