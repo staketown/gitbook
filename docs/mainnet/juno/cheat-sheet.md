@@ -67,9 +67,9 @@ junod tx staking create-validator \
 --identity=<Your identity> \
 --details="<Your details>" \
 --chain-id=juno-1 \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
 --gas-prices=0.1ujuno \

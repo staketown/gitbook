@@ -11,7 +11,7 @@ coverY: 0
 * Denom: `ujuno`
 * Binary: `junod`
 * Working directory: `.juno`
-* Explorers: [https://juno.explorers.guru/validators](https://juno.explorers.guru/validators)
+* Explorers: [LINK](https://mintscan.io/juno)
 * Faucet: Ask in discord channel
 
 ## Overview

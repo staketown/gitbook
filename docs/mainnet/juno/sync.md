@@ -19,10 +19,10 @@ sudo systemctl stop junod
 cp $HOME/.juno/data/priv_validator_state.json $HOME/.juno/priv_validator_state.json.backup
 rm -rf $HOME/.juno/data
 
-URL="https://snapshots.stake-town.com/juno/juno-1_latest.tar.lz4"
+URL=https://snapshots.stake-town.com/juno/juno-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.juno
 
-mv $HOME/.juno/priv_validator_state.json.backup $HOME/.juno/data/priv_validator_state.json 
+mv $HOME/.juno/priv_validator_state.json.backup $HOME/.juno/data/priv_validator_state.json
 
 sudo systemctl restart junod && sudo journalctl -u junod -f -o cat
 ```

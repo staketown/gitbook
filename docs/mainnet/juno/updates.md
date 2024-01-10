@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-> ⚠️ **v18.0.0 is available**
+⚠️ Version **v18.1.0** is available
 
 ```bash
 cd $HOME || return
 rm -rf juno
-git clone https://github.com/CosmosContracts/juno juno
+git clone https://github.com/CosmosContracts/juno.git
 cd juno || return
-git checkout v18.0.0
+git checkout v18.1.0
 
 make build
 
