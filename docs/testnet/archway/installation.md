@@ -21,36 +21,43 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf archway
+rm -rf $HOME/archway
 git clone https://github.com/archway-network/archway.git
-cd archway || return
-git checkout v4.0.0
-make install
+cd $HOME/archway || return
+git checkout v4.0.3
 
-archwayd version # v4.0.0
+make install
 
 archwayd config keyring-backend os
 archwayd config chain-id constantine-3
-archwayd init "<Your moniker>" --chain-id constantine-3
+archwayd init "Your Moniker" --chain-id constantine-3
 
-curl -s https://snapshots-testnet.stake-town.com/archway/genesis.json > $HOME/.archway/config/genesis.json
-curl -s https://snapshots-testnet.stake-town.com/archway/addrbook.json > $HOME/.archway/config/addrbook.json
+# Download genesis and addrbook
+curl -Ls https://snapshots-testnet.stake-town.com/archway/genesis.json > $HOME/.archway/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/archway/addrbook.json > $HOME/.archway/config/addrbook.json
 
-APP_TOML=$HOME/.archway/config/app.toml
+APP_TOML="~/.archway/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
 sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "19"|g' $APP_TOML
-sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
-indexer="null"
-sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0aconst"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
-CONFIG_TOML=$HOME/.archway/config/config.toml
-PEERS=""
+CONFIG_TOML="~/.archway/config/config.toml"
+SEEDS=""
+PEERS="d1334258b592ebccb85a917aa65976b74e254a60@65.109.65.248:31656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
-SEEDS="3f472746f46493309650e5a033076689996c8881@archway-testnet.rpc.kjnodes.com:15659"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
+external_address=$(wget -qO- eth0.me)
+sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "1000000000000aconst"|g' $CONFIG_TOML
+sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
+sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
+
+# Install cosmovisor
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
+mkdir -p ~/.archway/cosmovisor/genesis/bin
+mkdir -p ~/.archway/cosmovisor/upgrades
+cp ~/go/bin/archwayd ~/.archway/cosmovisor/genesis/bin
 
 sudo tee /etc/systemd/system/archwayd.service > /dev/null << EOF
 [Unit]
@@ -58,19 +65,25 @@ Description=Archway Node
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which archwayd) start
+ExecStart=$(which cosmovisor) run start
 Restart=on-failure
-RestartSec=10
+RestartSec=3
 LimitNOFILE=10000
+Environment="DAEMON_NAME=archwayd"
+Environment="DAEMON_HOME=$HOME/.archway"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="UNSAFE_SKIP_BACKUP=true"
 [Install]
 WantedBy=multi-user.target
 EOF
 
+# Snapshots
 archwayd tendermint unsafe-reset-all --home $HOME/.archway --keep-addr-book
 
-# Add snapshot here
-URL="https://snapshots-testnet.stake-town.com/archway/constantine-3_latest.tar.lz4"
-curl $URL | lz4 -dc - | tar -xf - -C $HOME/.archway
+URL=https://snapshots-testnet.stake-town.com/archway/constantine-3_latest.tar.lz4
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.archway
+[[ -f $HOME/.archway/data/upgrade-info.json ]] && cp $HOME/.archway/data/upgrade-info.json $HOME/.archway/cosmovisor/genesis/upgrade-info.json
 ```
 
 **(Optional) Configure timeouts for processing blocks**
@@ -103,14 +116,14 @@ sudo journalctl -u archwayd -f -o cat
 snapshot_interval=0
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/.archway/config/app.toml
 sed -i 's|^enable *=.*|enable = false|' $HOME/.archway/config/config.toml
-systemctl restart archwayd && journalctl -u archwayd -f -o cat
+sudo systemctl restart archwayd && sudo journalctl -u archwayd -f -o cat
 ```
 
-## Wallet creation
+### Wallet creation
 
 Create wallet
 
-> ⚠️  store **seed** phrase, important during recovering
+> ⚠️ store **seed** phrase, important during recovering
 
 ```bash
 archwayd keys add <YOUR_WALLET_NAME>
@@ -118,31 +131,33 @@ archwayd keys add <YOUR_WALLET_NAME>
 
 Recover wallet
 
-> ⚠️  store **seed** phrase, important during recovering
+> ⚠️ store **seed** phrase, important during recovering
 
 ```bash
 archwayd keys add <YOUR_WALLET_NAME> --recover
 ```
 
-## Validator creation
+### Validator creation
 
 After successful synchronisation we can proceed with validation creation.
 
+Create validator
+
 ```bash
 archwayd tx staking create-validator \
---amount=1000000aconst \
+--amount=1000000000000000000aconst \
 --pubkey=$(archwayd tendermint show-validator) \
 --moniker="<Your moniker>" \
---identity=<your identity> \
+--identity=<Your identity> \
 --details="<Your details>" \
 --chain-id=constantine-3 \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.1aconst \
---gas-adjustment=1.5 \
+--gas-prices=1000000000000aconst \
+--gas-adjustment=1.4 \
 --gas=auto \
 -y
 ```
