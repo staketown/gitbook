@@ -11,8 +11,8 @@ coverY: 0
 * Denom: `aconst`
 * Binary: `archwayd`
 * Working directory: `.archway`
-* Explorers: [https://testnet.archway.explorers.guru/validators](https://testnet.archway.explorers.guru/validators)
-* Faucet:
+* Explorers: [LINK](https://testnet.archway.explorers.guru/)
+* Faucet: Ask in discord channel
 
 ## Overview
 
