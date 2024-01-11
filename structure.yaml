@@ -7,6 +7,7 @@ default:
   public_api: "templates/public-api.md"
   cheatsheet: "templates/cheat-sheet.md"
 
+archway:
 elys:
   status: ["test"]
   sync: "templates/sync-wasm.md"
