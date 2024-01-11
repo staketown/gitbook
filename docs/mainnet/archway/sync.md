@@ -19,7 +19,7 @@ sudo systemctl stop archwayd
 cp $HOME/.archway/data/priv_validator_state.json $HOME/.archway/priv_validator_state.json.backup
 rm -rf $HOME/.archway/data
 
-URL="https://snapshots.stake-town.com/archway/archway-1_latest.tar.lz4"
+URL=https://snapshots.stake-town.com/archway/archway-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.archway
 
 mv $HOME/.archway/priv_validator_state.json.backup $HOME/.archway/data/priv_validator_state.json
