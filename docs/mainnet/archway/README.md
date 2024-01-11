@@ -11,8 +11,8 @@ coverY: 0
 * Denom: `aarch`
 * Binary: `archwayd`
 * Working directory: `.archway`
-* Explorers: [https://archway.explorers.guru/validators](https://archway.explorers.guru/validators)
-* Faucet:
+* Explorers: [LINK](https://archway.explorers.guru/)
+* Faucet: Ask in discord channel
 
 ## Overview
 
