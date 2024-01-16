@@ -24,13 +24,13 @@ cd $HOME || return
 rm -rf composable-testnet
 git clone https://github.com/notional-labs/composable-testnet.git
 cd $HOME/composable-testnet || return
-git checkout v6.2.0
+git checkout v6.4.0
 
 make install
 
 centaurid config keyring-backend os
-centaurid config chain-id banksy-testnet-4
-centaurid init "<Your moniker>" --chain-id banksy-testnet-4
+centaurid config chain-id banksy-testnet-5
+centaurid init "<Your moniker>" --chain-id banksy-testnet-5
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
@@ -87,7 +87,7 @@ EOF
 centaurid tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
 
 # Snapshots
-URL=https://snapshots-testnet.stake-town.com/composable/banksy-testnet-4_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/composable/banksy-testnet-5_latest.tar.lz4
 curl -L $URL | tar -Ilz4 -xf - -C $HOME/.banksy
 ```
 

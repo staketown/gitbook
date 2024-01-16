@@ -7,7 +7,7 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `banksy-testnet-4`
+* Network Chain ID: `banksy-testnet-5`
 * Denom: `ppica`
 * Binary: `centaurid`
 * Working directory: `.banksy`

@@ -19,7 +19,7 @@ sudo systemctl stop centaurid
 cp $HOME/.banksy/data/priv_validator_state.json $HOME/.banksy/priv_validator_state.json.backup
 rm -rf $HOME/.banksy/data
 
-URL="https://snapshots-testnet.stake-town.com/composable/banksy-testnet-4_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/composable/banksy-testnet-5_latest.tar.lz4"
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.banksy
 
 mv $HOME/.banksy/priv_validator_state.json.backup $HOME/.banksy/data/priv_validator_state.json
