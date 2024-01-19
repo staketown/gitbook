@@ -12,7 +12,7 @@ cd $HOME || return
 rm -rf juno
 git clone https://github.com/CosmosContracts/juno.git
 cd juno || return
-git checkout v19.0.0-alpha.1
+git checkout v19.0.0-alpha.2
 
 make build
 
