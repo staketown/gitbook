@@ -24,7 +24,8 @@ cd $HOME || return
 rm -rf composable-testnet
 git clone https://github.com/notional-labs/composable-centauri.git
 cd $HOME/composable-testnet || return
-git checkout v6.3.6
+git checkout v6.4.2
+
 make install
 
 centaurid config keyring-backend file
