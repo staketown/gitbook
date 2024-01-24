@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="635debe6c5cbcb6861b6c8b32c47d8ee84d99c16@88.99.208.54:29656"
+PEERS="635debe6c5cbcb6861b6c8b32c47d8ee84d99c16@138.201.21.197:29656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.umee/config/config.toml
 
 CONFIG_TOML=$HOME/.umee/config/config.toml

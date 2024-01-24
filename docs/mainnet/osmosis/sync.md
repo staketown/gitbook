@@ -21,7 +21,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="1fd3c5d3bb28bef6615fdd8ab6dc6008df646a87@88.99.208.54:41656"
+PEERS="b95edbc3337a6fdd672cd6af2790c0e9ade2c4dd@65.108.195.213:41656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.osmosisd/config/config.toml
 
 CONFIG_TOML=$HOME/.osmosisd/config/config.toml

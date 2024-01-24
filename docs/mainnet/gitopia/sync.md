@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="d5525675ceb88d2c4f4df828ec01d237bcc11950@88.99.208.54:26656"
+PEERS="d5525675ceb88d2c4f4df828ec01d237bcc11950@138.201.21.197:26656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.gitopia/config/config.toml
 
 CONFIG_TOML=$HOME/.gitopia/config/config.toml

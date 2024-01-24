@@ -41,7 +41,7 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.quicksilverd/config/config.toml"
 SEEDS=""
-PEERS="3b3384dc98b0e0d8bb12eb21c396c19ce0e46cb0@88.99.208.54:50656"
+PEERS="3b3384dc98b0e0d8bb12eb21c396c19ce0e46cb0@138.201.21.197:50656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)

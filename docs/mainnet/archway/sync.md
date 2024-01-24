@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="218eed47b5472642034e81fdf408dec8b79dcba7@88.99.208.54:31656"
+PEERS="218eed47b5472642034e81fdf408dec8b79dcba7@138.201.21.197:31656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.archway/config/config.toml
 
 CONFIG_TOML=$HOME/.archway/config/config.toml

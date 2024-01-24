@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="a88db3601c3667b85b640e1c5e703aa11e760b0d@88.99.208.54:45656"
+PEERS="a88db3601c3667b85b640e1c5e703aa11e760b0d@138.201.21.197:45656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.quasarnode/config/config.toml
 
 CONFIG_TOML=$HOME/.quasarnode/config/config.toml

@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="dd3e39a35cc96bae4b51c68605237dafb6de284c@88.99.208.54:35656"
+PEERS="dd3e39a35cc96bae4b51c68605237dafb6de284c@138.201.21.197:35656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.c4e-chain/config/config.toml
 
 CONFIG_TOML=$HOME/.c4e-chain/config/config.toml

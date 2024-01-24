@@ -44,7 +44,7 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.quasarnode/config/config.toml"
 SEEDS="3f472746f46493309650e5a033076689996c8881@quasar-testnet.rpc.kjnodes.com:14859"
-PEERS="a88db3601c3667b85b640e1c5e703aa11e760b0d@88.99.208.54:45656"
+PEERS="a88db3601c3667b85b640e1c5e703aa11e760b0d@138.201.21.197:45656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)

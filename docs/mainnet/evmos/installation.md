@@ -43,7 +43,7 @@ sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.evmosd/config/config.toml"
 SEEDS=""
-PEERS="c8e2800e5743a1575fd8a0fcbb7a74c6f67a23a9@88.99.208.54:40656"
+PEERS="25695d17ec014c39054ac0026db3228053a6a2db@65.108.195.213:40656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)

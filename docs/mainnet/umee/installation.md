@@ -44,7 +44,7 @@ sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.umee/config/config.toml"
 SEEDS="400f3d9e30b69e78a7fb891f60d76fa3c73f0ecc@umee.rpc.kjnodes.com:16259"
-PEERS="635debe6c5cbcb6861b6c8b32c47d8ee84d99c16@88.99.208.54:29656"
+PEERS="635debe6c5cbcb6861b6c8b32c47d8ee84d99c16@138.201.21.197:29656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)

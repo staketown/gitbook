@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="28876b3094518bef97a1250ef641c26b7d4a658d@88.99.208.54:39656"
+PEERS="28876b3094518bef97a1250ef641c26b7d4a658d@138.201.21.197:39656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.andromeda/config/config.toml
 
 CONFIG_TOML=$HOME/.andromeda/config/config.toml
