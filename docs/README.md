@@ -26,7 +26,6 @@
 * [Archway](testnet/archway)
 * [Babylon](testnet/babylon)
 * [C4E](testnet/c4e)
-* [Cascadia](testnet/cascadia)
 * [Composable](testnet/composable)
 * [Elys](testnet/elys)
 * [Evmos](testnet/evmos)
@@ -42,5 +41,6 @@
 
 ### Archived
 
-* [Nolus](archived/nolus)
+* [Cascadia](archived/cascadia)
 * [Defund](archived/defund)
+* [Nolus](archived/nolus)

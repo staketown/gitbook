@@ -122,12 +122,6 @@
   * [Sync](testnet/c4e/sync.md)
   * [Public API](testnet/c4e/public-api.md)
   * [Cheat Sheet](testnet/c4e/cheat-sheet.md)
-* [Cascadia](testnet/cascadia/README.md)
-  * [Installation](testnet/cascadia/installation.md)
-  * [Updates](testnet/cascadia/updates.md)
-  * [Sync](testnet/cascadia/sync.md)
-  * [Public API](testnet/cascadia/public-api.md)
-  * [Cheat Sheet](testnet/cascadia/cheat-sheet.md)
 * [Composable](testnet/composable/README.md)
   * [Installation](testnet/composable/installation.md)
   * [Updates](testnet/composable/updates.md)
@@ -203,6 +197,12 @@
 
 ## Archived
 
+* [Cascadia](archived/cascadia/README.md)
+  * [Installation](archived/cascadia/installation.md)
+  * [Updates](archived/cascadia/updates.md)
+  * [Sync](archived/cascadia/sync.md)
+  * [Public API](archived/cascadia/public-api.md)
+  * [Cheat Sheet](archived/cascadia/cheat-sheet.md)
 * [DeFund](archived/defund/README.md)
   * [Installation](archived/defund/installation.md)
   * [Updates](archived/defund/updates.md)
