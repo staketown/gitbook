@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/archway
 git clone https://github.com/archway-network/archway.git
 cd $HOME/archway || return
-git checkout v4.0.3
+git checkout v6.0.0
 
 make install
 
