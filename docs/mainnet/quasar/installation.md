@@ -145,7 +145,7 @@ Create validator
 
 ```bash
 quasarnoded tx staking create-validator \
---amount=1000000usqr \
+--amount=1000000uqsr \
 --pubkey=$(quasarnoded tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \

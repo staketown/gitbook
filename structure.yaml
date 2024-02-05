@@ -7,21 +7,21 @@ default:
   public_api: "templates/public-api.md"
   cheatsheet: "templates/cheat-sheet.md"
 
-archway:
-elys:
-  status: ["test"]
-  sync: "templates/sync-wasm.md"
+#archway:
+#elys:
+#  status: ["test"]
+#  sync: "templates/sync-wasm.md"
 quasar:
   sync: "templates/sync-wasm.md"
-juno:
-umee:
-  installation: "templates/umee/installation.md"
-quicksilver:
-  installation: "templates/quicksilver/installation.md"
-  updates: "templates/quicksilver/updates.md"
-andromeda:
-  updates: "templates/no-updates.md"
-evmos:
-  installation: "templates/nibiru/installation.md"
-  cheatsheet: "templates/nibiru/cheat-sheet.md"
-  public_api: "templates/public-api-jsonrpc.md"
+#juno:
+#umee:
+#  installation: "templates/umee/installation.md"
+#quicksilver:
+#  installation: "templates/quicksilver/installation.md"
+#  updates: "templates/quicksilver/updates.md"
+#andromeda:
+#  updates: "templates/no-updates.md"
+#evmos:
+#  installation: "templates/nibiru/installation.md"
+#  cheatsheet: "templates/nibiru/cheat-sheet.md"
+#  public_api: "templates/public-api-jsonrpc.md"

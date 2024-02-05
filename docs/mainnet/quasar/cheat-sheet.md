@@ -61,7 +61,7 @@ Create validator
 
 ```bash
 quasarnoded tx staking create-validator \
---amount=1000000usqr \
+--amount=1000000uqsr \
 --pubkey=$(quasarnoded tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
@@ -140,19 +140,19 @@ quasarnoded tx distribution withdraw-rewards $(quasarnoded keys show <YOUR_WALLE
 Delegate tokens to your validator
 
 ```bash
-quasarnoded tx staking delegate $(quasarnoded keys show <YOUR_WALLET_NAME> --bech val -a) 1000000usqr --from <YOUR_WALLET> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
+quasarnoded tx staking delegate $(quasarnoded keys show <YOUR_WALLET_NAME> --bech val -a) 1000000uqsr --from <YOUR_WALLET> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
 ```
 
 Delegate tokens to validator
 
 ```bash
-quasarnoded tx staking delegate <VALOPER_ADDRESS> 1000000usqr --from <YOUR_WALLET> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
+quasarnoded tx staking delegate <VALOPER_ADDRESS> 1000000uqsr --from <YOUR_WALLET> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
 ```
 
 Redelegate tokens to another validator
 
 ```bash
-quasarnoded tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000usqr --from <WALLET> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
+quasarnoded tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000uqsr --from <WALLET> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
 ```
 
 Unbound tokens from validator
@@ -160,13 +160,13 @@ Unbound tokens from validator
 > ⚠️ it’s can take a while, \~21 days, depends on network’s parameters
 
 ```bash
-quasarnoded tx staking unbond <VALOPER_ADDRESS> 1000000usqr --from <YOUR_WALLET> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
+quasarnoded tx staking unbond <VALOPER_ADDRESS> 1000000uqsr --from <YOUR_WALLET> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
 ```
 
 Send tokens to another wallet
 
 ```bash
-quasarnoded tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000usqr --from <YOUR_WALLET_ADDRESS> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
+quasarnoded tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000uqsr --from <YOUR_WALLET_ADDRESS> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
 ```
 
 Check info about transaction by hash **TX\_HASH**
@@ -183,7 +183,7 @@ Submit text proposal
 quasarnoded tx gov submit-proposal \
 --title="<Your Title>" \
 --description="<Your Description>" \
---deposit=1000000usqr \
+--deposit=1000000uqsr \
 --type="Text" \
 --from=<WALLET_ADDRESS> \
 --gas-prices=0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B \
@@ -207,7 +207,7 @@ quasarnoded query gov proposal <proposal_id>
 Deposit proposal by proposal id
 
 ```bash
-quasarnoded tx gov deposit 1 1000000usqr --from <YOUR_WALLET> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
+quasarnoded tx gov deposit 1 1000000uqsr --from <YOUR_WALLET> --gas-prices 0.01ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B --gas-adjustment 1.4 --gas auto -y
 ```
 
 Vote as, **YES**
