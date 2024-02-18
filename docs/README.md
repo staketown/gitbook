@@ -26,6 +26,7 @@
 * [Archway](testnet/archway)
 * [Babylon](testnet/babylon)
 * [C4E](testnet/c4e)
+* [Celestia](testnet/celestia)
 * [Composable](testnet/composable)
 * [Elys](testnet/elys)
 * [Evmos](testnet/evmos)
