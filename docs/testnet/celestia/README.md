@@ -1,5 +1,5 @@
 ---
-cover: ../../.gitbook/assets/celestia-banner.png
+cover: ../../.gitbook/assets/celestia-banner.jpeg
 coverY: 0
 ---
 
