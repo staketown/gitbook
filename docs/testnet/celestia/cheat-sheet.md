@@ -393,3 +393,56 @@ Check service logs
 ```bash
 sudo journalctl -u celestia-appd -f -o cat
 ```
+
+### Bridge node useful commands
+
+Get bridge node ID
+
+```bash
+AUTH_TOKEN=$(celestia bridge auth admin --p2p.network mocha)
+curl -s -X POST -H "Authorization: Bearer $AUTH_TOKEN" -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","id":0,"method":"p2p.Info","params":[]}' http://localhost:12058 | jq -r .result.ID
+```
+
+Get bridge node key
+```bash
+cel-key show bridge-wallet --node.type bridge --p2p.network mocha -a | tail -1
+```
+
+Check bridge node wallet balance
+```bash
+celestia-appd q bank balances $(cel-key show bridge-wallet --node.type bridge --p2p.network mocha -a | tail -1)
+```
+
+Check bridge node version
+```bash
+celestia version
+```
+
+Check bridge node logs
+```bash
+journalctl -u celestia-bridge.service -f -o cat
+```
+
+### Orchestrator useful commands
+
+Check the EVM address that is linked to your validator.
+
+```bash
+celestia-appd query qgb evm <YOUR_VALIDATOR_ADDRESS>
+```
+or
+```bash
+celestia-appd query qgb evm $(celestia-appd keys show wallet --bech val -a)
+```
+
+Change validator EVM address
+```bash
+celestia-appd tx qgb register \
+<YOUR_VALIDATOR_ADDRESS> \
+<NEW_EVM_ADDRESS> \
+--from <YOUR_WALLET_ADDRESS> \
+--gas-adjustment 1.4 \
+--gas auto \
+--gas-prices 0.002utia \
+-y
+```

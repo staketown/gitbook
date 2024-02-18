@@ -37,10 +37,8 @@ curl -Ls https://snapshots-testnet.stake-town.com/celestia/genesis.json > $HOME/
 curl -Ls https://snapshots-testnet.stake-town.com/celestia/addrbook.json > $HOME/.celestia-app/config/addrbook.json
 
 APP_TOML="~/.celestia-app/config/app.toml"
-sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
-sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
+sed -i 's|^pruning *=.*|pruning = "nothing"|g' $APP_TOML
+sed -i -e "s|^target_height_duration *=.*|timeout_commit = \"11s\"|" $HOME/.celestia-app/config/config.toml
 
 CONFIG_TOML="~/.celestia-app/config/config.toml"
 SEEDS=""
@@ -160,4 +158,174 @@ celestia-appd tx staking create-validator \
 --gas-adjustment=1.4 \
 --gas=auto \
 -y
+```
+
+# Install Bridge Node
+
+Download and build binaries
+```bash
+cd $HOME
+rm -rf celestia-node
+git clone https://github.com/celestiaorg/celestia-node.git
+cd celestia-node
+git checkout v0.12.4
+make build
+sudo mv build/celestia /usr/local/bin
+make cel-key
+sudo mv cel-key /usr/local/bin
+```
+
+Add new bridge wallet
+```bash
+cel-key add bridge-wallet --node.type bridge --p2p.network mocha
+```
+
+Recover existent bridge wallet (in case you already have bridge wallet)
+```bash
+cel-key add bridge-wallet --node.type bridge --p2p.network mocha --recover
+```
+
+> ⚠️ Once you start the Bridge Node, a wallet key will be generated. You need to fund that address with testnet tokens (could be used faucet) to pay for PayForBlob transactions
+
+Initialize Bridge node
+```bash
+celestia bridge init \
+--keyring.accname bridge-wallet \
+--core.ip http://localhost \
+--core.rpc.port 26657 \
+--core.grpc.port 9090 \
+--p2p.network mocha \
+--rpc.port 26658 \
+--gateway.port 26659
+```
+
+Create service
+```bash
+sudo tee /etc/systemd/system/celestia-bridge.service > /dev/null << EOF
+[Unit]
+Description=Celestia Bridge Node service
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which celestia) bridge start \\
+--keyring.accname bridge-wallet \\
+--core.ip http://localhost \\
+--core.rpc.port 26657 \\
+--core.grpc.port 9090 \\
+--p2p.network mocha \\
+--rpc.port 26658 \\
+--gateway.port 26659 \\
+--metrics.tls=false \\
+--metrics \\
+--metrics.endpoint otel.celestia.tools:4318
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+Load bridge node service file
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable celestia-bridge.service
+```
+
+Start Bridge node
+```bash
+systemctl restart celestia-bridge.service
+```
+
+Check bridge node logs
+```bash
+journalctl -fu celestia-bridge.service -o cat
+```
+
+# Install Blobstream Orchestrator
+
+Download and build binaries
+```bash
+cd $HOME
+rm -rf orchestrator-relayer
+git clone https://github.com/celestiaorg/orchestrator-relayer.git
+cd orchestrator-relayer
+git checkout v1.0.0
+make build
+sudo mv build/blobstream /usr/local/bin
+```
+
+Initialize Orchestrator node
+```bash
+blobstream orchestrator init
+```
+
+Add Orchestrator EVM wallet
+> The EVM private key needs to correspond to the EVM address provided when creating the validator.
+
+ImportEVM wallet private key
+```bash
+blobstream orchestrator keys evm import ecdsa <YOUR PRIVATE KEY IN HEX FORMAT>
+```
+
+Register EVM address to your validator
+```bash
+celestia-appd tx qgb register \
+<YOUR_VALIDATOR_ADDRESS> \
+<EVM_ADDRESS> \
+--from <YOUR_WALLET_ADDRESS> \
+--gas-adjustment 1.4 \
+--gas auto \
+--gas-prices 0.002utia \
+-y
+```
+
+Verify linked EVM address to your validator and save it variable
+```bash
+EVM_ADDRESS=celestia-appd query qgb evm $(celestia-appd keys show wallet --bech val -a)
+echo $EVM_ADDRESS
+```
+
+Create service
+```bash
+sudo tee /etc/systemd/system/celestia-orchestrator.service > /dev/null << EOF
+[Unit]
+Description=Celestia Orchestrator service
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which blobstream) orchestrator start \\
+--core.grpc 127.0.0.1:9090 \\
+--core.rpc tcp://127.0.0.1:26657 \\
+--evm.account $EVM_ADDRESS \\
+--evm.passphrase <YOUR_EVM_PASSPHRASE> \\
+--p2p.bootstrappers /dns/bootstr-0-mocha-blobstream.celestia-mocha.com/tcp/30000/p2p/12D3KooWLrw6EQgDwvgqrqT8wLNJoQYN3SDAzaAxJgyiTa2xowyF
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+Load orchestrator service file
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable celestia-orchestrator
+```
+
+> Before running the orchestrator, make sure to have the indexing enabled on your RPC node. If the indexer was just activated, then, by default, it will not have the previous transactions indexed. And, if you run the orchestrator at the same time, it will try to create the commitments and will fail as the transactions are not indexed.
+
+Start orchestrator node
+```bash
+systemctl start celestia-orchestrator
+```
+
+Check orchestrator node logs
+```bash
+journalctl -u celestia-orchestrator -f -o cat
 ```
