@@ -9,6 +9,7 @@
 * [Aura](mainnet/aura)
 * [Band](mainnet/band)
 * [C4E](mainnet/c4e)
+* [Celestia](mainnet/celestia)
 * [Composable](mainnet/composable)
 * [Evmos](mainnet/evmos)
 * [Gitopia](mainnet/gitopia)
