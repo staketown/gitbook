@@ -8,7 +8,7 @@ coverY: 0
 Install with one line script
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/celestia/test_install.sh)
+bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/celestia/main_install.sh)
 ```
 
 Manual installation
