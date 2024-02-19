@@ -170,9 +170,9 @@ git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
 git checkout v0.13.0
 make build
-sudo mv build/celestia /usr/local/bin
+sudo mv build/celestia $HOME/go/bin
 make cel-key
-sudo mv cel-key /usr/local/bin
+sudo mv cel-key $HOME/go/bin
 ```
 
 Add new bridge wallet
@@ -254,7 +254,7 @@ git clone https://github.com/celestiaorg/orchestrator-relayer.git
 cd orchestrator-relayer
 git checkout v1.0.0
 make build
-sudo mv build/blobstream /usr/local/bin
+sudo mv build/blobstream $HOME/go/bin
 ```
 
 Initialize Orchestrator node

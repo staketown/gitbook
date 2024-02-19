@@ -399,18 +399,18 @@ sudo journalctl -u celestia-appd -f -o cat
 Get bridge node ID
 
 ```bash
-AUTH_TOKEN=$(celestia bridge auth admin --p2p.network mocha)
+AUTH_TOKEN=$(celestia bridge auth admin --p2p.network celestia)
 curl -s -X POST -H "Authorization: Bearer $AUTH_TOKEN" -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","id":0,"method":"p2p.Info","params":[]}' http://localhost:12058 | jq -r .result.ID
 ```
 
 Get bridge node key
 ```bash
-cel-key show bridge-wallet --node.type bridge --p2p.network mocha -a | tail -1
+cel-key show bridge-wallet --node.type bridge --p2p.network celestia -a | tail -1
 ```
 
 Check bridge node wallet balance
 ```bash
-celestia-appd q bank balances $(cel-key show bridge-wallet --node.type bridge --p2p.network mocha -a | tail -1)
+celestia-appd q bank balances $(cel-key show bridge-wallet --node.type bridge --p2p.network celestia -a | tail -1)
 ```
 
 Check bridge node version
@@ -432,7 +432,7 @@ celestia-appd query qgb evm <YOUR_VALIDATOR_ADDRESS>
 ```
 or
 ```bash
-celestia-appd query qgb evm $(celestia-appd keys show wallet --bech val -a)
+celestia-appd query qgb evm $(celestia-appd keys show <YOUR_WALLET> --bech val -a)
 ```
 
 Change validator EVM address

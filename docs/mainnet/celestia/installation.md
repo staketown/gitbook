@@ -148,7 +148,7 @@ celestia-appd tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=mocha-4 \
+--chain-id=celestia \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
@@ -170,19 +170,19 @@ git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
 git checkout v0.12.4
 make build
-sudo mv build/celestia /usr/local/bin
+sudo mv build/celestia $HOME/go/bin
 make cel-key
-sudo mv cel-key /usr/local/bin
+sudo mv cel-key $HOME/go/bin
 ```
 
 Add new bridge wallet
 ```bash
-cel-key add bridge-wallet --node.type bridge --p2p.network mocha
+cel-key add bridge-wallet --node.type bridge --p2p.network celestia
 ```
 
 Recover existent bridge wallet (in case you already have bridge wallet)
 ```bash
-cel-key add bridge-wallet --node.type bridge --p2p.network mocha --recover
+cel-key add bridge-wallet --node.type bridge --p2p.network celestia --recover
 ```
 
 > ⚠️ Once you start the Bridge Node, a wallet key will be generated. You need to fund that address with testnet tokens (could be used faucet) to pay for PayForBlob transactions
@@ -194,7 +194,7 @@ celestia bridge init \
 --core.ip http://localhost \
 --core.rpc.port 26657 \
 --core.grpc.port 9090 \
---p2p.network mocha \
+--p2p.network celestia \
 --rpc.port 26658 \
 --gateway.port 26659
 ```
@@ -213,12 +213,12 @@ ExecStart=$(which celestia) bridge start \\
 --core.ip http://localhost \\
 --core.rpc.port 26657 \\
 --core.grpc.port 9090 \\
---p2p.network mocha \\
+--p2p.network celestia \\
 --rpc.port 26658 \\
 --gateway.port 26659 \\
 --metrics.tls=false \\
 --metrics \\
---metrics.endpoint otel.celestia.tools:4318
+--metrics.endpoint otel.celestia.observer
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535
