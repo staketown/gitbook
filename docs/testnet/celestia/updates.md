@@ -29,7 +29,7 @@ make cel-key
 sudo mv cel-key /usr/local/bin
 
 # Update bridge node
-celestia bridge config-update --p2p.network celestia
+celestia bridge config-update --p2p.network mocha
 
 # Start bridge node
 sudo systemctl restart celestia-bridge.service
