@@ -5,9 +5,32 @@ coverY: 0
 
 # Updates
 
-Node updates
+### Node updates
 ⚠️ **No updates so far**
 
 
-Bridge updates
-⚠️ **No updates so far**
+### Bridge node updates
+
+⚠️ Version **v0.13.0** is available
+
+```bash
+# Stop bridge node
+sudo systemctl stop celestia-bridge.service
+
+# Download bridge node binary
+cd $HOME 
+rm -rf celestia-node 
+git clone https://github.com/celestiaorg/celestia-node.git 
+cd celestia-node
+git checkout v0.13.0
+make build
+sudo mv build/celestia /usr/local/bin
+make cel-key
+sudo mv cel-key /usr/local/bin
+
+# Update bridge node
+celestia bridge config-update --p2p.network celestia
+
+# Start bridge node
+sudo systemctl restart celestia-bridge.service
+```
