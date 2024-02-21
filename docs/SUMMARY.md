@@ -98,12 +98,6 @@
 
 ## Testnet
 
-* [Andromeda](testnet/andromeda/README.md)
-  * [Installation](testnet/andromeda/installation.md)
-  * [Updates](testnet/andromeda/updates.md)
-  * [Sync](testnet/andromeda/sync.md)
-  * [Public API](testnet/andromeda/public-api.md)
-  * [Cheat Sheet](testnet/andromeda/cheat-sheet.md)
 * [Arkeo Network](testnet/arkeo-network/README.md)
   * [Installation](testnet/arkeo-network/installation.md)
   * [Updates](testnet/arkeo-network/updates.md)
@@ -209,6 +203,12 @@
 
 ## Archived
 
+* [Andromeda](archived/andromeda/README.md)
+  * [Installation](archived/andromeda/installation.md)
+  * [Updates](archived/andromeda/updates.md)
+  * [Sync](archived/andromeda/sync.md)
+  * [Public API](archived/andromeda/public-api.md)
+  * [Cheat Sheet](archived/andromeda/cheat-sheet.md)
 * [Cascadia](archived/cascadia/README.md)
   * [Installation](archived/cascadia/installation.md)
   * [Updates](archived/cascadia/updates.md)

@@ -22,7 +22,6 @@
 
 ### Testnets
 
-* [Andromeda](testnet/andromeda)
 * [Arkeo](testnet/arkeo-network)
 * [Archway](testnet/archway)
 * [Babylon](testnet/babylon)
@@ -43,6 +42,7 @@
 
 ### Archived
 
+* [Andromeda](archived/andromeda)
 * [Cascadia](archived/cascadia)
 * [Defund](archived/defund)
 * [Nolus](archived/nolus)
