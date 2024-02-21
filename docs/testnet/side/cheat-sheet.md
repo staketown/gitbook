@@ -72,7 +72,7 @@ sided tx staking create-validator \
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---fees=5000side \
+--fees=5000uside \
 -y
 ```
 
@@ -85,14 +85,14 @@ sided tx staking edit-validator \
 --details="<Your details>" \
 --commission-rate=0.1 \
 --from=<YOUR_WALLET> \
---fees=5000side \
+--fees=5000uside \
 -y
 ```
 
 Unjail your validator
 
 ```bash
-sided tx slashing unjail --from <YOUR_WALLET> --fees=5000side -y
+sided tx slashing unjail --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 Check blocks info processed by your validator
@@ -124,31 +124,31 @@ sided q staking validator $(sided keys show <YOUR_WALLET_NAME> --bech val -a)
 Get your rewards from all validators
 
 ```bash
-sided tx distribution withdraw-all-rewards --from <YOUR_WALLET> --fees=5000side -y
+sided tx distribution withdraw-all-rewards --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 Get rewards and commissions from your validator
 
 ```bash
-sided tx distribution withdraw-rewards $(sided keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --fees=5000side -y
+sided tx distribution withdraw-rewards $(sided keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 Delegate tokens to your validator
 
 ```bash
-sided tx staking delegate $(sided keys show <YOUR_WALLET_NAME> --bech val -a) 1000000uside --from <YOUR_WALLET> --fees=5000side -y
+sided tx staking delegate $(sided keys show <YOUR_WALLET_NAME> --bech val -a) 1000000uside --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 Delegate tokens to validator
 
 ```bash
-sided tx staking delegate <VALOPER_ADDRESS> 1000000uside --from <YOUR_WALLET> --fees=5000side -y
+sided tx staking delegate <VALOPER_ADDRESS> 1000000uside --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 Redelegate tokens to another validator
 
 ```bash
-sided tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000uside --from <WALLET> --fees=5000side -y
+sided tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000uside --from <WALLET> --fees=5000uside -y
 ```
 
 Unbound tokens from validator
@@ -156,13 +156,13 @@ Unbound tokens from validator
 > ⚠️ it’s can take a while, \~21 days, depends on network’s parameters
 
 ```bash
-sided tx staking unbond <VALOPER_ADDRESS> 1000000uside --from <YOUR_WALLET> --fees=5000side -y
+sided tx staking unbond <VALOPER_ADDRESS> 1000000uside --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 Send tokens to another wallet
 
 ```bash
-sided tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000uside --from <YOUR_WALLET_ADDRESS> --fees=5000side -y
+sided tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000uside --from <YOUR_WALLET_ADDRESS> --fees=5000uside -y
 ```
 
 Check info about transaction by hash **TX\_HASH**
@@ -182,7 +182,7 @@ sided tx gov submit-proposal \
 --deposit=1000000uside \
 --type="Text" \
 --from=<WALLET_ADDRESS> \
---fees=5000side \
+--fees=5000uside \
 -y
 ```
 
@@ -201,31 +201,31 @@ sided query gov proposal <proposal_id>
 Deposit proposal by proposal id
 
 ```bash
-sided tx gov deposit 1 1000000uside --from <YOUR_WALLET> --fees=5000side -y
+sided tx gov deposit 1 1000000uside --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 Vote as, **YES**
 
 ```bash
-sided tx gov vote 1 yes --from <YOUR_WALLET> --fees=5000side -y
+sided tx gov vote 1 yes --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 Vote as, **NO**
 
 ```bash
-sided tx gov vote 1 no --from <YOUR_WALLET> --fees=5000side -y
+sided tx gov vote 1 no --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 Vote as, **NO\_WITH\_VETO**
 
 ```bash
-sided tx gov vote 1 no_with_veto --from <YOUR_WALLET> --fees=5000side -y
+sided tx gov vote 1 no_with_veto --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 Vote as, **ABSTAIN**
 
 ```bash
-sided tx gov vote 1 abstain --from <YOUR_WALLET> --fees=5000side -y
+sided tx gov vote 1 abstain --from <YOUR_WALLET> --fees=5000uside -y
 ```
 
 ### Utils
