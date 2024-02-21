@@ -37,6 +37,7 @@
 * [Ojo](testnet/ojo)
 * [Quasar](testnet/quasar)
 * [Quicksilver](testnet/quicksilver)
+* [Side Protocol](testnet/side)
 * [Source](testnet/source)
 * [Umee](testnet/umee)
 
