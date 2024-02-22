@@ -7,10 +7,10 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `side-testnet-1`
+* Network Chain ID: `side-testnet-2`
 * Denom: `uside`
 * Binary: `sided`
-* Working directory: `.sidechain`
+* Working directory: `.side`
 * Explorers: [LINK](https://testnet.side.explorers.guru/)
 * Faucet: Ask in discord channel
 

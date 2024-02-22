@@ -66,7 +66,7 @@ sided tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=side-testnet-1 \
+--chain-id=side-testnet-2 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
@@ -233,27 +233,27 @@ sided tx gov vote 1 abstain --from <YOUR_WALLET> --fees=5000uside -y
 Change ports to custom
 
 ```bash
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:36658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:36657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:7060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:36656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":36660\"%" $HOME/.sidechain/config/config.toml && \
-sed -i.bak -e "s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:10090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:10091\"%; s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:2317\"%" $HOME/.sidechain/config/app.toml && \
-sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:36657\"%" $HOME/.sidechain/config/client.toml
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:36658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:36657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:7060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:36656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":36660\"%" $HOME/.side/config/config.toml && \
+sed -i.bak -e "s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:10090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:10091\"%; s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:2317\"%" $HOME/.side/config/app.toml && \
+sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:36657\"%" $HOME/.side/config/client.toml
 ```
 
 Turn on indexing
 
 ```bash
-sed -i 's|^indexer *=.*|indexer = "kv"|' $HOME/.sidechain/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "kv"|' $HOME/.side/config/config.toml
 ```
 
 Turn off indexing
 
 ```bash
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.sidechain/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.side/config/config.toml
 ```
 
 Setup custom prunning
 
 ```bash
-APP_TOML="~/.sidechain/config/app.toml"
+APP_TOML="~/.side/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|' $APP_TOML
 sed -i 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' $APP_TOML
 sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' $APP_TOML
@@ -263,13 +263,13 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|' $APP_TOML
 Check your peer
 
 ```bash
-echo $(sided tendermint show-node-id)@$(curl http://ifconfig.me/)$(grep -A 3 "\[p2p\]" ~/.sidechain/config/config.toml | egrep -o ":[0-9]+")
+echo $(sided tendermint show-node-id)@$(curl http://ifconfig.me/)$(grep -A 3 "\[p2p\]" ~/.side/config/config.toml | egrep -o ":[0-9]+")
 ```
 
 Check your RPC
 
 ```bash
-echo -e "\033[0;32m$(grep -A 3 "\[rpc\]" ~/.sidechain/config/config.toml | egrep -o ":[0-9]+")\033[0m"
+echo -e "\033[0;32m$(grep -A 3 "\[rpc\]" ~/.side/config/config.toml | egrep -o ":[0-9]+")\033[0m"
 ```
 
 Check information about validator
@@ -293,7 +293,7 @@ sided status 2>&1 | jq .SyncInfo.latest_block_height
 Reset network
 
 ```bash
-sided tendermint unsafe-reset-all --home $HOME/.sidechain --keep-addr-book
+sided tendermint unsafe-reset-all --home $HOME/.side --keep-addr-book
 ```
 
 Delete node
@@ -303,7 +303,7 @@ sudo systemctl stop sided && \
 sudo systemctl disable sided && \
 sudo rm /etc/systemd/system/sided.service && \
 sudo systemctl daemon-reload && \
-rm -rf $HOME/.sidechain && \
+rm -rf $HOME/.side && \
 rm -rf $HOME/sidechain
 ```
 

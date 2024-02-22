@@ -24,25 +24,25 @@ cd $HOME || return
 rm -rf sidechain
 git clone https://github.com/sideprotocol/sidechain.git
 cd sidechain || return
-git checkout 0.0.1-75-gbd63479
+git checkout v0.6.0
 
 make install
 
 sided config keyring-backend os
-sided config chain-id side-testnet-1
-sided init "Your Moniker" --chain-id side-testnet-1
+sided config chain-id side-testnet-2
+sided init "Your Moniker" --chain-id side-testnet-2
 
 # Download genesis and addrbook
-curl -Ls https://snapshots-testnet.stake-town.com/side/genesis.json > $HOME/.sidechain/config/genesis.json
-curl -Ls https://snapshots-testnet.stake-town.com/side/addrbook.json > $HOME/.sidechain/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/side/genesis.json > $HOME/.side/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/side/addrbook.json > $HOME/.side/config/addrbook.json
 
-APP_TOML="~/.sidechain/config/app.toml"
+APP_TOML="~/.side/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
 sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
 sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
 
-CONFIG_TOML="~/.sidechain/config/config.toml"
+CONFIG_TOML="~/.side/config/config.toml"
 SEEDS=""
 PEERS="027ef6300590b1ca3a2b92a274247e24537bd9c9@65.109.65.248:49656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
@@ -55,9 +55,9 @@ sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
 # Install cosmovisor
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
-mkdir -p ~/.sidechain/cosmovisor/genesis/bin
-mkdir -p ~/.sidechain/cosmovisor/upgrades
-cp ~/go/bin/sided ~/.sidechain/cosmovisor/genesis/bin
+mkdir -p ~/.side/cosmovisor/genesis/bin
+mkdir -p ~/.side/cosmovisor/upgrades
+cp ~/go/bin/sided ~/.side/cosmovisor/genesis/bin
 
 sudo tee /etc/systemd/system/sided.service > /dev/null << EOF
 [Unit]
@@ -70,7 +70,7 @@ Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000
 Environment="DAEMON_NAME=sided"
-Environment="DAEMON_HOME=$HOME/.sidechain"
+Environment="DAEMON_HOME=$HOME/.side"
 Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
 Environment="UNSAFE_SKIP_BACKUP=true"
@@ -79,17 +79,17 @@ WantedBy=multi-user.target
 EOF
 
 # Snapshots
-sided tendermint unsafe-reset-all --home $HOME/.sidechain --keep-addr-book
+sided tendermint unsafe-reset-all --home $HOME/.side --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/side/side-testnet-1_latest.tar.lz4
-curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.sidechain
-[[ -f $HOME/.sidechain/data/upgrade-info.json ]] && cp $HOME/.sidechain/data/upgrade-info.json $HOME/.sidechain/cosmovisor/genesis/upgrade-info.json
+URL=https://snapshots-testnet.stake-town.com/side/side-testnet-2_latest.tar.lz4
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.side
+[[ -f $HOME/.side/data/upgrade-info.json ]] && cp $HOME/.side/data/upgrade-info.json $HOME/.side/cosmovisor/genesis/upgrade-info.json
 ```
 
 **(Optional) Configure timeouts for processing blocks**
 
 ```bash
-CONFIG_TOML="~/.sidechain/config/config.toml"
+CONFIG_TOML="~/.side/config/config.toml"
 sed -i 's/timeout_propose =.*/timeout_propose = "100ms"/g' $CONFIG_TOML
 sed -i 's/timeout_propose_delta =.*/timeout_propose_delta = "500ms"/g' $CONFIG_TOML
 sed -i 's/timeout_prevote =.*/timeout_prevote = "100ms"/g' $CONFIG_TOML
@@ -114,8 +114,8 @@ sudo journalctl -u sided -f -o cat
 
 ```bash
 snapshot_interval=0
-sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/.sidechain/config/app.toml
-sed -i 's|^enable *=.*|enable = false|' $HOME/.sidechain/config/config.toml
+sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/.side/config/app.toml
+sed -i 's|^enable *=.*|enable = false|' $HOME/.side/config/config.toml
 sudo systemctl restart sided && sudo journalctl -u sided -f -o cat
 ```
 
@@ -150,7 +150,7 @@ sided tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=side-testnet-1 \
+--chain-id=side-testnet-2 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
