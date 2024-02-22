@@ -15,6 +15,7 @@
 * [Gitopia](mainnet/gitopia)
 * [Juno](mainnet/juno)
 * [Osmosis](mainnet/osmosis)
+* [Planq](mainnet/planq)
 * [Quasar](mainnet/quasar)
 * [Quicksilver](mainnet/quicksilver)
 * [Source](mainnet/source)
