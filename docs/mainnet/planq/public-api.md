@@ -26,5 +26,5 @@ planq-grpc.stake-town.com:443
 ### **JsonRPC Endpoint**
 
 ```bash
-planq-jsonrpc.stake-town.com:443
+https://planq-jsonrpc.stake-town.com:443
 ```

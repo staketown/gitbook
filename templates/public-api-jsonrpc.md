@@ -26,5 +26,5 @@ https://{{SCRIPT_DIR}}{{SNAP_SUBDIR}}-api.stake-town.com:443
 ### **JsonRPC Endpoint**
 
 ```bash
-{{SCRIPT_DIR}}{{SNAP_SUBDIR}}-jsonrpc.stake-town.com:443
+https://{{SCRIPT_DIR}}{{SNAP_SUBDIR}}-jsonrpc.stake-town.com:443
 ```
