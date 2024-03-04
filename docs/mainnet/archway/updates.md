@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v6.0.1** is available
+⚠️ Version **v6.0.2** is available
 
 ```bash
 cd $HOME || return
 rm -rf archway
 git clone https://github.com/archway-network/archway.git
 cd archway || return
-git checkout v6.0.1
+git checkout v6.0.2
 
 make build
 
