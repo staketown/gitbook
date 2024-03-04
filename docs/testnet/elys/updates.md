@@ -5,17 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v0.29.18** is available
+⚠️ Version **v0.29.19** is available
 
 ```bash
 cd $HOME || return
 rm -rf elys
 git clone https://github.com/elys-network/elys.git
 cd elys || return
-git checkout v0.29.18
+git checkout v0.29.19
 
 make build
 
-mkdir -p $HOME/.elys/cosmovisor/upgrades/v0.29.18/bin
-mv build/elysd $HOME/.elys/cosmovisor/upgrades/v0.29.18/bin/
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v0.29.19/bin
+mv build/elysd $HOME/.elys/cosmovisor/upgrades/v0.29.19/bin/
 ```
