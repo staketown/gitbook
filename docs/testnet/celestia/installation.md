@@ -216,9 +216,9 @@ ExecStart=$(which celestia) bridge start \\
 --p2p.network mocha \\
 --rpc.port 26658 \\
 --gateway.port 26659 \\
---metrics.tls=false \\
+--metrics.tls=true \\
 --metrics \\
---metrics.endpoint otel.celestia.tools:4318
+--metrics.endpoint otel.celestia-mocha.com
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535
