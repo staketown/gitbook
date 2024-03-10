@@ -20,8 +20,13 @@ sudo apt install -y curl git jq lz4 build-essential unzip
 bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/go_install.sh")
 source .bash_profile
 
-wget -O $HOME/go/bin/junod https://security.junonetwork.io/v21.0.0/junod
-chmod +x $HOME/go/bin/junod
+cd $HOME || return
+rm -rf $HOME/juno
+git clone https://github.com/CosmosContracts/juno.git
+cd $HOME/juno || return
+git checkout v21.0.0
+
+make install
 
 junod config keyring-backend os
 junod config chain-id uni-6

@@ -9,6 +9,13 @@ coverY: 0
 
 ```bash
 wget -O $HOME/go/bin/junod https://security.junonetwork.io/v21.0.0/junod
+cd $HOME || return
+rm -rf juno
+git clone https://github.com/CosmosContracts/juno.git
+cd juno || return
+git checkout v21.0.0
+
+make build
 
 mkdir -p $HOME/.juno/cosmovisor/upgrades/v2100alpha1/bin
 mv bin/junod $HOME/.juno/cosmovisor/upgrades/v2100alpha1/bin/
