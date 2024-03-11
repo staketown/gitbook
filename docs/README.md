@@ -25,9 +25,9 @@
 
 * [Arkeo](testnet/arkeo-network)
 * [Archway](testnet/archway)
-* [Babylon](testnet/babylon)
 * [C4E](testnet/c4e)
 * [Celestia](testnet/celestia)
+* [Cross Finance](testnet/crossfi)
 * [Composable](testnet/composable)
 * [Elys](testnet/elys)
 * [Evmos](testnet/evmos)
@@ -45,6 +45,7 @@
 ### Archived
 
 * [Andromeda](archived/andromeda)
+* [Babylon](testnet/babylon)
 * [Cascadia](archived/cascadia)
 * [Defund](archived/defund)
 * [Nolus](archived/nolus)
