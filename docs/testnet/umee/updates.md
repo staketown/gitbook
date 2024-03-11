@@ -5,17 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v6.3.0** is available
+⚠️ Version **v6.4.0-beta1** is available
 
 ```bash
 cd $HOME || return
 rm -rf umee
 git clone https://github.com/umee-network/umee.git
 cd umee || return
-git checkout v6.3.0
+git checkout v6.4.0-beta1
 
 make build
 
-mkdir -p $HOME/.umee/cosmovisor/upgrades/v6.3/bin
-mv build/umeed $HOME/.umee/cosmovisor/upgrades/v6.3/bin/
+mkdir -p $HOME/.umee/cosmovisor/upgrades/v6.4/bin
+mv build/umeed $HOME/.umee/cosmovisor/upgrades/v6.4/bin/
 ```
