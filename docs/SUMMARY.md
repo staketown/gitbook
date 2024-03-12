@@ -128,7 +128,7 @@
   * [Sync](testnet/celestia/sync.md)
   * [Public API](testnet/celestia/public-api.md)
   * [Cheat Sheet](testnet/celestia/cheat-sheet.md)
-* [Cross Finance](testnet/celestia/README.md)
+* [Cross Finance](testnet/crossfi/README.md)
   * [Installation](testnet/crossfi/installation.md)
   * [Updates](testnet/crossfi/updates.md)
   * [Sync](testnet/crossfi/sync.md)
