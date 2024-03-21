@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf composable-testnet
 git clone https://github.com/notional-labs/composable-testnet.git
 cd $HOME/composable-testnet || return
-git checkout v6.4.8
+git checkout v6.4.88
 
 make install
 
