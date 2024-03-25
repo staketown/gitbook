@@ -216,7 +216,7 @@ ExecStart=$(which celestia) bridge start \\
 --p2p.network celestia \\
 --rpc.port 26658 \\
 --gateway.port 26659 \\
---metrics.tls=false \\
+--metrics.tls=true \\
 --metrics \\
 --metrics.endpoint otel.celestia.observer
 Restart=on-failure
