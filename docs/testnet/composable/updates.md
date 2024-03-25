@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v6_4_9** is available
+⚠️ Version **v6.4.9** is available
 
 ```bash
 cd $HOME || return
 rm -rf composable-testnet
 git clone https://github.com/notional-labs/composable-testnet.git
 cd $HOME/composable-testnet || return
-git checkout v6_4_9
+git checkout v6.4.9
 
 make build
 
