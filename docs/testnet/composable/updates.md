@@ -5,19 +5,19 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v6.4.88** is available
+⚠️ Version **v6_4_9** is available
 
 ```bash
 cd $HOME || return
 rm -rf composable-testnet
 git clone https://github.com/notional-labs/composable-testnet.git
 cd $HOME/composable-testnet || return
-git checkout v6.4.88
+git checkout v6_4_9
 
 make build
 
-mkdir -p $HOME/.banksy/cosmovisor/upgrades/v6_4_8/bin
-mv bin/centaurid $HOME/.banksy/cosmovisor/upgrades/v6_4_8/bin/
+mkdir -p $HOME/.banksy/cosmovisor/upgrades/v6_4_9/bin
+mv bin/centaurid $HOME/.banksy/cosmovisor/upgrades/v6_4_9/bin/
 
 rm -rf bin
 ```
