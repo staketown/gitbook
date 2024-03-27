@@ -7,7 +7,7 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `side-testnet-2`
+* Network Chain ID: `side-testnet-3`
 * Denom: `uside`
 * Binary: `sided`
 * Working directory: `.side`

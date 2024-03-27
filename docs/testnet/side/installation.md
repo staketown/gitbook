@@ -24,13 +24,13 @@ cd $HOME || return
 rm -rf sidechain
 git clone https://github.com/sideprotocol/sidechain.git
 cd sidechain || return
-git checkout v0.6.0
+git checkout v0.7.0
 
 make install
 
 sided config keyring-backend os
-sided config chain-id side-testnet-2
-sided init "Your Moniker" --chain-id side-testnet-2
+sided config chain-id side-testnet-3
+sided init "Your Moniker" --chain-id side-testnet-3
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/side/genesis.json > $HOME/.side/config/genesis.json
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 sided tendermint unsafe-reset-all --home $HOME/.side --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/side/side-testnet-2_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/side/side-testnet-3_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.side
 [[ -f $HOME/.side/data/upgrade-info.json ]] && cp $HOME/.side/data/upgrade-info.json $HOME/.side/cosmovisor/genesis/upgrade-info.json
 ```
@@ -150,7 +150,7 @@ sided tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=side-testnet-2 \
+--chain-id=side-testnet-3 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
