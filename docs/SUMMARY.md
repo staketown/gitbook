@@ -5,7 +5,7 @@
 
 ## Tools
 
-* [Discord Governance Bot](/docs/tools/governance.md)
+* [Discord Governance Bot](tools/governance.md)
 
 ## Mainnet
 
