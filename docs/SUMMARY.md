@@ -3,6 +3,10 @@
 * [Introduction](README.md)
 * [🔗 IBC relayers](https://relayers.smartstake.io/relayer/FE38D8D1E0E5011F)
 
+## Tools
+
+* [Discord Governance Bot](/docs/tools/governance.md)
+
 ## Mainnet
 
 * [Andromeda](mainnet/andromeda/README.md)
