@@ -14,7 +14,7 @@ git clone https://github.com/elys-network/elys.git
 cd elys || return
 git checkout v0.29.29
 
-ROCKSDB=1 make build
+make build
 
 mkdir -p $HOME/.elys/cosmovisor/upgrades/v0.29.29/bin
 mv build/elysd $HOME/.elys/cosmovisor/upgrades/v0.29.29/bin/
