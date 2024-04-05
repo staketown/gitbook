@@ -15,11 +15,11 @@
 * [Gitopia](mainnet/gitopia)
 * [Juno](mainnet/juno)
 * [Osmosis](mainnet/osmosis)
+* [Persistence](mainnet/persistence)
 * [Planq](mainnet/planq)
 * [Quasar](mainnet/quasar)
 * [Quicksilver](mainnet/quicksilver)
 * [Source](mainnet/source)
-* [Persistence](mainnet/persistence)
 * [Umee](mainnet/umee)
 
 ### Testnets
@@ -37,11 +37,11 @@
 * [Mantra](testnet/mantra)
 * [Nibiru](testnet/nibiru)
 * [Ojo](testnet/ojo)
+* [Persistence](testnet/persistence)
 * [Quasar](testnet/quasar)
 * [Quicksilver](testnet/quicksilver)
 * [Side Protocol](testnet/side)
 * [Source](testnet/source)
-* [Persistence](testnet/persistence)
 * [Umee](testnet/umee)
 
 ### Archived
