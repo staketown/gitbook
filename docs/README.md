@@ -19,6 +19,7 @@
 * [Quasar](mainnet/quasar)
 * [Quicksilver](mainnet/quicksilver)
 * [Source](mainnet/source)
+* [Persistence](mainnet/persistence)
 * [Umee](mainnet/umee)
 
 ### Testnets
@@ -40,6 +41,7 @@
 * [Quicksilver](testnet/quicksilver)
 * [Side Protocol](testnet/side)
 * [Source](testnet/source)
+* [Persistence](testnet/persistence)
 * [Umee](testnet/umee)
 
 ### Archived
