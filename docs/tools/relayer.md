@@ -19,19 +19,19 @@ Tool tracks the following:
  - stuck packets on any channel of ibc path;
 
 <div>
-<img src="../.gitbook/assets/ibc-1.png" alt="drawing" width="70%"/> 
-<img src="../.gitbook/assets/ibc-2.png" alt="drawing"/>
+<img src="../.gitbook/assets/ibc-1.png" alt="alert stuck packets" width="80%"/> 
+<img src="../.gitbook/assets/ibc-2.png" alt="resolved stuck packets" width="80%"/>
 </div>
 <div>
-<img src="../.gitbook/assets/ibc-3.png" alt="drawing" width="70%"/>
-<img src="../.gitbook/assets/ibc-4.png" alt="drawing" width="70%"/>
+<img src="../.gitbook/assets/ibc-3.png" alt="alert stuck acknowledgments" width="80%"/>
+<img src="../.gitbook/assets/ibc-4.png" alt="resolved stuck acknowledgments" width="80%"/>
 </div>
 <div>
-<img src="../.gitbook/assets/ibc-5.png" alt="drawing" width="70%"/>
-<img src="../.gitbook/assets/ibc-6.png" alt="drawing" width="70%"/>
+<img src="../.gitbook/assets/ibc-5.png" alt="alert client above to expire" width="80%"/>
+<img src="../.gitbook/assets/ibc-6.png" alt="resolved client above to expire" width="80%"/>
 </div>
 <div>
-<img src="../.gitbook/assets/ibc-7.png" alt="drawing" width="70%"/>
+<img src="../.gitbook/assets/ibc-7.png" alt="alert client is expired" width="80%"/>
 </div>
 
 ## How to integrate?
