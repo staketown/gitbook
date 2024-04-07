@@ -14,7 +14,7 @@ The bot scans network on existence of new proposals and post over webhook to pro
 channel new one that wasn't posted before. It's fully self-management bot as we use our RPC 
 endpoints to provide this service in chains there we validate.
 
-![governance-1.png](../.gitbook/assets/governance-1.png)
+<img src="../.gitbook/assets/governance-1.png" alt="drawing" width="70%"/>
 
 ## How to integrate?
 

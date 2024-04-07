@@ -6,6 +6,7 @@
 ## Tools
 
 * [Discord Governance Bot](tools/governance.md)
+* [IBC Monitoring](tools/relayer.md)
 
 ## Mainnet
 
