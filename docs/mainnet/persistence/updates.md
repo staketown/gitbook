@@ -17,5 +17,5 @@ git checkout v11.9.0
 make build
 
 mkdir -p $HOME/.persistenceCore/cosmovisor/upgrades/v11.9.0/bin
-mv build/persistenceCore $HOME/.persistenceCore/cosmovisor/upgrades/v11.9.0/bin/
+mv bin/persistenceCore $HOME/.persistenceCore/cosmovisor/upgrades/v11.9.0/bin/
 ```
