@@ -12,7 +12,7 @@ cd $HOME || return
 rm -rf archway
 git clone https://github.com/archway-network/archway.git
 cd archway || return
-git checkout v6.0.2
+git checkout v6.0.3
 
 make build
 
