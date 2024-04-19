@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="04493d762652440f968072a31e2d95cced6a3b59@116.202.214.212:34656"
+PEERS="006e6d1287b697a5d94fe7a832d7e8e72f9e838a@65.108.124.43:34656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.celestia-app/config/config.toml
 
 CONFIG_TOML=$HOME/.celestia-app/config/config.toml

@@ -42,7 +42,7 @@ sed -i -e "s|^target_height_duration *=.*|timeout_commit = \"11s\"|" $HOME/.cele
 
 CONFIG_TOML="~/.celestia-app/config/config.toml"
 SEEDS=""
-PEERS="04493d762652440f968072a31e2d95cced6a3b59@116.202.214.212:34656"
+PEERS="006e6d1287b697a5d94fe7a832d7e8e72f9e838a@65.108.124.43:34656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
