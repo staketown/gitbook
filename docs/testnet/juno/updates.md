@@ -17,6 +17,6 @@ git checkout v22.0.0-alpha.1
 
 make build
 
-mkdir -p $HOME/.juno/cosmovisor/upgrades/v22alpha1/bin
-mv bin/junod $HOME/.juno/cosmovisor/upgrades/v22alpha1/bin/
+mkdir -p $HOME/.juno/cosmovisor/upgrades/v2200alpha1/bin
+mv bin/junod $HOME/.juno/cosmovisor/upgrades/v2200alpha1/bin/
 ```
