@@ -9,7 +9,7 @@ coverY: 0
 
 * Network Chain ID: `banksy-testnet-5`
 * Denom: `ppica`
-* Binary: `centaurid`
+* Binary: `picad`
 * Working directory: `.banksy`
 * Explorers: [https://explorer.kjnodes.com/composable-testnet](https://explorer.kjnodes.com/composable-testnet)
 * Faucet: Ask in discord

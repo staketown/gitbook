@@ -15,7 +15,7 @@ sudo apt update && sudo apt install lz4 -y
 ```
 
 ```bash
-sudo systemctl stop centaurid
+sudo systemctl stop picad
 cp $HOME/.banksy/data/priv_validator_state.json $HOME/.banksy/priv_validator_state.json.backup
 rm -rf $HOME/.banksy/data
 
@@ -24,16 +24,16 @@ curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.banksy
 
 mv $HOME/.banksy/priv_validator_state.json.backup $HOME/.banksy/data/priv_validator_state.json
 
-sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
+sudo systemctl restart picad && sudo journalctl -u picad -f -o cat
 ```
 
 ## **State Sync**
 
 ```bash
-sudo systemctl stop centaurid
+sudo systemctl stop picad
 
 cp $HOME/.banksy/data/priv_validator_state.json $HOME/.banksy/priv_validator_state.json.backup
-centaurid tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
+picad tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
 
 SNAP_RPC="https://composable-testnet-rpc.stake-town.com:443"
 
@@ -54,7 +54,7 @@ sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $CONFIG_TOML
 
 mv $HOME/.banksy/priv_validator_state.json.backup $HOME/.banksy/data/priv_validator_state.json
 
-sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
+sudo systemctl restart picad && sudo journalctl -u picad -f -o cat
 ```
 
 ## **Address Book**

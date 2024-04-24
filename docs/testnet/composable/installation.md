@@ -28,9 +28,9 @@ git checkout v6.6.1
 
 make install
 
-centaurid config keyring-backend os
-centaurid config chain-id banksy-testnet-5
-centaurid init "<Your moniker>" --chain-id banksy-testnet-5
+picad config keyring-backend os
+picad config chain-id banksy-testnet-5
+picad init "<Your moniker>" --chain-id banksy-testnet-5
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
@@ -60,11 +60,11 @@ sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 mkdir -p ~/.banksy/cosmovisor/genesis/bin
 mkdir -p ~/.banksy/cosmovisor/upgrades
-cp ~/go/bin/centaurid $HOME/.banksy/cosmovisor/genesis/bin
+cp ~/go/bin/picad $HOME/.banksy/cosmovisor/genesis/bin
 
 # Starting service and synchronization...
 
-sudo tee /etc/systemd/system/centaurid.service > /dev/null << EOF
+sudo tee /etc/systemd/system/picad.service > /dev/null << EOF
 [Unit]
 Description=Composable Node
 After=network-online.target
@@ -75,7 +75,7 @@ ExecStart=$(which cosmovisor) run start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000
-Environment="DAEMON_NAME=centaurid"
+Environment="DAEMON_NAME=picad"
 Environment="DAEMON_HOME=$HOME/.banksy"
 Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
@@ -84,7 +84,7 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 WantedBy=multi-user.target
 EOF
 
-centaurid tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
+picad tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
 
 # Snapshots
 URL=https://snapshots-testnet.stake-town.com/composable/banksy-testnet-5_latest.tar.lz4
@@ -109,10 +109,10 @@ Enable and start service
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable centaurid
-sudo systemctl start centaurid
+sudo systemctl enable picad
+sudo systemctl start picad
 
-sudo journalctl -u centaurid -f -o cat
+sudo journalctl -u picad -f -o cat
 ```
 
 > After successful synchronisation we recommend to turn off **snapshot\_interval** and state sync, this will save space on your hardware.
@@ -131,7 +131,7 @@ Create wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-centaurid keys add <YOUR_WALLET_NAME>
+picad keys add <YOUR_WALLET_NAME>
 ```
 
 Recover wallet
@@ -139,7 +139,7 @@ Recover wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-centaurid keys add <YOUR_WALLET_NAME> --recover
+picad keys add <YOUR_WALLET_NAME> --recover
 ```
 
 ### Validator creation
@@ -149,9 +149,9 @@ After successful synchronisation we can proceed with validation creation.
 Create validator
 
 ```bash
-centaurid tx staking create-validator \
+picad tx staking create-validator \
 --amount=1000000ppica \
---pubkey=$(centaurid tendermint show-validator) \
+--pubkey=$(picad tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
