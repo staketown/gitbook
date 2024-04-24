@@ -5,17 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v21.0.0** is available
+⚠️ Version **v22.0.0** is available
 
 ```bash
 cd $HOME || return
 rm -rf juno
 git clone https://github.com/CosmosContracts/juno.git
 cd juno || return
-git checkout v21.0.0
+git checkout v22.0.0
 
 make build
 
-mkdir -p $HOME/.juno/cosmovisor/upgrades/v21/bin
-mv bin/junod $HOME/.juno/cosmovisor/upgrades/v21/bin/
+mkdir -p $HOME/.juno/cosmovisor/upgrades/v22/bin
+mv bin/junod $HOME/.juno/cosmovisor/upgrades/v22/bin/
 ```
