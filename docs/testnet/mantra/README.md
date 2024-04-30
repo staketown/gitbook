@@ -7,12 +7,12 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `mantrachain-testnet-1`
-* Denom: `uaum`
+* Network Chain ID: `mantra-hongbai-1`
+* Denom: `uom`
 * Binary: `mantrachaind`
 * Working directory: `.mantrachain`
-* Explorers: [LINK](https://explorer.testnet.mantrachain.io/mantrachain)
-* Faucet: https://faucet.testnet.mantrachain.io/
+* Explorers: [LINK](https://testnet.itrocket.net/mantra)
+* Faucet: Ask in discord channel
 
 ## Overview
 

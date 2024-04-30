@@ -19,7 +19,7 @@ sudo systemctl stop mantrachaind
 cp $HOME/.mantrachain/data/priv_validator_state.json $HOME/.mantrachain/priv_validator_state.json.backup
 rm -rf $HOME/.mantrachain/data
 
-URL=https://snapshots-testnet.stake-town.com/mantra/mantrachain-testnet-1_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/mantra/mantra-hongbai-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.mantrachain
 
 mv $HOME/.mantrachain/priv_validator_state.json.backup $HOME/.mantrachain/data/priv_validator_state.json 

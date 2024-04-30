@@ -20,13 +20,16 @@ sudo apt install -y curl git jq lz4 build-essential unzip
 bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/go_install.sh")
 source .bash_profile
 
-wget https://snapshots-testnet.stake-town.com/mantra/mantrachaind-linux-amd64.zip
-unzip mantrachaind-linux-amd64.zip -d $HOME/go/bin/
-sudo wget -P /usr/lib https://github.com/CosmWasm/wasmvm/releases/download/v1.3.0/libwasmvm.x86_64.so
+cd $HOME || return
+sudo wget -O /usr/lib/libwasmvm.x86_64.so https://github.com/CosmWasm/wasmvm/releases/download/v1.3.1/libwasmvm.x86_64.so
+wget https://github.com/MANTRA-Finance/public/raw/main/mantrachain-hongbai/mantrachaind-linux-amd64.zip
+unzip mantrachaind-linux-amd64.zip
+rm mantrachaind-linux-amd64.zip
+mv mantrachaind $HOME/go/bin
 
 mantrachaind config keyring-backend os
-mantrachaind config chain-id mantrachain-testnet-1
-mantrachaind init "Your Moniker" --chain-id mantrachain-testnet-1
+mantrachaind config chain-id mantra-hongbai-1
+mantrachaind init "Your Moniker" --chain-id mantra-hongbai-1
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/mantra/genesis.json > $HOME/.mantrachain/config/genesis.json
@@ -35,8 +38,8 @@ curl -Ls https://snapshots-testnet.stake-town.com/mantra/addrbook.json > $HOME/.
 APP_TOML="~/.mantrachain/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
+sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.mantrachain/config/config.toml"
 SEEDS=""
@@ -45,7 +48,7 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0002uaum"|g' $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0002uom"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
@@ -77,7 +80,7 @@ EOF
 # Snapshots
 mantrachaind tendermint unsafe-reset-all --home $HOME/.mantrachain --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/mantra/mantrachain-testnet-1_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/mantra/mantra-hongbai-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.mantrachain
 [[ -f $HOME/.mantrachain/data/upgrade-info.json ]] && cp $HOME/.mantrachain/data/upgrade-info.json $HOME/.mantrachain/cosmovisor/genesis/upgrade-info.json
 ```
@@ -141,18 +144,18 @@ Create validator
 
 ```bash
 mantrachaind tx staking create-validator \
---amount=1000000uaum \
+--amount=1000000uom \
 --pubkey=$(mantrachaind tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=mantrachain-testnet-1 \
+--chain-id=mantra-hongbai-1 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.0002uaum \
+--gas-prices=0.0002uom \
 --gas-adjustment=1.7 \
 --gas=auto \
 -y
