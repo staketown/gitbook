@@ -17,5 +17,5 @@ git checkout andromeda-1-v0.1.1
 make build
 
 mkdir -p $HOME/.andromeda/cosmovisor/upgrades/v0.1.1/bin
-mv build/andromedad $HOME/.andromeda/cosmovisor/upgrades/v0.1.1/bin/
+mv bin/andromedad $HOME/.andromeda/cosmovisor/upgrades/v0.1.1/bin/
 ```
