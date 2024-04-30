@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/andromedad
 git clone https://github.com/andromedaprotocol/andromedad.git
 cd $HOME/andromedad || return
-git checkout andromeda-1-v0.1.0
+git checkout andromeda-1-v0.1.1
 
 make install
 
