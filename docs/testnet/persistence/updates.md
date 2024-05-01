@@ -5,17 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v11.10.0-rc0** is available
+⚠️ Version **v11.11.0-rc0** is available
 
 ```bash
 cd $HOME || return
 rm -rf persistenceCore
 git clone https://github.com/persistenceOne/persistenceCore.git
 cd persistenceCore || return
-git checkout v11.10.0-rc0
+git checkout v11.11.0-rc0
 
 make build
 
-mkdir -p $HOME/.persistenceCore/cosmovisor/upgrades/v11.10.0-rc0/bin
-mv bin/persistenceCore $HOME/.persistenceCore/cosmovisor/upgrades/v11.10.0-rc0/bin/
+mkdir -p $HOME/.persistenceCore/cosmovisor/upgrades/v11.11.0-rc0/bin
+mv bin/persistenceCore $HOME/.persistenceCore/cosmovisor/upgrades/v11.11.0-rc0/bin/
 ```
