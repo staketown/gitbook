@@ -12,7 +12,7 @@ cd $HOME || return
 rm -rf andromedad
 git clone https://github.com/andromedaprotocol/andromedad.git
 cd andromedad || return
-git checkout andromeda-1-v0.1.1
+git checkout andromeda-1
 
 make build
 
