@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **andromeda-1-v0.1.1** is available
+⚠️ Version **v0.1.1-fixgov** is available
 
 ```bash
 cd $HOME || return
 rm -rf andromedad
 git clone https://github.com/andromedaprotocol/andromedad.git
 cd andromedad || return
-git checkout andromeda-1
+git checkout v0.1.1-fixgov
 
 make build
 
