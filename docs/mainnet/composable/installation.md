@@ -21,9 +21,9 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf composable-testnet
+rm -rf composable-centauri
 git clone https://github.com/notional-labs/composable-centauri.git
-cd $HOME/composable-testnet || return
+cd $HOME/composable-centauri || return
 git checkout v6.6.4
 
 make install
