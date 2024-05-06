@@ -27,6 +27,7 @@ cd $HOME/composable-centauri || return
 git checkout v6.6.4
 
 make install
+mv ~/go/bin/picad ~/go/bin/centaurid 
 
 centaurid config keyring-backend file
 centaurid config chain-id centauri-1

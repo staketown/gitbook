@@ -17,7 +17,7 @@ git checkout v6.6.4
 make build
 
 mkdir -p $HOME/.banksy/cosmovisor/upgrades/v6_6_4/bin
-mv bin/centaurid $HOME/.banksy/cosmovisor/upgrades/v6_6_4/bin/
+mv bin/picad $HOME/.banksy/cosmovisor/upgrades/v6_6_4/bin/centaurid
 
 rm -rf bin
 ```
