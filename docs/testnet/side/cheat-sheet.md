@@ -12,7 +12,7 @@ Create wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-sided keys add <YOUR_WALLET_NAME>
+sided keys add <YOUR_WALLET_NAME> --key-type="segwit"
 ```
 
 Recover wallet
@@ -20,7 +20,7 @@ Recover wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-sided keys add <YOUR_WALLET_NAME> --recover
+sided keys add <YOUR_WALLET_NAME> --recover --key-type="segwit"
 ```
 
 List of all wallets
