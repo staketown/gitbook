@@ -24,13 +24,13 @@ cd $HOME || return
 rm -rf sidechain
 git clone https://github.com/sideprotocol/sidechain.git
 cd sidechain || return
-git checkout v0.8.0
+git checkout v0.8.1
 
 make install
 
 sided config keyring-backend os
-sided config chain-id S2-testnet-1
-sided init "Your Moniker" --chain-id S2-testnet-1
+sided config chain-id S2-testnet-2
+sided init "Your Moniker" --chain-id S2-testnet-2
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/side/genesis.json > $HOME/.side/config/genesis.json
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 sided tendermint unsafe-reset-all --home $HOME/.side --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/side/S2-testnet-1_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/side/S2-testnet-2_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.side
 [[ -f $HOME/.side/data/upgrade-info.json ]] && cp $HOME/.side/data/upgrade-info.json $HOME/.side/cosmovisor/genesis/upgrade-info.json
 ```
@@ -126,7 +126,7 @@ Create wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-sided keys add <YOUR_WALLET_NAME> --key-type="segwit"
+sided keys add <YOUR_WALLET_NAME>
 ```
 
 Recover wallet
@@ -134,7 +134,7 @@ Recover wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-sided keys add <YOUR_WALLET_NAME> --recover --key-type="segwit"
+sided keys add <YOUR_WALLET_NAME> --recover
 ```
 
 ### Validator creation
@@ -150,7 +150,7 @@ sided tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=S2-testnet-1 \
+--chain-id=S2-testnet-2 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
@@ -158,4 +158,67 @@ sided tx staking create-validator \
 --from=<YOUR_WALLET> \
 --fees=5000uside \
 -y
+```
+
+### Pricefeeder installation
+
+Install pricefeeder binary
+
+```shell
+curl -s https://get.nibiru.fi/pricefeeder@v0.21.6! | bash
+```
+
+Set variables for pricefeeder
+
+```shell
+export CHAIN_ID="S2-testnet-2"
+export GRPC_ENDPOINT="localhost:9090"
+export WEBSOCKET_ENDPOINT="ws://localhost:26657/websocket"
+export EXCHANGE_SYMBOLS_MAP='{"bitfinex":{"ubtc:unusd":"tBTCUSD","ubtc:uusd":"tBTCUSD","ueth:unusd":"tETHUSD","ueth:uusd":"tETHUSD","uusdc:uusd":"tUDCUSD","uusdc:unusd":"tUDCUSD"},"coingecko":{"ubtc:uusd":"bitcoin","ubtc:unusd":"bitcoin","ueth:uusd":"ethereum","ueth:unusd":"ethereum","uusdt:uusd":"tether","uusdt:unusd":"tether","uusdc:uusd":"usd-coin","uusdc:unusd":"usd-coin","uatom:uusd":"cosmos","uatom:unusd":"cosmos","ubnb:uusd":"binancecoin","ubnb:unusd":"binancecoin","uavax:uusd":"avalanche-2","uavax:unusd":"avalanche-2","usol:uusd":"solana","usol:unusd":"solana","uada:uusd":"cardano","uada:unusd":"cardano"}}'
+export FEEDER_MNEMONIC="<YOUR_MNEMONIC_HERE>"
+export VALIDATOR_ADDRESS="<YOUR_VALOPER_ADDRESS>"
+```
+
+Setup service file
+
+```sh
+sudo tee /etc/systemd/system/pricefeeder.service<<EOF
+[Unit]
+Description=Side Protocol Pricefeeder
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+User=admin
+ExecStart=/usr/local/bin/pricefeeder
+Restart=on-failure
+KillSignal=SIGTERM
+PermissionsStartOnly=true
+LimitNOFILE=65535
+Environment=CHAIN_ID='$CHAIN_ID'
+Environment=GRPC_ENDPOINT='$GRPC_ENDPOINT'
+Environment=WEBSOCKET_ENDPOINT='$WEBSOCKET_ENDPOINT'
+Environment=EXCHANGE_SYMBOLS_MAP='$EXCHANGE_SYMBOLS_MAP'
+Environment=FEEDER_MNEMONIC='$FEEDER_MNEMONIC'
+Environment=VALIDATOR_ADDRESS='$VALIDATOR_ADDRESS'
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+Start pricefeeder
+
+```sh
+sudo systemctl daemon-reload && \
+sudo systemctl enable pricefeeder && \
+sudo systemctl restart pricefeeder && \
+sudo journalctl -u pricefeeder -f -o cat
+```
+
+Bind a separate wallet with the following command
+
+```sh
+sided tx oracle set-feeder <nibi_address> --from <name_vallet> --fees=5000uside -y
 ```
