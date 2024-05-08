@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf composable-centauri
 git clone https://github.com/notional-labs/composable-centauri.git
 cd $HOME/composable-centauri || return
-git checkout v6.6.4
+git checkout v6.6.41
 
 make install
 mv ~/go/bin/picad ~/go/bin/centaurid 
