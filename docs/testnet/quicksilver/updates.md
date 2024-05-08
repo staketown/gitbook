@@ -9,7 +9,7 @@ coverY: 0
 
 ```bash
 cd $HOME || return
-wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.6.0-beta1-hf/quicksilverd-v1.6.0-beta1-hf-amd64
+wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.6.0-beta1/quicksilverd-v1.6.0-beta1-hf-amd64
 chmod +x quicksilverd
 mv quicksilverd $HOME/go/bin
 
