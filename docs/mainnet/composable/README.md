@@ -3,16 +3,16 @@ cover: ../../.gitbook/assets/composable-banner.jpeg
 coverY: 0
 ---
 
-# Composable
+# Picasso
 
 ## Summary
 
 * Network Chain ID: `centauri-1`
 * Denom: `ppica`
-* Binary: `centaurid`
+* Binary: `picad`
 * Working directory: `.banksy`
-* Explorers: [https://composable.exploreme.pro/dashboard](https://composable.exploreme.pro/dashboard)
-* Faucet: Ask in discord
+* Explorers: [LINK](https://ping.pub/composable)
+* Faucet: Ask in discord channel
 
 ## Overview
 
