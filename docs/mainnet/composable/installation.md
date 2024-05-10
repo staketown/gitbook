@@ -49,7 +49,7 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "1000000000000ppica"|g' $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "100000ppica"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
@@ -145,7 +145,7 @@ Create validator
 
 ```bash
 picad tx staking create-validator \
---amount=1000000000000000000ppica \
+--amount=1000000000000ppica \
 --pubkey=$(picad tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
@@ -156,7 +156,7 @@ picad tx staking create-validator \
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=1000000000000ppica \
+--gas-prices=1000000ppica \
 --gas-adjustment=1.4 \
 --gas=auto \
 -y

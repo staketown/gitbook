@@ -61,7 +61,7 @@ Create validator
 
 ```bash
 picad tx staking create-validator \
---amount=1000000000000000000ppica \
+--amount=1000000000000ppica \
 --pubkey=$(picad tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
@@ -72,7 +72,7 @@ picad tx staking create-validator \
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=1000000000000ppica \
+--gas-prices=1000000ppica \
 --gas-adjustment=1.4 \
 --gas=auto \
 -y
@@ -87,7 +87,7 @@ picad tx staking edit-validator \
 --details="<Your details>" \
 --commission-rate=0.1 \
 --from=<YOUR_WALLET> \
---gas-prices=1000000000000ppica \
+--gas-prices=1000000ppica \
 --gas-adjustment=1.4 \
 --gas=auto \
 -y
@@ -96,7 +96,7 @@ picad tx staking edit-validator \
 Unjail your validator
 
 ```bash
-picad tx slashing unjail --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx slashing unjail --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Check blocks info processed by your validator
@@ -128,31 +128,31 @@ picad q staking validator $(picad keys show <YOUR_WALLET_NAME> --bech val -a)
 Get your rewards from all validators
 
 ```bash
-picad tx distribution withdraw-all-rewards --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx distribution withdraw-all-rewards --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Get rewards and commissions from your validator
 
 ```bash
-picad tx distribution withdraw-rewards $(picad keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx distribution withdraw-rewards $(picad keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Delegate tokens to your validator
 
 ```bash
-picad tx staking delegate $(picad keys show <YOUR_WALLET_NAME> --bech val -a) 1000000000000000000ppica --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx staking delegate $(picad keys show <YOUR_WALLET_NAME> --bech val -a) 1000000000000ppica --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Delegate tokens to validator
 
 ```bash
-picad tx staking delegate <VALOPER_ADDRESS> 1000000000000000000ppica --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx staking delegate <VALOPER_ADDRESS> 1000000000000ppica --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Redelegate tokens to another validator
 
 ```bash
-picad tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000000000000000ppica --from <WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000000000ppica --from <WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Unbound tokens from validator
@@ -160,13 +160,13 @@ Unbound tokens from validator
 > ⚠️ it’s can take a while, \~21 days, depends on network’s parameters
 
 ```bash
-picad tx staking unbond <VALOPER_ADDRESS> 1000000000000000000ppica --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx staking unbond <VALOPER_ADDRESS> 1000000000000ppica --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Send tokens to another wallet
 
 ```bash
-picad tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000000000000000ppica --from <YOUR_WALLET_ADDRESS> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000000000ppica --from <YOUR_WALLET_ADDRESS> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Check info about transaction by hash **TX\_HASH**
@@ -183,10 +183,10 @@ Submit text proposal
 picad tx gov submit-proposal \
 --title="<Your Title>" \
 --description="<Your Description>" \
---deposit=1000000000000000000ppica \
+--deposit=1000000000000ppica \
 --type="Text" \
 --from=<WALLET_ADDRESS> \
---gas-prices=1000000000000ppica \
+--gas-prices=1000000ppica \
 --gas-adjustment=1.4 \
 --gas=auto \
 -y
@@ -207,31 +207,31 @@ picad query gov proposal <proposal_id>
 Deposit proposal by proposal id
 
 ```bash
-picad tx gov deposit 1 1000000000000000000ppica --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx gov deposit 1 1000000000000ppica --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Vote as, **YES**
 
 ```bash
-picad tx gov vote 1 yes --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx gov vote 1 yes --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Vote as, **NO**
 
 ```bash
-picad tx gov vote 1 no --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx gov vote 1 no --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Vote as, **NO\_WITH\_VETO**
 
 ```bash
-picad tx gov vote 1 no_with_veto --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx gov vote 1 no_with_veto --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 Vote as, **ABSTAIN**
 
 ```bash
-picad tx gov vote 1 abstain --from <YOUR_WALLET> --gas-prices 1000000000000ppica --gas-adjustment 1.4 --gas auto -y
+picad tx gov vote 1 abstain --from <YOUR_WALLET> --gas-prices 1000000ppica --gas-adjustment 1.4 --gas auto -y
 ```
 
 ### Utils
