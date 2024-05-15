@@ -8,7 +8,7 @@ coverY: 0
 Automatic
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/composable/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/picasso/install.sh)
 ```
 
 Manual
@@ -33,8 +33,8 @@ picad config chain-id banksy-testnet-5
 picad init "<Your moniker>" --chain-id banksy-testnet-5
 
 # Download genesis and addrbook
-curl -Ls https://snapshots-testnet.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
-curl -Ls https://snapshots-testnet.stake-town.com/composable/addrbook.json > $HOME/.banksy/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/picasso/genesis.json > $HOME/.banksy/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/picasso/addrbook.json > $HOME/.banksy/config/addrbook.json
 
 APP_TOML="~/.banksy/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
@@ -66,7 +66,7 @@ cp ~/go/bin/picad $HOME/.banksy/cosmovisor/genesis/bin
 
 sudo tee /etc/systemd/system/picad.service > /dev/null << EOF
 [Unit]
-Description=Composable Node
+Description=Picasso Node
 After=network-online.target
 [Service]
 User=$USER
@@ -87,7 +87,7 @@ EOF
 picad tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
 
 # Snapshots
-URL=https://snapshots-testnet.stake-town.com/composable/banksy-testnet-5_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/picasso/banksy-testnet-5_latest.tar.lz4
 curl -L $URL | tar -Ilz4 -xf - -C $HOME/.banksy
 ```
 

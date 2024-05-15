@@ -8,7 +8,7 @@ coverY: 0
 Install with one line script
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/composable/main_install.sh)
+bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/picasso/main_install.sh)
 ```
 
 Manual installation
@@ -33,8 +33,8 @@ picad config chain-id centauri-1
 picad init "Your Moniker" --chain-id centauri-1
 
 # Download genesis and addrbook
-curl -Ls https://snapshots.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
-curl -Ls https://snapshots.stake-town.com/composable/addrbook.json > $HOME/.banksy/config/addrbook.json
+curl -Ls https://snapshots.stake-town.com/picasso/genesis.json > $HOME/.banksy/config/genesis.json
+curl -Ls https://snapshots.stake-town.com/picasso/addrbook.json > $HOME/.banksy/config/addrbook.json
 
 APP_TOML="~/.banksy/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 picad tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
 
-URL=https://snapshots.stake-town.com/composable/centauri-1_latest.tar.lz4
+URL=https://snapshots.stake-town.com/picasso/centauri-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.banksy
 [[ -f $HOME/.banksy/data/upgrade-info.json ]] && cp $HOME/.banksy/data/upgrade-info.json $HOME/.banksy/cosmovisor/genesis/upgrade-info.json
 ```

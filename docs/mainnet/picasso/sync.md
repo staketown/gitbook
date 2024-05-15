@@ -19,7 +19,7 @@ sudo systemctl stop picad
 cp $HOME/.banksy/data/priv_validator_state.json $HOME/.banksy/priv_validator_state.json.backup
 rm -rf $HOME/.banksy/data
 
-URL=https://snapshots.stake-town.com/composable/centauri-1_latest.tar.lz4
+URL=https://snapshots.stake-town.com/picasso/centauri-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.banksy
 
 mv $HOME/.banksy/priv_validator_state.json.backup $HOME/.banksy/data/priv_validator_state.json 
@@ -35,7 +35,7 @@ sudo systemctl stop picad
 cp $HOME/.banksy/data/priv_validator_state.json $HOME/.banksy/priv_validator_state.json.backup
 picad tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
 
-SNAP_RPC="https://composable-rpc.stake-town.com:443"
+SNAP_RPC="https://picasso-rpc.stake-town.com:443"
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
@@ -62,18 +62,18 @@ sudo systemctl restart picad && sudo journalctl -u picad -f -o cat
 As far state-sync doesn't support wasm folder we should download it manually
 
 ```bash
-URL=https://snapshots.stake-town.com/composable/wasm_latest.tar.lz4
+URL=https://snapshots.stake-town.com/picasso/wasm_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.banksy
 ```
 
 ## **Address Book**
 
 ```bash
-curl -Ls https://snapshots.stake-town.com/composable/addrbook.json > $HOME/.banksy/config/addrbook.json
+curl -Ls https://snapshots.stake-town.com/picasso/addrbook.json > $HOME/.banksy/config/addrbook.json
 ```
 
 ## Genesis
 
 ```bash
-curl -Ls https://snapshots.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
+curl -Ls https://snapshots.stake-town.com/picasso/genesis.json > $HOME/.banksy/config/genesis.json
 ```
