@@ -1,9 +1,9 @@
 ---
-cover: ../../.gitbook/assets/composable-banner.jpeg
+cover: ../../.gitbook/assets/picasso-banner.jpeg
 coverY: 0
 ---
 
-# Composable
+# Picasso
 
 ## Summary
 

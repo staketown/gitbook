@@ -1,17 +1,17 @@
 ---
-cover: ../../.gitbook/assets/composable-banner.jpeg
+cover: ../../.gitbook/assets/picasso-banner.jpeg
 coverY: 0
 ---
 
 # Installation
 
-Install with one line script
+Automatic
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/composable/main_install.sh)
+bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/composable/install.sh)
 ```
 
-Manual installation
+Manual
 
 ```bash
 sudo apt update
@@ -21,50 +21,56 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf $HOME/composable-centauri
-git clone https://github.com/notional-labs/composable-centauri.git
-cd $HOME/composable-centauri || return
-git checkout v6.6.41
+rm -rf composable-testnet
+git clone https://github.com/notional-labs/composable-testnet.git
+cd $HOME/composable-testnet || return
+git checkout v6.6.3
 
 make install
 
 picad config keyring-backend os
-picad config chain-id centauri-1
-picad init "Your Moniker" --chain-id centauri-1
+picad config chain-id banksy-testnet-5
+picad init "<Your moniker>" --chain-id banksy-testnet-5
 
 # Download genesis and addrbook
-curl -Ls https://snapshots.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
-curl -Ls https://snapshots.stake-town.com/composable/addrbook.json > $HOME/.banksy/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/composable/addrbook.json > $HOME/.banksy/config/addrbook.json
 
 APP_TOML="~/.banksy/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
+sed -i 's|^snapshot-interval *=.*|snapshot-interval = 1000|g' $APP_TOML
 
 CONFIG_TOML="~/.banksy/config/config.toml"
-SEEDS=""
-PEERS="7082a715395427a519e611ed1454b0965fd95ef5@138.201.21.197:37656"
+SEEDS="6e8a56df9b9c52a730dd780172fc135a96a9feda@65.109.26.223:26656"
+PEERS=""
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "100000ppica"|g' $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0ppica"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
+sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 30/g' $CONFIG_TOML
+sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 30/g' $CONFIG_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
-# Install cosmovisor
+# Install and configure cosmovisor...
+
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 mkdir -p ~/.banksy/cosmovisor/genesis/bin
 mkdir -p ~/.banksy/cosmovisor/upgrades
-cp ~/go/bin/picad ~/.banksy/cosmovisor/genesis/bin
+cp ~/go/bin/picad $HOME/.banksy/cosmovisor/genesis/bin
+
+# Starting service and synchronization...
 
 sudo tee /etc/systemd/system/picad.service > /dev/null << EOF
 [Unit]
-Description=Picasso Node
+Description=Composable Node
 After=network-online.target
 [Service]
 User=$USER
+WorkingDirectory=$HOME/
 ExecStart=$(which cosmovisor) run start
 Restart=on-failure
 RestartSec=3
@@ -78,12 +84,11 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 WantedBy=multi-user.target
 EOF
 
-# Snapshots
 picad tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
 
-URL=https://snapshots.stake-town.com/composable/centauri-1_latest.tar.lz4
-curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.banksy
-[[ -f $HOME/.banksy/data/upgrade-info.json ]] && cp $HOME/.banksy/data/upgrade-info.json $HOME/.banksy/cosmovisor/genesis/upgrade-info.json
+# Snapshots
+URL=https://snapshots-testnet.stake-town.com/composable/banksy-testnet-5_latest.tar.lz4
+curl -L $URL | tar -Ilz4 -xf - -C $HOME/.banksy
 ```
 
 **(Optional) Configure timeouts for processing blocks**
@@ -116,7 +121,7 @@ sudo journalctl -u picad -f -o cat
 snapshot_interval=0
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/.banksy/config/app.toml
 sed -i 's|^enable *=.*|enable = false|' $HOME/.banksy/config/config.toml
-sudo systemctl restart picad && sudo journalctl -u picad -f -o cat
+sudo systemctl restart banksyd && sudo journalctl -u banksyd -f -o cat
 ```
 
 ### Wallet creation
@@ -145,19 +150,18 @@ Create validator
 
 ```bash
 picad tx staking create-validator \
---amount=1000000000000ppica \
+--amount=1000000ppica \
 --pubkey=$(picad tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=centauri-1 \
---commission-rate=0.05 \
+--commission-rate=0.10 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.1 \
+--commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=1000000ppica \
---gas-adjustment=1.4 \
+--gas-prices=0.1ppica \
+--gas-adjustment=1.5 \
 --gas=auto \
 -y
 ```

@@ -1,5 +1,5 @@
 ---
-cover: ../../.gitbook/assets/composable-banner.jpeg
+cover: ../../.gitbook/assets/picasso-banner.jpeg
 coverY: 0
 ---
 
@@ -19,10 +19,10 @@ sudo systemctl stop picad
 cp $HOME/.banksy/data/priv_validator_state.json $HOME/.banksy/priv_validator_state.json.backup
 rm -rf $HOME/.banksy/data
 
-URL="https://snapshots-testnet.stake-town.com/composable/banksy-testnet-5_latest.tar.lz4"
+URL=https://snapshots.stake-town.com/composable/centauri-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.banksy
 
-mv $HOME/.banksy/priv_validator_state.json.backup $HOME/.banksy/data/priv_validator_state.json
+mv $HOME/.banksy/priv_validator_state.json.backup $HOME/.banksy/data/priv_validator_state.json 
 
 sudo systemctl restart picad && sudo journalctl -u picad -f -o cat
 ```
@@ -35,7 +35,7 @@ sudo systemctl stop picad
 cp $HOME/.banksy/data/priv_validator_state.json $HOME/.banksy/priv_validator_state.json.backup
 picad tendermint unsafe-reset-all --home $HOME/.banksy --keep-addr-book
 
-SNAP_RPC="https://composable-testnet-rpc.stake-town.com:443"
+SNAP_RPC="https://composable-rpc.stake-town.com:443"
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="5a331fc6afa9ae7cbd6c9ebf39358161052c962b@65.109.65.248:37656"
+PEERS="7082a715395427a519e611ed1454b0965fd95ef5@138.201.21.197:37656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.banksy/config/config.toml
 
 CONFIG_TOML=$HOME/.banksy/config/config.toml
@@ -57,14 +57,23 @@ mv $HOME/.banksy/priv_validator_state.json.backup $HOME/.banksy/data/priv_valida
 sudo systemctl restart picad && sudo journalctl -u picad -f -o cat
 ```
 
+## **Wasm**
+
+As far state-sync doesn't support wasm folder we should download it manually
+
+```bash
+URL=https://snapshots.stake-town.com/composable/wasm_latest.tar.lz4
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.banksy
+```
+
 ## **Address Book**
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/composable/addrbook.json > $HOME/.banksy/config/addrbook.json
+curl -Ls https://snapshots.stake-town.com/composable/addrbook.json > $HOME/.banksy/config/addrbook.json
 ```
 
 ## Genesis
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
+curl -Ls https://snapshots.stake-town.com/composable/genesis.json > $HOME/.banksy/config/genesis.json
 ```
