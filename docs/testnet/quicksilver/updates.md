@@ -5,11 +5,11 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v1.6.1-rc0** is available
+⚠️ Version **v1.6.1-rc1** is available
 
 ```bash
 cd $HOME || return
-wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.6.1-rc0/quicksilverd-v1.6.1-rc0-amd64
+wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.6.1-rc1/quicksilverd-v1.6.1-rc1-amd64
 chmod +x quicksilverd
 mv quicksilverd $HOME/go/bin
 
