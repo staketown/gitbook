@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v0.31.0** is available
+⚠️ Version **fix/v0.31.0-restore-clock-gas-limit-value** is available
 
 ```bash
 cd $HOME || return
 rm -rf elys
 git clone https://github.com/elys-network/elys.git
 cd elys || return
-git checkout v0.31.0
+git checkout fix/v0.31.0-restore-clock-gas-limit-value
 
 make build
 
