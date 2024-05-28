@@ -61,7 +61,7 @@ Create validator
 
 ```bash
 0gchaind tx staking create-validator \
---amount=1000000000000000000ua0gi \
+--amount=1000000ua0gi \
 --pubkey=$(0gchaind tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
@@ -72,7 +72,7 @@ Create validator
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---fees=2000000000000ua0gi \
+--fees=1000ua0gi \
 -y
 ```
 
@@ -85,14 +85,14 @@ Edit validator
 --details="<Your details>" \
 --commission-rate=0.1 \
 --from=<YOUR_WALLET> \
---fees=2000000000000ua0gi \
+--fees=1000ua0gi \
 -y
 ```
 
 Unjail your validator
 
 ```bash
-0gchaind tx slashing unjail --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx slashing unjail --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 Check blocks info processed by your validator
@@ -124,31 +124,31 @@ Info about your validator
 Get your rewards from all validators
 
 ```bash
-0gchaind tx distribution withdraw-all-rewards --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx distribution withdraw-all-rewards --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 Get rewards and commissions from your validator
 
 ```bash
-0gchaind tx distribution withdraw-rewards $(0gchaind keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx distribution withdraw-rewards $(0gchaind keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 Delegate tokens to your validator
 
 ```bash
-0gchaind tx staking delegate $(0gchaind keys show <YOUR_WALLET_NAME> --bech val -a) 1000000000000000000ua0gi --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx staking delegate $(0gchaind keys show <YOUR_WALLET_NAME> --bech val -a) 1000000ua0gi --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 Delegate tokens to validator
 
 ```bash
-0gchaind tx staking delegate <VALOPER_ADDRESS> 1000000000000000000ua0gi --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx staking delegate <VALOPER_ADDRESS> 1000000ua0gi --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 Redelegate tokens to another validator
 
 ```bash
-0gchaind tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000000000000000ua0gi --from <WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000ua0gi --from <WALLET> --fees=1000ua0gi -y
 ```
 
 Unbound tokens from validator
@@ -156,13 +156,13 @@ Unbound tokens from validator
 > ⚠️ it’s can take a while, \~21 days, depends on network’s parameters
 
 ```bash
-0gchaind tx staking unbond <VALOPER_ADDRESS> 1000000000000000000ua0gi --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx staking unbond <VALOPER_ADDRESS> 1000000ua0gi --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 Send tokens to another wallet
 
 ```bash
-0gchaind tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000000000000000ua0gi --from <YOUR_WALLET_ADDRESS> --fees=2000000000000ua0gi -y
+0gchaind tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000ua0gi --from <YOUR_WALLET_ADDRESS> --fees=1000ua0gi -y
 ```
 
 Check info about transaction by hash **TX\_HASH**
@@ -179,10 +179,10 @@ Submit text proposal
 0gchaind tx gov submit-proposal \
 --title="<Your Title>" \
 --description="<Your Description>" \
---deposit=1000000000000000000ua0gi \
+--deposit=1000000ua0gi \
 --type="Text" \
 --from=<WALLET_ADDRESS> \
---fees=2000000000000ua0gi \
+--fees=1000ua0gi \
 -y
 ```
 
@@ -201,31 +201,31 @@ Check proposal info by proposal id
 Deposit proposal by proposal id
 
 ```bash
-0gchaind tx gov deposit 1 1000000000000000000ua0gi --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx gov deposit 1 1000000ua0gi --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 Vote as, **YES**
 
 ```bash
-0gchaind tx gov vote 1 yes --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx gov vote 1 yes --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 Vote as, **NO**
 
 ```bash
-0gchaind tx gov vote 1 no --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx gov vote 1 no --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 Vote as, **NO\_WITH\_VETO**
 
 ```bash
-0gchaind tx gov vote 1 no_with_veto --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx gov vote 1 no_with_veto --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 Vote as, **ABSTAIN**
 
 ```bash
-0gchaind tx gov vote 1 abstain --from <YOUR_WALLET> --fees=2000000000000ua0gi -y
+0gchaind tx gov vote 1 abstain --from <YOUR_WALLET> --fees=1000ua0gi -y
 ```
 
 ### Utils
