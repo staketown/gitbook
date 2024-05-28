@@ -115,6 +115,12 @@
 
 ## Testnet
 
+* [0G](testnet/0g/README.md)
+  * [Installation](testnet/0g/installation.md)
+  * [Updates](testnet/0g/updates.md)
+  * [Sync](testnet/0g/sync.md)
+  * [Public API](testnet/0g/public-api.md)
+  * [Cheat Sheet](testnet/0g/cheat-sheet.md)
 * [Arkeo Network](testnet/arkeo-network/README.md)
   * [Installation](testnet/arkeo-network/installation.md)
   * [Updates](testnet/arkeo-network/updates.md)

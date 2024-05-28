@@ -24,6 +24,7 @@
 
 ### Testnets
 
+* [0G](testnet/0g)
 * [Arkeo](testnet/arkeo-network)
 * [Archway](testnet/archway)
 * [C4E](testnet/c4e)
