@@ -126,7 +126,7 @@ Create wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-0gchaind keys add <YOUR_WALLET_NAME>
+0gchaind keys add <YOUR_WALLET_NAME> --eth
 ```
 
 Recover wallet
@@ -134,7 +134,7 @@ Recover wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-0gchaind keys add <YOUR_WALLET_NAME> --recover
+0gchaind keys add <YOUR_WALLET_NAME> --eth --recover
 ```
 
 ### Validator creation
