@@ -7,7 +7,7 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `xstaxy-1`
+* Network Chain ID: `aura_6322-2`
 * Denom: `uaura`
 * Binary: `aurad`
 * Working directory: `.aura`

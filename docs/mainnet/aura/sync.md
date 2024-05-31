@@ -19,7 +19,7 @@ sudo systemctl stop aurad
 cp $HOME/.aura/data/priv_validator_state.json $HOME/.aura/priv_validator_state.json.backup
 rm -rf $HOME/.aura/data
 
-URL=https://snapshots.stake-town.com/aura/xstaxy-1_latest.tar.lz4
+URL=https://snapshots.stake-town.com/aura/aura_6322-2_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.aura
 
 mv $HOME/.aura/priv_validator_state.json.backup $HOME/.aura/data/priv_validator_state.json 

@@ -21,16 +21,16 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf aura
+rm -rf $HOME/aura
 git clone https://github.com/aura-nw/aura.git
-cd aura || return
-git checkout v0.7.3
+cd $HOME/aura || return
+git checkout v0.8.2
 
 make install
 
 aurad config keyring-backend os
-aurad config chain-id xstaxy-1
-aurad init "Your Moniker" --chain-id xstaxy-1
+aurad config chain-id aura_6322-2
+aurad init "Your Moniker" --chain-id aura_6322-2
 
 # Download genesis and addrbook
 curl -Ls https://snapshots.stake-town.com/aura/genesis.json > $HOME/.aura/config/genesis.json
@@ -39,8 +39,8 @@ curl -Ls https://snapshots.stake-town.com/aura/addrbook.json > $HOME/.aura/confi
 APP_TOML="~/.aura/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
+sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.aura/config/config.toml"
 SEEDS="22a0ca5f64187bb477be1d82166b1e9e184afe50@18.143.52.13:26656,0b8bd8c1b956b441f036e71df3a4d96e85f843b8@13.250.159.219:26656"
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 aurad tendermint unsafe-reset-all --home $HOME/.aura --keep-addr-book
 
-URL=https://snapshots.stake-town.com/aura/xstaxy-1_latest.tar.lz4
+URL=https://snapshots.stake-town.com/aura/aura_6322-2_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.aura
 [[ -f $HOME/.aura/data/upgrade-info.json ]] && cp $HOME/.aura/data/upgrade-info.json $HOME/.aura/cosmovisor/genesis/upgrade-info.json
 ```
@@ -150,7 +150,7 @@ aurad tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=xstaxy-1 \
+--chain-id=aura_6322-2 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
