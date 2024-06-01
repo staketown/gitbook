@@ -22,3 +22,9 @@ https://aura-api.stake-town.com:443
 ```bash
 aura-grpc.stake-town.com:443
 ```
+
+### **JsonRPC Endpoint**
+
+```bash
+https://aura-jsonrpc.stake-town.com:443
+```
