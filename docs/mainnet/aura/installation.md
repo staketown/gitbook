@@ -157,7 +157,7 @@ aurad tx staking create-validator \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
 --gas-prices=0.001uaura \
---gas-adjustment=1.4 \
+--gas-adjustment=1.7 \
 --gas=auto \
 -y
 ```
