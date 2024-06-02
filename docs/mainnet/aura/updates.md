@@ -5,17 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v0.8.2** is available
+⚠️ Version **ibcupgrade** is available
 
 ```bash
 cd $HOME || return
 rm -rf aura
 git clone https://github.com/aura-nw/aura.git
 cd aura || return
-git checkout v0.8.2
+git checkout ibcupgrade
 
 make build
 
-mkdir -p $HOME/.aura/cosmovisor/upgrades/evmhardfork/bin
-mv build/aurad $HOME/.aura/cosmovisor/upgrades/evmhardfork/bin/
+mkdir -p $HOME/.aura/cosmovisor/upgrades/ibcupgrade/bin
+mv build/aurad $HOME/.aura/cosmovisor/upgrades/ibcupgrade/bin/
 ```

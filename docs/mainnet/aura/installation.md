@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/aura
 git clone https://github.com/aura-nw/aura.git
 cd $HOME/aura || return
-git checkout v0.8.2
+git checkout ibcupgrade
 
 make install
 
