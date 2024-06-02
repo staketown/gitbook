@@ -9,13 +9,14 @@ coverY: 0
 
 ```bash
 cd $HOME || return
-rm -rf crossfi-node
-git clone https://github.com/crossfichain/crossfi-node.git
-cd crossfi-node || return
-git checkout v0.3.0-prebuild9
+wget https://github.com/crossfichain/crossfi-node/releases/download/v0.3.0-prebuild9/crossfi-node_0.3.0-prebuild9_linux_amd64.tar.gz
+mkdir $HOME/crossfi_tmp
+tar -xvf crossfi-node_0.3.0-prebuild9_linux_amd64.tar.gz -C $HOME/crossfi_tmp
+mv $HOME/crossfi_tmp/bin/crossfid ~/go/bin/crossfid
 
-make build
+rm crossfi-node_0.3.0-prebuild9_linux_amd64.tar.gz
+rm -rf $HOME/crossfi_tmp
 
 mkdir -p $HOME/.mineplex-chain/cosmovisor/upgrades/erc20-cheque-testnet/bin
-mv build/crossfid $HOME/.mineplex-chain/cosmovisor/upgrades/erc20-cheque-testnet/bin/
+cp ~/go/bin/crossfid $HOME/.mineplex-chain/cosmovisor/upgrades/erc20-cheque-testnet/bin/
 ```

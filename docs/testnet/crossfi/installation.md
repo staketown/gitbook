@@ -21,12 +21,13 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf $HOME/crossfi-node
-git clone https://github.com/crossfichain/crossfi-node.git
-cd $HOME/crossfi-node || return
-git checkout v0.3.0-prebuild9
+wget https://github.com/crossfichain/crossfi-node/releases/download/v0.3.0-prebuild9/crossfi-node_0.3.0-prebuild9_linux_amd64.tar.gz
+mkdir $HOME/crossfi_tmp
+tar -xvf crossfi-node_0.3.0-prebuild9_linux_amd64.tar.gz -C $HOME/crossfi_tmp
+mv $HOME/crossfi_tmp/bin/crossfid ~/go/bin/crossfid
 
-make install
+rm crossfi-node_0.3.0-prebuild9_linux_amd64.tar.gz
+rm -rf $HOME/crossfi_tmp
 
 crossfid config keyring-backend os
 crossfid config chain-id crossfi-evm-testnet-1
