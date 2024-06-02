@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/crossfi-node
 git clone https://github.com/crossfichain/crossfi-node.git
 cd $HOME/crossfi-node || return
-git checkout 0.3.0-prebuild3
+git checkout v0.3.0-prebuild9
 
 make install
 
