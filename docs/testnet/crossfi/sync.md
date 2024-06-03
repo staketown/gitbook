@@ -16,13 +16,13 @@ sudo apt update && sudo apt install lz4 -y
 
 ```bash
 sudo systemctl stop crossfid
-cp $HOME/.mineplex-chain/data/priv_validator_state.json $HOME/.mineplex-chain/priv_validator_state.json.backup
-rm -rf $HOME/.mineplex-chain/data
+cp $HOME/.crossfid/data/priv_validator_state.json $HOME/.crossfid/priv_validator_state.json.backup
+rm -rf $HOME/.crossfid/data
 
 URL=https://snapshots-testnet.stake-town.com/crossfi/crossfi-evm-testnet-1_latest.tar.lz4
-curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.mineplex-chain
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.crossfid
 
-mv $HOME/.mineplex-chain/priv_validator_state.json.backup $HOME/.mineplex-chain/data/priv_validator_state.json
+mv $HOME/.crossfid/priv_validator_state.json.backup $HOME/.crossfid/data/priv_validator_state.json
 
 sudo systemctl restart crossfid && sudo journalctl -u crossfid -f -o cat
 ```
@@ -32,8 +32,8 @@ sudo systemctl restart crossfid && sudo journalctl -u crossfid -f -o cat
 ```bash
 sudo systemctl stop crossfid
 
-cp $HOME/.mineplex-chain/data/priv_validator_state.json $HOME/.mineplex-chain/priv_validator_state.json.backup
-crossfid tendermint unsafe-reset-all --home $HOME/.mineplex-chain --keep-addr-book
+cp $HOME/.crossfid/data/priv_validator_state.json $HOME/.crossfid/priv_validator_state.json.backup
+crossfid tendermint unsafe-reset-all --home $HOME/.crossfid --keep-addr-book
 
 SNAP_RPC="https://crossfi-testnet-rpc.stake-town.com:443"
 
@@ -44,15 +44,15 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
 PEERS="634780077115040a5946d8d22e98910fb68205a2@65.109.65.248:52656"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.mineplex-chain/config/config.toml
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.crossfid/config/config.toml
 
-CONFIG_TOML=$HOME/.mineplex-chain/config/config.toml
+CONFIG_TOML=$HOME/.crossfid/config/config.toml
 sed -i 's|^enable *=.*|enable = true|' $CONFIG_TOML
 sed -i 's|^rpc_servers *=.*|rpc_servers = "'$SNAP_RPC,$SNAP_RPC'"|' $CONFIG_TOML
 sed -i 's|^trust_height *=.*|trust_height = '$BLOCK_HEIGHT'|' $CONFIG_TOML
 sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $CONFIG_TOML
 
-mv $HOME/.mineplex-chain/priv_validator_state.json.backup $HOME/.mineplex-chain/data/priv_validator_state.json
+mv $HOME/.crossfid/priv_validator_state.json.backup $HOME/.crossfid/data/priv_validator_state.json
 
 sudo systemctl restart crossfid && sudo journalctl -u crossfid -f -o cat
 ```
@@ -60,11 +60,11 @@ sudo systemctl restart crossfid && sudo journalctl -u crossfid -f -o cat
 ## **Address Book**
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/crossfi/addrbook.json > $HOME/.mineplex-chain/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/crossfi/addrbook.json > $HOME/.crossfid/config/addrbook.json
 ```
 
 ## Genesis
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/crossfi/genesis.json > $HOME/.mineplex-chain/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/crossfi/genesis.json > $HOME/.crossfid/config/genesis.json
 ```

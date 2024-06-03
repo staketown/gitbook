@@ -34,16 +34,16 @@ crossfid config chain-id crossfi-evm-testnet-1
 crossfid init "Your Moniker" --chain-id crossfi-evm-testnet-1
 
 # Download genesis and addrbook
-curl -Ls https://snapshots-testnet.stake-town.com/crossfi/genesis.json > $HOME/.mineplex-chain/config/genesis.json
-curl -Ls https://snapshots-testnet.stake-town.com/crossfi/addrbook.json > $HOME/.mineplex-chain/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/crossfi/genesis.json > $HOME/.crossfid/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/crossfi/addrbook.json > $HOME/.crossfid/config/addrbook.json
 
-APP_TOML="~/.mineplex-chain/config/app.toml"
+APP_TOML="~/.crossfid/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
 sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
 sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
-CONFIG_TOML="~/.mineplex-chain/config/config.toml"
+CONFIG_TOML="~/.crossfid/config/config.toml"
 SEEDS=""
 PEERS="634780077115040a5946d8d22e98910fb68205a2@65.109.65.248:52656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
@@ -56,9 +56,9 @@ sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
 # Install cosmovisor
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
-mkdir -p ~/.mineplex-chain/cosmovisor/genesis/bin
-mkdir -p ~/.mineplex-chain/cosmovisor/upgrades
-cp ~/go/bin/crossfid ~/.mineplex-chain/cosmovisor/genesis/bin
+mkdir -p ~/.crossfid/cosmovisor/genesis/bin
+mkdir -p ~/.crossfid/cosmovisor/upgrades
+cp ~/go/bin/crossfid ~/.crossfid/cosmovisor/genesis/bin
 
 sudo tee /etc/systemd/system/crossfid.service > /dev/null << EOF
 [Unit]
@@ -71,7 +71,7 @@ Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000
 Environment="DAEMON_NAME=crossfid"
-Environment="DAEMON_HOME=$HOME/.mineplex-chain"
+Environment="DAEMON_HOME=$HOME/.crossfid"
 Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
 Environment="UNSAFE_SKIP_BACKUP=true"
@@ -80,17 +80,17 @@ WantedBy=multi-user.target
 EOF
 
 # Snapshots
-crossfid tendermint unsafe-reset-all --home $HOME/.mineplex-chain --keep-addr-book
+crossfid tendermint unsafe-reset-all --home $HOME/.crossfid --keep-addr-book
 
 URL=https://snapshots-testnet.stake-town.com/crossfi/crossfi-evm-testnet-1_latest.tar.lz4
-curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.mineplex-chain
-[[ -f $HOME/.mineplex-chain/data/upgrade-info.json ]] && cp $HOME/.mineplex-chain/data/upgrade-info.json $HOME/.mineplex-chain/cosmovisor/genesis/upgrade-info.json
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.crossfid
+[[ -f $HOME/.crossfid/data/upgrade-info.json ]] && cp $HOME/.crossfid/data/upgrade-info.json $HOME/.crossfid/cosmovisor/genesis/upgrade-info.json
 ```
 
 **(Optional) Configure timeouts for processing blocks**
 
 ```bash
-CONFIG_TOML="~/.mineplex-chain/config/config.toml"
+CONFIG_TOML="~/.crossfid/config/config.toml"
 sed -i 's/timeout_propose =.*/timeout_propose = "100ms"/g' $CONFIG_TOML
 sed -i 's/timeout_propose_delta =.*/timeout_propose_delta = "500ms"/g' $CONFIG_TOML
 sed -i 's/timeout_prevote =.*/timeout_prevote = "100ms"/g' $CONFIG_TOML
@@ -115,8 +115,8 @@ sudo journalctl -u crossfid -f -o cat
 
 ```bash
 snapshot_interval=0
-sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/.mineplex-chain/config/app.toml
-sed -i 's|^enable *=.*|enable = false|' $HOME/.mineplex-chain/config/config.toml
+sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/.crossfid/config/app.toml
+sed -i 's|^enable *=.*|enable = false|' $HOME/.crossfid/config/config.toml
 sudo systemctl restart crossfid && sudo journalctl -u crossfid -f -o cat
 ```
 

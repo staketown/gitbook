@@ -239,27 +239,27 @@ crossfid tx gov vote 1 abstain --from <YOUR_WALLET> --gas-prices 5000000000000mp
 Change ports to custom
 
 ```bash
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:36658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:36657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:7060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:36656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":36660\"%" $HOME/.mineplex-chain/config/config.toml && \
-sed -i.bak -e "s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:10090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:10091\"%; s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:2317\"%" $HOME/.mineplex-chain/config/app.toml && \
-sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:36657\"%" $HOME/.mineplex-chain/config/client.toml
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:36658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:36657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:7060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:36656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":36660\"%" $HOME/.crossfid/config/config.toml && \
+sed -i.bak -e "s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:10090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:10091\"%; s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:2317\"%" $HOME/.crossfid/config/app.toml && \
+sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:36657\"%" $HOME/.crossfid/config/client.toml
 ```
 
 Turn on indexing
 
 ```bash
-sed -i 's|^indexer *=.*|indexer = "kv"|' $HOME/.mineplex-chain/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "kv"|' $HOME/.crossfid/config/config.toml
 ```
 
 Turn off indexing
 
 ```bash
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.mineplex-chain/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.crossfid/config/config.toml
 ```
 
 Setup custom prunning
 
 ```bash
-APP_TOML="~/.mineplex-chain/config/app.toml"
+APP_TOML="~/.crossfid/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|' $APP_TOML
 sed -i 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' $APP_TOML
 sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' $APP_TOML
@@ -269,13 +269,13 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|' $APP_TOML
 Check your peer
 
 ```bash
-echo $(crossfid tendermint show-node-id)@$(curl http://ifconfig.me/)$(grep -A 3 "\[p2p\]" ~/.mineplex-chain/config/config.toml | egrep -o ":[0-9]+")
+echo $(crossfid tendermint show-node-id)@$(curl http://ifconfig.me/)$(grep -A 3 "\[p2p\]" ~/.crossfid/config/config.toml | egrep -o ":[0-9]+")
 ```
 
 Check your RPC
 
 ```bash
-echo -e "\033[0;32m$(grep -A 3 "\[rpc\]" ~/.mineplex-chain/config/config.toml | egrep -o ":[0-9]+")\033[0m"
+echo -e "\033[0;32m$(grep -A 3 "\[rpc\]" ~/.crossfid/config/config.toml | egrep -o ":[0-9]+")\033[0m"
 ```
 
 Check information about validator
@@ -299,7 +299,7 @@ crossfid status 2>&1 | jq .SyncInfo.latest_block_height
 Reset network
 
 ```bash
-crossfid tendermint unsafe-reset-all --home $HOME/.mineplex-chain --keep-addr-book
+crossfid tendermint unsafe-reset-all --home $HOME/.crossfid --keep-addr-book
 ```
 
 Delete node
@@ -309,7 +309,7 @@ sudo systemctl stop crossfid && \
 sudo systemctl disable crossfid && \
 sudo rm /etc/systemd/system/crossfid.service && \
 sudo systemctl daemon-reload && \
-rm -rf $HOME/.mineplex-chain && \
+rm -rf $HOME/.crossfid && \
 rm -rf $HOME/crossfi-node
 ```
 

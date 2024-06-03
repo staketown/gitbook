@@ -10,7 +10,7 @@ coverY: 0
 * Network Chain ID: `crossfi-evm-testnet-1`
 * Denom: `mpx`
 * Binary: `crossfid`
-* Working directory: `.mineplex-chain`
+* Working directory: `.crossfid`
 * Explorers: [LINK](https://testnet.itrocket.net/crossfi)
 * Faucet: Ask in discord channel
 

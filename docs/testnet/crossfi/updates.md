@@ -17,6 +17,6 @@ mv $HOME/crossfi_tmp/bin/crossfid ~/go/bin/crossfid
 rm crossfi-node_0.3.0-prebuild9_linux_amd64.tar.gz
 rm -rf $HOME/crossfi_tmp
 
-mkdir -p $HOME/.mineplex-chain/cosmovisor/upgrades/erc20-cheque-testnet/bin
-cp ~/go/bin/crossfid $HOME/.mineplex-chain/cosmovisor/upgrades/erc20-cheque-testnet/bin/
+mkdir -p $HOME/.crossfid/cosmovisor/upgrades/erc20-cheque-testnet/bin
+mv build/crossfid $HOME/.crossfid/cosmovisor/upgrades/erc20-cheque-testnet/bin/
 ```
