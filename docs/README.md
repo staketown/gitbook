@@ -44,11 +44,3 @@
 * [Side Protocol](testnet/side)
 * [Source](testnet/source)
 * [Umee](testnet/umee)
-
-### Archived
-
-* [Andromeda](archived/andromeda)
-* [Babylon](testnet/babylon)
-* [Cascadia](archived/cascadia)
-* [Defund](archived/defund)
-* [Nolus](archived/nolus)
