@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf umee
 git clone https://github.com/umee-network/umee.git
 cd umee || return
-git checkout v6.5.0-rc2
+git checkout v6.5.0
 
 make install
 
