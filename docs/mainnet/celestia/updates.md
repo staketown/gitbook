@@ -6,8 +6,19 @@ coverY: 0
 # Updates
 
 ### Node updates
-⚠️ **No updates so far**
+⚠️ Version **v1.10.1** is available
 
+```bash
+cd $HOME || return
+rm -rf $HOME/celestia-app
+git clone https://github.com/celestiaorg/celestia-app.git
+cd $HOME/celestia-app || return
+git checkout v1.10.1
+
+make build
+
+mv build/celestia-appd $HOME/.celestia-app/cosmovisor/genesis/bin/
+```
 
 ### Bridge node updates
 
