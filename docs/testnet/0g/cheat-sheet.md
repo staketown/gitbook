@@ -66,7 +66,7 @@ Create validator
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=zgtendermint_16600-1 \
+--chain-id=zgtendermint_16600-2 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \

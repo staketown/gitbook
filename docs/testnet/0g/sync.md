@@ -19,7 +19,7 @@ sudo systemctl stop 0gchaind
 cp $HOME/.0gchain/data/priv_validator_state.json $HOME/.0gchain/priv_validator_state.json.backup
 rm -rf $HOME/.0gchain/data
 
-URL=https://snapshots-testnet.stake-town.com/0g/zgtendermint_16600-1_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/0g/zgtendermint_16600-2_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.0gchain
 
 mv $HOME/.0gchain/priv_validator_state.json.backup $HOME/.0gchain/data/priv_validator_state.json
@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="dfcad28c8ba5162690b5cc11ef6c3acd4f1da964@65.109.65.248:40656"
+PEERS="e4a0123b9af65d36ef3f65af18a1cb05381b1ef5@65.108.124.43:48656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.0gchain/config/config.toml
 
 CONFIG_TOML=$HOME/.0gchain/config/config.toml

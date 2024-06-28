@@ -24,13 +24,13 @@ cd $HOME || return
 rm -rf $HOME/0g-chain
 git clone https://github.com/0glabs/0g-chain.git
 cd $HOME/0g-chain || return
-git checkout v0.1.0
+git checkout v0.2.3
 
 make install
 
 0gchaind config keyring-backend os
-0gchaind config chain-id zgtendermint_16600-1
-0gchaind init "Your Moniker" --chain-id zgtendermint_16600-1
+0gchaind config chain-id zgtendermint_16600-2
+0gchaind init "Your Moniker" --chain-id zgtendermint_16600-2
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/0g/genesis.json > $HOME/.0gchain/config/genesis.json
@@ -44,7 +44,7 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.0gchain/config/config.toml"
 SEEDS=""
-PEERS="dfcad28c8ba5162690b5cc11ef6c3acd4f1da964@65.109.65.248:40656"
+PEERS="e4a0123b9af65d36ef3f65af18a1cb05381b1ef5@65.108.124.43:48656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 0gchaind tendermint unsafe-reset-all --home $HOME/.0gchain --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/0g/zgtendermint_16600-1_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/0g/zgtendermint_16600-2_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.0gchain
 [[ -f $HOME/.0gchain/data/upgrade-info.json ]] && cp $HOME/.0gchain/data/upgrade-info.json $HOME/.0gchain/cosmovisor/genesis/upgrade-info.json
 ```
@@ -150,7 +150,7 @@ Create validator
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=zgtendermint_16600-1 \
+--chain-id=zgtendermint_16600-2 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \

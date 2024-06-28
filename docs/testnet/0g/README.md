@@ -7,7 +7,7 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `zgtendermint_16600-1`
+* Network Chain ID: `zgtendermint_16600-2`
 * Denom: `ua0gi`
 * Binary: `0gchaind`
 * Working directory: `.0gchain`
