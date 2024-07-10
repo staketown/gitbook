@@ -8,7 +8,6 @@ coverY: 0
 ⚠️ Version **v23.0.0-alpha.1** is available
 
 ```bash
-wget -O $HOME/go/bin/junod https://security.junonetwork.io/v23.0.0-alpha.1/junod
 cd $HOME || return
 rm -rf juno
 git clone https://github.com/CosmosContracts/juno.git
