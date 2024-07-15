@@ -5,7 +5,7 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v22.0.1** is available
+⚠️ Version **v23.0.0** is available
 
 ```bash
 cd $HOME || return
