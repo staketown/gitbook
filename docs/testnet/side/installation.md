@@ -21,16 +21,16 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf sidechain
-git clone https://github.com/sideprotocol/sidechain.git
-cd sidechain || return
-git checkout v0.8.1
+rm -rf $HOME/side
+git clone https://github.com/sideprotocol/side.git
+cd $HOME/side || return
+git checkout v0.9.0
 
 make install
 
 sided config keyring-backend os
-sided config chain-id S2-testnet-2
-sided init "Your Moniker" --chain-id S2-testnet-2
+sided config chain-id grimoria-testnet-1
+sided init "Your Moniker" --chain-id grimoria-testnet-1
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/side/genesis.json > $HOME/.side/config/genesis.json
@@ -39,8 +39,8 @@ curl -Ls https://snapshots-testnet.stake-town.com/side/addrbook.json > $HOME/.si
 APP_TOML="~/.side/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
+sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.side/config/config.toml"
 SEEDS=""
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 sided tendermint unsafe-reset-all --home $HOME/.side --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/side/S2-testnet-2_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/side/grimoria-testnet-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.side
 [[ -f $HOME/.side/data/upgrade-info.json ]] && cp $HOME/.side/data/upgrade-info.json $HOME/.side/cosmovisor/genesis/upgrade-info.json
 ```
@@ -150,7 +150,7 @@ sided tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=S2-testnet-2 \
+--chain-id=grimoria-testnet-1 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \

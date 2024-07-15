@@ -66,7 +66,7 @@ sided tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=S2-testnet-2 \
+--chain-id=grimoria-testnet-1 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
@@ -304,7 +304,7 @@ sudo systemctl disable sided && \
 sudo rm /etc/systemd/system/sided.service && \
 sudo systemctl daemon-reload && \
 rm -rf $HOME/.side && \
-rm -rf $HOME/sidechain
+rm -rf $HOME/side
 ```
 
 Check IP address of the server
