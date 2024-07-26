@@ -14,8 +14,8 @@ git clone https://github.com/chain4energy/c4e-chain.git
 cd c4e-chain || return
 git checkout v1.3.0
 
-make build
+make install
 
 mkdir -p $HOME/.c4e-chain/cosmovisor/upgrades/v1.3.0/bin
-mv build/c4ed $HOME/.c4e-chain/cosmovisor/upgrades/v1.3.0/bin/
+mv $HOME/go/bin/c4ed $HOME/.c4e-chain/cosmovisor/upgrades/v1.3.0/bin/
 ```
