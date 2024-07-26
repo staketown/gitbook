@@ -8,12 +8,14 @@ coverY: 0
 ⚠️ Version **v1.3.0** is available
 
 ```bash
-cd $HOME/c4e-chain || return
-git fetch --all
+cd $HOME || return
+rm -rf c4e-chain
+git clone https://github.com/chain4energy/c4e-chain.git
+cd c4e-chain || return
 git checkout v1.3.0
-make install
-c4ed version --long | head
-#version: v1.3.0
 
-sudo systemctl restart c4ed && sudo journalctl -u c4ed -f -o cat
+make build
+
+mkdir -p $HOME/.c4e-chain/cosmovisor/upgrades/v1.3.0/bin
+mv build/c4ed $HOME/.c4e-chain/cosmovisor/upgrades/v1.3.0/bin/
 ```

@@ -1,6 +1,6 @@
 ---
 cover: ../../.gitbook/assets/c4e-banner.jpeg
-coverY: -24.5
+coverY: 0
 ---
 
 # C4E
@@ -11,8 +11,8 @@ coverY: -24.5
 * Denom: `uc4e`
 * Binary: `c4ed`
 * Working directory: `.c4e-chain`
-* Explorers: [https://explorer.stavr.tech/c4e-testnet](https://explorer.stavr.tech/c4e-testnet)
-* Faucet: -
+* Explorers: [LINK](https://explorer.stavr.tech/c4e-testnet)
+* Faucet: Ask in discord channel
 
 ## Overview
 

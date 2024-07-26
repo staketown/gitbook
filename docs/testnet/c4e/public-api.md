@@ -20,5 +20,5 @@ https://c4e-testnet-api.stake-town.com:443
 ### **GRPC Endpoint**
 
 ```bash
-c4e-testnet-grpc.stake-town.com:9990
+c4e-testnet-grpc.stake-town.com:443
 ```
