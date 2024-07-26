@@ -19,7 +19,7 @@ sudo systemctl stop c4ed
 cp $HOME/.c4e-chain/data/priv_validator_state.json $HOME/.c4e-chain/priv_validator_state.json.backup
 rm -rf $HOME/.c4e-chain/data
 
-URL="https://snapshots.stake-town.com/c4e/perun-1_latest.tar.lz4"
+URL=https://snapshots-1.stake-town.com/c4e/perun-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.c4e-chain
 
 mv $HOME/.c4e-chain/priv_validator_state.json.backup $HOME/.c4e-chain/data/priv_validator_state.json
@@ -54,12 +54,17 @@ sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $CONFIG_TOML
 
 mv $HOME/.c4e-chain/priv_validator_state.json.backup $HOME/.c4e-chain/data/priv_validator_state.json
 
-sudo systemctl restart c4ed
-sudo journalctl -u c4ed -f -o cat
+sudo systemctl restart c4ed && sudo journalctl -u c4ed -f -o cat
+```
+
+## **Address Book**
+
+```bash
+curl -Ls https://snapshots-1.stake-town.com/c4e/addrbook.json > $HOME/.c4e-chain/config/addrbook.json
 ```
 
 ## Genesis
 
 ```bash
-curl -s https://snapshots.stake-town.com/c4e/genesis.json > $HOME/.c4e-chain/config/genesis.json
+curl -Ls https://snapshots-1.stake-town.com/c4e/genesis.json > $HOME/.c4e-chain/config/genesis.json
 ```

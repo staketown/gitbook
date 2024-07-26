@@ -21,8 +21,8 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf c4e-chain
-git clone https://github.com/chain4energy/c4e-chain
+rm -rf $HOME/c4e-chain
+git clone https://github.com/chain4energy/c4e-chain.git
 cd $HOME/c4e-chain || return
 git checkout v1.3.1
 
@@ -30,25 +30,34 @@ make install
 
 c4ed config keyring-backend os
 c4ed config chain-id perun-1
-c4ed init "<Your moniker>" --chain-id perun-1
+c4ed init "Your Moniker" --chain-id perun-1
 
-wget -O $HOME/.c4e-chain/config/genesis.json "https://raw.githubusercontent.com/chain4energy/c4e-chains/main/perun-1/genesis.json"
+# Download genesis and addrbook
+curl -Ls https://snapshots-1.stake-town.com/c4e/genesis.json > $HOME/.c4e-chain/config/genesis.json
+curl -Ls https://snapshots-1.stake-town.com/c4e/addrbook.json > $HOME/.c4e-chain/config/addrbook.json
 
-APP_TOML=$HOME/.c4e-chain/config/app.toml
+APP_TOML="~/.c4e-chain/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
 sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "19"|g' $APP_TOML
-sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
-indexer="null"
-sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0025uc4e"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
-CONFIG_TOML=$HOME/.c4e-chain/config/config.toml
-PEERS="084a5c788c9c61541152192d7dfe055c153af642@5.135.141.191:26656,81a3c179ee820d291adebc215d5d1af95b887ec8@65.109.30.185:26656,3c6553a3c45477c2a9902e54069bee7109318b9d@163.172.18.144:26656,68a611fc1d17612e4de6b1232d04568ea3c20a19@77.55.216.80:26656"
+CONFIG_TOML="~/.c4e-chain/config/config.toml"
+SEEDS=""
+PEERS="dd3e39a35cc96bae4b51c68605237dafb6de284c@138.201.21.197:35656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
-SEEDS="30e98bbcf5bb29ed4e4ff685fa8fa84fa0ddff51@tenderseed.ccvalidators.com:26008"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
+external_address=$(wget -qO- eth0.me)
+sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0025uc4e"|g' $CONFIG_TOML
+sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
+sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
+
+# Install cosmovisor
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
+mkdir -p ~/.c4e-chain/cosmovisor/genesis/bin
+mkdir -p ~/.c4e-chain/cosmovisor/upgrades
+cp ~/go/bin/c4ed ~/.c4e-chain/cosmovisor/genesis/bin
 
 sudo tee /etc/systemd/system/c4ed.service > /dev/null << EOF
 [Unit]
@@ -56,19 +65,25 @@ Description=C4E Node
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which c4ed) start
+ExecStart=$(which cosmovisor) run start
 Restart=on-failure
-RestartSec=10
+RestartSec=3
 LimitNOFILE=10000
+Environment="DAEMON_NAME=c4ed"
+Environment="DAEMON_HOME=$HOME/.c4e-chain"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="UNSAFE_SKIP_BACKUP=true"
 [Install]
 WantedBy=multi-user.target
 EOF
 
+# Snapshots
 c4ed tendermint unsafe-reset-all --home $HOME/.c4e-chain --keep-addr-book
 
-# Add snapshot here
-URL="https://snapshots.stake-town.com/c4e/perun-1_latest.tar.lz4"
-curl $URL | lz4 -dc - | tar -xf - -C $HOME/.c4e-chain
+URL=https://snapshots-1.stake-town.com/c4e/perun-1_latest.tar.lz4
+curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.c4e-chain
+[[ -f $HOME/.c4e-chain/data/upgrade-info.json ]] && cp $HOME/.c4e-chain/data/upgrade-info.json $HOME/.c4e-chain/cosmovisor/genesis/upgrade-info.json
 ```
 
 **(Optional) Configure timeouts for processing blocks**
@@ -104,11 +119,11 @@ sed -i 's|^enable *=.*|enable = false|' $HOME/.c4e-chain/config/config.toml
 sudo systemctl restart c4ed && sudo journalctl -u c4ed -f -o cat
 ```
 
-## Wallet creation
+### Wallet creation
 
 Create wallet
 
-> ⚠️  store **seed** phrase, important during recovering
+> ⚠️ store **seed** phrase, important during recovering
 
 ```bash
 c4ed keys add <YOUR_WALLET_NAME>
@@ -116,29 +131,33 @@ c4ed keys add <YOUR_WALLET_NAME>
 
 Recover wallet
 
-> ⚠️  store **seed** phrase, important during recovering
+> ⚠️ store **seed** phrase, important during recovering
 
 ```bash
 c4ed keys add <YOUR_WALLET_NAME> --recover
 ```
 
-## Validator creation
+### Validator creation
 
 After successful synchronisation we can proceed with validation creation.
+
+Create validator
 
 ```bash
 c4ed tx staking create-validator \
 --amount=1000000uc4e \
 --pubkey=$(c4ed tendermint show-validator) \
 --moniker="<Your moniker>" \
---identity=<your identity> \
+--identity=<Your identity> \
 --details="<Your details>" \
 --chain-id=perun-1 \
---commission-rate=0.10 \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---fees=5000uc4e
+--gas-prices=0.1uc4e \
+--gas-adjustment=1.5 \
+--gas=auto \
 -y
 ```

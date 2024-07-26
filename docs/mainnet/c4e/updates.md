@@ -10,12 +10,12 @@ coverY: 0
 ```bash
 cd $HOME || return
 rm -rf c4e-chain
-git clone https://github.com/chain4energy/c4e-chain
-cd $HOME/c4e-chain || return
+git clone https://github.com/chain4energy/c4e-chain.git
+cd c4e-chain || return
 git checkout v1.3.1
 
-make build
+make install
 
 mkdir -p $HOME/.c4e-chain/cosmovisor/upgrades/v1.3.1/bin
-mv build/c4ed $HOME/.c4e-chain/cosmovisor/upgrades/v1.3.1/bin/
+mv $HOME/go/bin/c4ed $HOME/.c4e-chain/cosmovisor/upgrades/v1.3.1/bin/
 ```
