@@ -33,8 +33,8 @@ persistenceCore config chain-id core-1
 persistenceCore init "Your Moniker" --chain-id core-1
 
 # Download genesis and addrbook
-curl -Ls https://snapshots.stake-town.com/persistence/genesis.json > $HOME/.persistenceCore/config/genesis.json
-curl -Ls https://snapshots.stake-town.com/persistence/addrbook.json > $HOME/.persistenceCore/config/addrbook.json
+curl -Ls https://snapshots-1.stake-town.com/persistence/genesis.json > $HOME/.persistenceCore/config/genesis.json
+curl -Ls https://snapshots-1.stake-town.com/persistence/addrbook.json > $HOME/.persistenceCore/config/addrbook.json
 
 APP_TOML="~/.persistenceCore/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 persistenceCore tendermint unsafe-reset-all --home $HOME/.persistenceCore --keep-addr-book
 
-URL=https://snapshots.stake-town.com/persistence/core-1_latest.tar.lz4
+URL=https://snapshots-1.stake-town.com/persistence/core-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.persistenceCore
 [[ -f $HOME/.persistenceCore/data/upgrade-info.json ]] && cp $HOME/.persistenceCore/data/upgrade-info.json $HOME/.persistenceCore/cosmovisor/genesis/upgrade-info.json
 ```

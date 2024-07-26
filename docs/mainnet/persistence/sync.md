@@ -19,7 +19,7 @@ sudo systemctl stop persistenceCore
 cp $HOME/.persistenceCore/data/priv_validator_state.json $HOME/.persistenceCore/priv_validator_state.json.backup
 rm -rf $HOME/.persistenceCore/data
 
-URL=https://snapshots.stake-town.com/persistence/core-1_latest.tar.lz4
+URL=https://snapshots-1.stake-town.com/persistence/core-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.persistenceCore
 
 mv $HOME/.persistenceCore/priv_validator_state.json.backup $HOME/.persistenceCore/data/priv_validator_state.json 
@@ -62,18 +62,18 @@ sudo systemctl restart persistenceCore && sudo journalctl -u persistenceCore -f 
 As far state-sync doesn't support wasm folder we should download it manually
 
 ```bash
-URL=https://snapshots.stake-town.com/persistence/wasm_latest.tar.lz4
+URL=https://snapshots-1.stake-town.com/persistence/wasm_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.persistenceCore
 ```
 
 ## **Address Book**
 
 ```bash
-curl -Ls https://snapshots.stake-town.com/persistence/addrbook.json > $HOME/.persistenceCore/config/addrbook.json
+curl -Ls https://snapshots-1.stake-town.com/persistence/addrbook.json > $HOME/.persistenceCore/config/addrbook.json
 ```
 
 ## Genesis
 
 ```bash
-curl -Ls https://snapshots.stake-town.com/persistence/genesis.json > $HOME/.persistenceCore/config/genesis.json
+curl -Ls https://snapshots-1.stake-town.com/persistence/genesis.json > $HOME/.persistenceCore/config/genesis.json
 ```
