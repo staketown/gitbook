@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/quasar
 git clone https://github.com/quasar-finance/quasar.git
 cd $HOME/quasar || return
-git checkout v1.0.1
+git checkout v2.0.1
 
 make install
 
