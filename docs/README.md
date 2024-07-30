@@ -12,6 +12,7 @@
 * [Evmos](mainnet/evmos)
 * [Gitopia](mainnet/gitopia)
 * [Juno](mainnet/juno)
+* [Lava](mainnet/lava)
 * [Osmosis](mainnet/osmosis)
 * [Persistence](mainnet/persistence)
 * [Picasso](mainnet/picasso)
