@@ -44,3 +44,4 @@
 * [Side Protocol](testnet/side)
 * [Source](testnet/source)
 * [Umee](testnet/umee)
+* [Warden Protocol](testnet/warden)
