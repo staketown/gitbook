@@ -6,6 +6,7 @@ about any of above incidents for each path that is being tracked to discord chan
 
 ## Chains integrated
 * [Celestia](/docs/mainnet/celestia)
+* [Elys](/docs/tesnet/elys)
 * [Umee](/docs/mainnet/umee)
 
 ## How it works
