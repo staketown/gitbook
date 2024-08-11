@@ -17,5 +17,5 @@ git checkout v0.3.1.alpha.0
 make build
 
 mkdir -p $HOME/.0gchain/cosmovisor/upgrades/v0.3.1/bin
-mv build/0gchaind $HOME/.0gchain/cosmovisor/upgrades/v0.3.1/bin/
+mv out/linux/0gchaind $HOME/.0gchain/cosmovisor/upgrades/v0.3.1/bin/
 ```
