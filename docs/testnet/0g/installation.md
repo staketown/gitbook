@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/0g-chain
 git clone https://github.com/0glabs/0g-chain.git
 cd $HOME/0g-chain || return
-git checkout v0.2.3
+git checkout v0.3.1
 
 make install
 
