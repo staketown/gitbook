@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v0.3.1** is available
+⚠️ Version **v0.3.1.alpha.0** is available
 
 ```bash
 cd $HOME || return
 rm -rf 0g-chain
 git clone https://github.com/0glabs/0g-chain.git
 cd 0g-chain || return
-git checkout v0.3.1
+git checkout v0.3.1.alpha.0
 
 make build
 
