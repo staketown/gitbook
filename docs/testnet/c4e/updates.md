@@ -5,17 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v1.3.0** is available
+⚠️ Version **v1.4.0** is available
 
 ```bash
 cd $HOME || return
 rm -rf c4e-chain
 git clone https://github.com/chain4energy/c4e-chain.git
 cd c4e-chain || return
-git checkout v1.3.0
+git checkout v1.4.0
 
 make install
 
-mkdir -p $HOME/.c4e-chain/cosmovisor/upgrades/v1.3.0/bin
-mv $HOME/go/bin/c4ed $HOME/.c4e-chain/cosmovisor/upgrades/v1.3.0/bin/
+mkdir -p $HOME/.c4e-chain/cosmovisor/upgrades/v1.4.0/bin
+mv $HOME/go/bin/c4ed $HOME/.c4e-chain/cosmovisor/upgrades/v1.4.0/bin/
 ```
