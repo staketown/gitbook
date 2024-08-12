@@ -21,7 +21,7 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME
-wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.3.2/wardend_Linux_x86_64.zip
+wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.4.1/wardend_Linux_x86_64.zip
 unzip wardend_Linux_x86_64.zip -d ~/temp_warden
 mv ~/temp_warden/wardend ~/go/bin/
 rm -rf ~/temp_warden
