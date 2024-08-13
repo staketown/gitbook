@@ -16,5 +16,5 @@ rm -rf ~/temp_warden
 rm ~/wardend_Linux_x86_64.zip
 
 mkdir -p $HOME/.warden/cosmovisor/upgrades/v03-to-v04/bin
-mv ~/go/bin/wardend $HOME/.warden/cosmovisor/upgrades/v03-to-v04/bin/
+cp ~/go/bin/wardend $HOME/.warden/cosmovisor/upgrades/v03-to-v04/bin/
 ```
