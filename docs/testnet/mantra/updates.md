@@ -5,4 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ **No updates so far**
+⚠️ Version **v2.0.0** is available
+
+```bash
+wget https://github.com/MANTRA-Finance/public/releases/download/v2.0.0/mantrachaind-2.0.0-linux-amd64.tar.gz
+tar -xvf mantrachaind-2.0.0-linux-amd64.tar.gz
+rm mantrachaind-2.0.0-linux-amd64.tar.gz
+mv mantrachaind $HOME/go/bin
+
+mkdir -p $HOME/.mantrachain/cosmovisor/upgrades/v2.0.0/bin
+cp $HOME/go/bin/mantrachaind $HOME/.mantrachain/cosmovisor/upgrades/v2.0.0/bin/
+```
