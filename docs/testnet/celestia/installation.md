@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd $HOME/celestia-app || return
-git checkout v1.13.0
+git checkout v2.0.0
 
 make install
 
@@ -63,7 +63,7 @@ Description=Celestia Node
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which cosmovisor) run start --v2-upgrade-height 2585031
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000
@@ -168,7 +168,7 @@ cd $HOME
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-git checkout v0.15.0
+git checkout v0.16.0-rc0
 make build
 sudo mv build/celestia $HOME/go/bin
 make cel-key
