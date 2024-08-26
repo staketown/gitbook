@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd $HOME/celestia-app || return
-git checkout v1.11.0
+git checkout v1.13.0
 
 make install
 
@@ -168,7 +168,7 @@ cd $HOME
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-git checkout v0.14.1
+git checkout v0.15.0
 make build
 sudo mv build/celestia $HOME/go/bin
 make cel-key
