@@ -190,7 +190,7 @@ cel-key add bridge-wallet --node.type bridge --p2p.network celestia --recover
 Initialize Bridge node
 ```bash
 celestia bridge init \
---keyring.accname bridge-wallet \
+--keyring.keyname bridge-wallet \
 --core.ip http://localhost \
 --core.rpc.port 26657 \
 --core.grpc.port 9090 \
@@ -209,7 +209,7 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(which celestia) bridge start \\
---keyring.accname bridge-wallet \\
+--keyring.keyname bridge-wallet \\
 --core.ip http://localhost \\
 --core.rpc.port 26657 \\
 --core.grpc.port 9090 \\
