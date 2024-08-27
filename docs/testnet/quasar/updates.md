@@ -17,5 +17,5 @@ git checkout v3.0.0-rc0
 make build
 
 mkdir -p $HOME/.quasarnode/cosmovisor/upgrades/v3/bin
-mv build/quasarnoded $HOME/.quasarnode/cosmovisor/upgrades/v3/bin/
+mv build/quasard $HOME/.quasarnode/cosmovisor/upgrades/v3/bin/
 ```

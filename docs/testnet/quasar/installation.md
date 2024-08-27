@@ -28,9 +28,9 @@ git checkout v3.0.0-rc0
 
 make install
 
-quasarnoded config keyring-backend os
-quasarnoded config chain-id quasar-test-1
-quasarnoded init "Your Moniker" --chain-id quasar-test-1
+quasard config keyring-backend os
+quasard config chain-id quasar-test-1
+quasard init "Your Moniker" --chain-id quasar-test-1
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/quasar/genesis.json > $HOME/.quasarnode/config/genesis.json
@@ -57,9 +57,9 @@ sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 mkdir -p ~/.quasarnode/cosmovisor/genesis/bin
 mkdir -p ~/.quasarnode/cosmovisor/upgrades
-cp ~/go/bin/quasarnoded ~/.quasarnode/cosmovisor/genesis/bin
+cp ~/go/bin/quasard ~/.quasarnode/cosmovisor/genesis/bin
 
-sudo tee /etc/systemd/system/quasarnoded.service > /dev/null << EOF
+sudo tee /etc/systemd/system/quasard.service > /dev/null << EOF
 [Unit]
 Description=Quasar Node
 After=network-online.target
@@ -69,7 +69,7 @@ ExecStart=$(which cosmovisor) run start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000
-Environment="DAEMON_NAME=quasarnoded"
+Environment="DAEMON_NAME=quasard"
 Environment="DAEMON_HOME=$HOME/.quasarnode"
 Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
@@ -79,7 +79,7 @@ WantedBy=multi-user.target
 EOF
 
 # Snapshots
-quasarnoded tendermint unsafe-reset-all --home $HOME/.quasarnode --keep-addr-book
+quasard tendermint unsafe-reset-all --home $HOME/.quasarnode --keep-addr-book
 
 URL=https://snapshots-testnet.stake-town.com/quasar/quasar-test-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.quasarnode
@@ -104,10 +104,10 @@ Enable and start service
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable quasarnoded
-sudo systemctl start quasarnoded
+sudo systemctl enable quasard
+sudo systemctl start quasard
 
-sudo journalctl -u quasarnoded -f -o cat
+sudo journalctl -u quasard -f -o cat
 ```
 
 > After successful synchronisation we recommend to turn off **snapshot\_interval** and state sync, this will save space on your hardware.
@@ -116,7 +116,7 @@ sudo journalctl -u quasarnoded -f -o cat
 snapshot_interval=0
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/.quasarnode/config/app.toml
 sed -i 's|^enable *=.*|enable = false|' $HOME/.quasarnode/config/config.toml
-sudo systemctl restart quasarnoded && sudo journalctl -u quasarnoded -f -o cat
+sudo systemctl restart quasard && sudo journalctl -u quasard -f -o cat
 ```
 
 ### Wallet creation
@@ -126,7 +126,7 @@ Create wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-quasarnoded keys add <YOUR_WALLET_NAME>
+quasard keys add <YOUR_WALLET_NAME>
 ```
 
 Recover wallet
@@ -134,7 +134,7 @@ Recover wallet
 > ⚠️ store **seed** phrase, important during recovering
 
 ```bash
-quasarnoded keys add <YOUR_WALLET_NAME> --recover
+quasard keys add <YOUR_WALLET_NAME> --recover
 ```
 
 ### Validator creation
@@ -144,9 +144,9 @@ After successful synchronisation we can proceed with validation creation.
 Create validator
 
 ```bash
-quasarnoded tx staking create-validator \
+quasard tx staking create-validator \
 --amount=1000000uqsr \
---pubkey=$(quasarnoded tendermint show-validator) \
+--pubkey=$(quasard tendermint show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
