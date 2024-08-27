@@ -66,9 +66,10 @@ gitopiad tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---commission-rate=0.10 \
+--chain-id=gitopia \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
 --gas-prices=0.1ulore \
@@ -206,7 +207,7 @@ gitopiad query gov proposal <proposal_id>
 Deposit proposal by proposal id
 
 ```bash
-gitopiad tx gov deposit 1 1000000ulore --from <YOUR_WALLET> --gas-prices 0.1ulore --gas-adjustment 1.5 --gas auto -y 
+gitopiad tx gov deposit 1 1000000ulore --from <YOUR_WALLET> --gas-prices 0.1ulore --gas-adjustment 1.5 --gas auto -y
 ```
 
 Vote as, **YES**
@@ -323,9 +324,6 @@ Check network parameters
 ```bash
 gitopiad q staking params
 gitopiad q slashing params
-```
-
-```bash
 ```
 
 Check validator private key is correct

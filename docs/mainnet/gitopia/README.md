@@ -11,8 +11,8 @@ coverY: 0
 * Denom: `ulore`
 * Binary: `gitopiad`
 * Working directory: `.gitopia`
-* Explorers: [https://gitopia.exploreme.pro](https://gitopia.exploreme.pro/validators)
-* Faucet: -
+* Explorers: [LINK](https://ping.pub/gitopia)
+* Faucet: Ask in discord channel
 
 ## Overview
 

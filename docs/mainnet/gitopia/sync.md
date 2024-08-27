@@ -19,7 +19,7 @@ sudo systemctl stop gitopiad
 cp $HOME/.gitopia/data/priv_validator_state.json $HOME/.gitopia/priv_validator_state.json.backup
 rm -rf $HOME/.gitopia/data
 
-URL="https://snapshots.stake-town.com/gitopia/gitopia_latest.tar.lz4"
+URL=https://snapshots.stake-town.com/gitopia/gitopia_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.gitopia
 
 mv $HOME/.gitopia/priv_validator_state.json.backup $HOME/.gitopia/data/priv_validator_state.json

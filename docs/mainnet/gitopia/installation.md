@@ -8,7 +8,7 @@ coverY: 0
 Install with one line script
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/gitopia/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/gitopia/main_install.sh)
 ```
 
 Manual installation
@@ -21,37 +21,43 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-rm -rf gitopia
-git clone https://github.com/gitopia/gitopia
-cd gitopia || return
+rm -rf $HOME/gitopia
+git clone https://github.com/gitopia/gitopia.git
+cd $HOME/gitopia || return
 git checkout v4.0.0
+
 make install
 
 gitopiad config keyring-backend os
 gitopiad config chain-id gitopia
-gitopiad init "<Your moniker>" --chain-id gitopia
+gitopiad init "Your Moniker" --chain-id gitopia
 
+# Download genesis and addrbook
 curl -Ls https://snapshots.stake-town.com/gitopia/genesis.json > $HOME/.gitopia/config/genesis.json
 curl -Ls https://snapshots.stake-town.com/gitopia/addrbook.json > $HOME/.gitopia/config/addrbook.json
 
 APP_TOML="~/.gitopia/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $APP_TOML
-sed -i 's|^snapshot-interval *=.*|snapshot-interval = 19|g' $APP_TOML
+sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
+sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.gitopia/config/config.toml"
-SEEDS="400f3d9e30b69e78a7fb891f60d76fa3c73f0ecc@gitopia.rpc.kjnodes.com:14159"
-PEERS=""
+SEEDS=""
+PEERS="d5525675ceb88d2c4f4df828ec01d237bcc11950@138.201.21.197:26656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
 sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.001ulore"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
-sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 30/g' $CONFIG_TOML
-sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 30/g' $CONFIG_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
+
+# Install cosmovisor
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
+mkdir -p ~/.gitopia/cosmovisor/genesis/bin
+mkdir -p ~/.gitopia/cosmovisor/upgrades
+cp ~/go/bin/gitopiad ~/.gitopia/cosmovisor/genesis/bin
 
 sudo tee /etc/systemd/system/gitopiad.service > /dev/null << EOF
 [Unit]
@@ -59,17 +65,25 @@ Description=Gitopia Node
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which gitopiad) start
+ExecStart=$(which cosmovisor) run start
 Restart=on-failure
-RestartSec=10
+RestartSec=3
 LimitNOFILE=10000
+Environment="DAEMON_NAME=gitopiad"
+Environment="DAEMON_HOME=$HOME/.gitopia"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="UNSAFE_SKIP_BACKUP=true"
 [Install]
 WantedBy=multi-user.target
 EOF
 
-# Snapshot
-URL="https://snapshots.stake-town.com/gitopia/gitopia_latest.tar.lz4"
+# Snapshots
+gitopiad tendermint unsafe-reset-all --home $HOME/.gitopia --keep-addr-book
+
+URL=https://snapshots.stake-town.com/gitopia/gitopia_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.gitopia
+[[ -f $HOME/.gitopia/data/upgrade-info.json ]] && cp $HOME/.gitopia/data/upgrade-info.json $HOME/.gitopia/cosmovisor/genesis/upgrade-info.json
 ```
 
 **(Optional) Configure timeouts for processing blocks**
@@ -105,7 +119,7 @@ sed -i 's|^enable *=.*|enable = false|' $HOME/.gitopia/config/config.toml
 sudo systemctl restart gitopiad && sudo journalctl -u gitopiad -f -o cat
 ```
 
-## Wallet creation
+### Wallet creation
 
 Create wallet
 
@@ -123,7 +137,7 @@ Recover wallet
 gitopiad keys add <YOUR_WALLET_NAME> --recover
 ```
 
-## Validator creation
+### Validator creation
 
 After successful synchronisation we can proceed with validation creation.
 
@@ -136,12 +150,13 @@ gitopiad tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---commission-rate=0.10 \
+--chain-id=gitopia \
+--commission-rate=0.05 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.01 \
+--commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---gas-prices=0.1utlore \
+--gas-prices=0.1ulore \
 --gas-adjustment=1.5 \
 --gas=auto \
 -y

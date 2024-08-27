@@ -14,7 +14,7 @@ https://gitopia-rpc.stake-town.com:443
 ### **API Endpoint**
 
 ```bash
-https://gitopia-api.stake-town.com
+https://gitopia-api.stake-town.com:443
 ```
 
 ### **GRPC Endpoint**
