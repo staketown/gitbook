@@ -5,17 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v2.0.0-rc0** is available
+⚠️ Version **v3.0.0-rc0** is available
 
 ```bash
 cd $HOME || return
 rm -rf quasar
 git clone https://github.com/quasar-finance/quasar.git
 cd quasar || return
-git checkout v2.0.0-rc0
+git checkout v3.0.0-rc0
 
 make build
 
-mkdir -p $HOME/.quasarnode/cosmovisor/upgrades/v2/bin
-mv build/quasarnoded $HOME/.quasarnode/cosmovisor/upgrades/v2/bin/
+mkdir -p $HOME/.quasarnode/cosmovisor/upgrades/v3/bin
+mv build/quasarnoded $HOME/.quasarnode/cosmovisor/upgrades/v3/bin/
 ```
