@@ -15,7 +15,7 @@ sudo apt update && sudo apt install lz4 -y
 ```
 
 ```bash
-sudo systemctl stop quasarnoded
+sudo systemctl stop quasard
 cp $HOME/.quasarnode/data/priv_validator_state.json $HOME/.quasarnode/priv_validator_state.json.backup
 rm -rf $HOME/.quasarnode/data
 
@@ -24,16 +24,16 @@ curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.quasarnode
 
 mv $HOME/.quasarnode/priv_validator_state.json.backup $HOME/.quasarnode/data/priv_validator_state.json 
 
-sudo systemctl restart quasarnoded && sudo journalctl -u quasarnoded -f -o cat
+sudo systemctl restart quasard && sudo journalctl -u quasard -f -o cat
 ```
 
 ## **State Sync**
 
 ```bash
-sudo systemctl stop quasarnoded
+sudo systemctl stop quasard
 
 cp $HOME/.quasarnode/data/priv_validator_state.json $HOME/.quasarnode/priv_validator_state.json.backup
-quasarnoded tendermint unsafe-reset-all --home $HOME/.quasarnode --keep-addr-book
+quasard tendermint unsafe-reset-all --home $HOME/.quasarnode --keep-addr-book
 
 SNAP_RPC="https://quasar-rpc.stake-town.com:443"
 
@@ -54,7 +54,7 @@ sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $CONFIG_TOML
 
 mv $HOME/.quasarnode/priv_validator_state.json.backup $HOME/.quasarnode/data/priv_validator_state.json
 
-sudo systemctl restart quasarnoded && sudo journalctl -u quasarnoded -f -o cat
+sudo systemctl restart quasard && sudo journalctl -u quasard -f -o cat
 ```
 
 ## **Wasm**

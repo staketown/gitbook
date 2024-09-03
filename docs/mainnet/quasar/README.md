@@ -9,7 +9,7 @@ coverY: 0
 
 * Network Chain ID: `quasar-1`
 * Denom: `uqsr`
-* Binary: `quasarnoded`
+* Binary: `quasard`
 * Working directory: `.quasarnode`
 * Explorers: [LINK](https://explorer.kjnodes.com/quasar)
 * Faucet: Ask in discord channel
