@@ -19,7 +19,7 @@ sudo systemctl stop arkeod
 cp $HOME/.arkeo/data/priv_validator_state.json $HOME/.arkeo/priv_validator_state.json.backup
 rm -rf $HOME/.arkeo/data
 
-URL="https://snapshots-testnet.stake-town.com/arkeo/arkeo_latest.tar.lz4"
+URL=https://snapshots-testnet.stake-town.com/arkeo/arkeo_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.arkeo
 
 mv $HOME/.arkeo/priv_validator_state.json.backup $HOME/.arkeo/data/priv_validator_state.json
@@ -44,7 +44,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
 PEERS="e6b058d1d6be000d67b87e9d11cb0de1bba1e477@65.109.65.248:42656"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.archway/config/config.toml
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.arkeo/config/config.toml
 
 CONFIG_TOML=$HOME/.arkeo/config/config.toml
 sed -i 's|^enable *=.*|enable = true|' $CONFIG_TOML
@@ -60,11 +60,11 @@ sudo systemctl restart arkeod && sudo journalctl -u arkeod -f -o cat
 ## **Address Book**
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/arkeo/addrbook.json > $HOME/.archway/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/arkeo/addrbook.json > $HOME/.arkeo/config/addrbook.json
 ```
 
 ## Genesis
 
 ```bash
-curl -Ls https://snapshots-testnet.stake-town.com/arkeo/genesis.json > $HOME/.archway/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/arkeo/genesis.json > $HOME/.arkeo/config/genesis.json
 ```

@@ -5,4 +5,4 @@ coverY: 0
 
 # Updates
 
-No upgrades so far
+⚠️ **No updates so far**

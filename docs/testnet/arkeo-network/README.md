@@ -3,7 +3,7 @@ cover: ../../.gitbook/assets/arkeo-banner.jpeg
 coverY: 0
 ---
 
-# Arkeo Network
+# Arkeo
 
 ## Summary
 
@@ -11,8 +11,8 @@ coverY: 0
 * Denom: `uarkeo`
 * Binary: `arkeod`
 * Working directory: `.arkeo`
-* Explorers: [https://testnet.kynraze.com/arkeo](https://testnet.kynraze.com/arkeo)
-* Faucet:
+* Explorers: [LINK](https://testnet.arkeo.explorers.guru/)
+* Faucet: Ask in discord channel
 
 ## Overview
 
