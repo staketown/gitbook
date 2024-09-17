@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf evmos
 git clone https://github.com/tharsis/evmos.git
 cd evmos || return
-git checkout v19.2.0
+git checkout v20.0.0-rc1
 
 make install
 
