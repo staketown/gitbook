@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/0g-chain
 git clone https://github.com/0glabs/0g-chain.git
 cd $HOME/0g-chain || return
-git checkout v0.3.1.alpha.0
+git checkout v0.3.1.alpha.1
 
 make install
 
@@ -65,7 +65,8 @@ Description=0G Node
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+WorkingDirectory=$HOME/.0gchain
+ExecStart=$(which cosmovisor) run start --home $HOME/.0gchain --log_output_console
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000
