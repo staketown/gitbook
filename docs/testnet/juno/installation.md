@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/juno
 git clone https://github.com/CosmosContracts/juno.git
 cd $HOME/juno || return
-git checkout v24.0.0
+git checkout v25.0.0
 
 make install
 
