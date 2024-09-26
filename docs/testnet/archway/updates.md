@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v9.0.0-rc2** is available
+⚠️ Version **v9.0.0-rc3** is available
 
 ```bash
 cd $HOME || return
 rm -rf archway
 git clone https://github.com/archway-network/archway.git
 cd archway || return
-git checkout v9.0.0-rc2
+git checkout v9.0.0-rc3
 
 make build
 
