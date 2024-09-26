@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/elys
 git clone https://github.com/elys-network/elys.git
 cd $HOME/elys || return
-git checkout v0.45.1
+git checkout v0.46.0
 
 make install
 
