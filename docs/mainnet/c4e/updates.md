@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v1.4.1** is available
+⚠️ Version **v1.4.2** is available
 
 ```bash
 cd $HOME || return
 rm -rf c4e-chain
 git clone https://github.com/chain4energy/c4e-chain.git
 cd c4e-chain || return
-git checkout v1.4.1
+git checkout v1.4.2
 
 make install
 

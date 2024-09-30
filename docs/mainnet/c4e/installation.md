@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/c4e-chain
 git clone https://github.com/chain4energy/c4e-chain.git
 cd $HOME/c4e-chain || return
-git checkout v1.4.1
+git checkout v1.4.2
 
 make install
 
