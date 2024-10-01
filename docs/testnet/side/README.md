@@ -7,7 +7,7 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `grimoria-testnet-1`
+* Network Chain ID: `sidechain-testnet-4`
 * Denom: `uside`
 * Binary: `sided`
 * Working directory: `.side`
