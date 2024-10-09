@@ -21,13 +21,13 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.6.1-hf/quicksilverd-v1.6.1-hf-amd64
+wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.6.3/quicksilverd-v1.6.3-amd64
 chmod +x quicksilverd
 mv quicksilverd $HOME/go/bin
 
 quicksilverd config keyring-backend os
-quicksilverd config chain-id rhye-2
-quicksilverd init "Your Moniker" --chain-id rhye-2
+quicksilverd config chain-id rhye-3
+quicksilverd init "Your Moniker" --chain-id rhye-3
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/quicksilver/genesis.json > $HOME/.quicksilverd/config/genesis.json
@@ -78,7 +78,7 @@ EOF
 # Snapshots
 quicksilverd tendermint unsafe-reset-all --home $HOME/.quicksilverd --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/quicksilver/rhye-2_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/quicksilver/rhye-3_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.quicksilverd
 [[ -f $HOME/.quicksilverd/data/upgrade-info.json ]] && cp $HOME/.quicksilverd/data/upgrade-info.json $HOME/.quicksilverd/cosmovisor/genesis/upgrade-info.json
 ```
@@ -147,7 +147,7 @@ quicksilverd tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=rhye-2 \
+--chain-id=rhye-3 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \

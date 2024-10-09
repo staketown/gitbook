@@ -5,14 +5,4 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v1.6.1-hf** is available
-
-```bash
-cd $HOME || return
-wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.6.1-hf/quicksilverd-v1.6.1-hf-amd64
-chmod +x quicksilverd
-mv quicksilverd $HOME/go/bin
-
-mkdir -p $HOME/.quicksilverd/cosmovisor/upgrades/v1.6.1/bin
-cp $HOME/go/bin/quicksilverd $HOME/.quicksilverd/cosmovisor/upgrades/v1.6.1/bin/
-```
+No updates so far
