@@ -19,7 +19,7 @@ sudo systemctl stop arkeod
 cp $HOME/.arkeo/data/priv_validator_state.json $HOME/.arkeo/priv_validator_state.json.backup
 rm -rf $HOME/.arkeo/data
 
-URL=https://snapshots-testnet.stake-town.com/arkeo/arkeo_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/arkeo/arkeo-testnet-3_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.arkeo
 
 mv $HOME/.arkeo/priv_validator_state.json.backup $HOME/.arkeo/data/priv_validator_state.json

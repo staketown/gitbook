@@ -7,7 +7,7 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `arkeo`
+* Network Chain ID: `arkeo-testnet-3`
 * Denom: `uarkeo`
 * Binary: `arkeod`
 * Working directory: `.arkeo`

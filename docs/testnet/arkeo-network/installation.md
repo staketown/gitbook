@@ -30,7 +30,7 @@ TAG=testnet make install
 
 arkeod config keyring-backend os
 arkeod config chain-id arkeo
-arkeod init "Your Moniker" --chain-id arkeo
+arkeod init "Your Moniker" --chain-id arkeo-testnet-3
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/arkeo/genesis.json > $HOME/.arkeo/config/genesis.json
@@ -43,7 +43,7 @@ sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
 sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.arkeo/config/config.toml"
-SEEDS=""
+SEEDS="9dfa5f2d19c1174baf5e597965394269e654f9b7@seed31.innovationtheory.com:26656"
 PEERS="e6b058d1d6be000d67b87e9d11cb0de1bba1e477@65.109.65.248:42656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
@@ -82,7 +82,7 @@ EOF
 # Snapshots
 arkeod tendermint unsafe-reset-all --home $HOME/.arkeo --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/arkeo/arkeo_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/arkeo/arkeo-testnet-3_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.arkeo
 [[ -f $HOME/.arkeo/data/upgrade-info.json ]] && cp $HOME/.arkeo/data/upgrade-info.json $HOME/.arkeo/cosmovisor/genesis/upgrade-info.json
 ```
@@ -151,7 +151,7 @@ arkeod tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=arkeo \
+--chain-id=arkeo-testnet-3 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \
