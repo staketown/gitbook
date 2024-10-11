@@ -28,8 +28,8 @@ git checkout master
 
 TAG=testnet make install 
 
-arkeod config keyring-backend os
-arkeod config chain-id arkeo-testnet-3
+arkeod config set client keyring-backend os
+arkeod config set client chain-id arkeo-testnet-3
 arkeod init "Your Moniker" --chain-id arkeo-testnet-3
 
 # Download genesis and addrbook
