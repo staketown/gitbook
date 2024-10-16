@@ -5,4 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ **No updates so far**
+⚠️ Version **v0.9.2** is available
+
+```bash
+cd $HOME || return
+rm -rf side
+git clone https://github.com/sideprotocol/side.git
+cd side || return
+git checkout v0.9.2
+
+make build
+
+mkdir -p $HOME/.side/cosmovisor/upgrades/v0.9.2/bin
+mv build/sided $HOME/.side/cosmovisor/upgrades/v0.9.2/bin/
+```
