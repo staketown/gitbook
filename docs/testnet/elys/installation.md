@@ -44,8 +44,8 @@ sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
 sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.elys/config/config.toml"
-SEEDS="3f472746f46493309650e5a033076689996c8881@elys-testnet.rpc.kjnodes.com:15359"
-PEERS="ae22b82b1dc34fa0b1a64854168692310f562136@147.135.104.10:26656,cdf9ae8529aa00e6e6703b28f3dcfdd37e07b27c@147.135.9.107:26656"
+SEEDS="ae7191b2b922c6a59456588c3a262df518b0d130@elys-testnet-seed.itrocket.net:38656"
+PEERS="b64643dc38d426362a4f7c98b6acabe37ffb5654@65.108.203.61:38656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)

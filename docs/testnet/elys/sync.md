@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="8c971e7fed202339dc557c2170a5be125153436a@65.108.124.43:38656"
+PEERS="b64643dc38d426362a4f7c98b6acabe37ffb5654@65.108.203.61:38656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.elys/config/config.toml
 
 CONFIG_TOML=$HOME/.elys/config/config.toml

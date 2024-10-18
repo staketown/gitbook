@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="8c934a899518b4a1eb8975eb452d3cc1a8c2ed13@65.108.124.43:39656"
+PEERS="82acf31bdb57f6f9afa08049ac030cde4fb5f083@65.108.203.61:39656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.warden/config/config.toml
 
 CONFIG_TOML=$HOME/.warden/config/config.toml
