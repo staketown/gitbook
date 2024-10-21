@@ -33,7 +33,6 @@
 * [Evmos](testnet/evmos)
 * [Juno](testnet/juno)
 * [Lava](testnet/lava)
-* [Mantra](testnet/mantra)
 * [Ojo](testnet/ojo)
 * [Persistence](testnet/persistence)
 * [Quasar](testnet/quasar)
