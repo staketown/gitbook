@@ -22,3 +22,9 @@ https://warden-testnet-api.stake-town.com:443
 ```bash
 warden-testnet-grpc.stake-town.com:443
 ```
+
+### **JsonRPC Endpoint**
+
+```bash
+https://warden-testnet-jsonrpc.stake-town.com:443
+```

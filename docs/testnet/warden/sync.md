@@ -19,7 +19,7 @@ sudo systemctl stop wardend
 cp $HOME/.warden/data/priv_validator_state.json $HOME/.warden/priv_validator_state.json.backup
 rm -rf $HOME/.warden/data
 
-URL=https://snapshots-testnet.stake-town.com/warden/buenavista-1_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/warden/chiado_10010-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.warden
 
 mv $HOME/.warden/priv_validator_state.json.backup $HOME/.warden/data/priv_validator_state.json 
@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="82acf31bdb57f6f9afa08049ac030cde4fb5f083@65.108.203.61:39656"
+PEERS="bc864f9f16ccf5244ed3a0537f5838ffb3c61269@65.108.203.61:39656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.warden/config/config.toml
 
 CONFIG_TOML=$HOME/.warden/config/config.toml

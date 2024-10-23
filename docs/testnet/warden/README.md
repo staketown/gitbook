@@ -7,8 +7,8 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `buenavista-1`
-* Denom: `uward`
+* Network Chain ID: `chiado_10010-1`
+* Denom: `award`
 * Binary: `wardend`
 * Working directory: `.warden`
 * Explorers: [LINK](https://testnet.warden.explorers.guru/)
