@@ -35,6 +35,7 @@
 * [Lava](testnet/lava)
 * [Ojo](testnet/ojo)
 * [Persistence](testnet/persistence)
+* [Prysm](testnet/prysm)
 * [Quasar](testnet/quasar)
 * [Quicksilver](testnet/quicksilver)
 * [Side Protocol](testnet/side)
