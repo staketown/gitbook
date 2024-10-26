@@ -16,6 +16,6 @@ git checkout v0.9.4
 
 make build
 
-mkdir -p $HOME/.side/cosmovisor/upgrades/v0.9.3/bin
-mv build/sided $HOME/.side/cosmovisor/upgrades/v0.9.3/bin/
+mkdir -p $HOME/.side/cosmovisor/upgrades/v0.9.4/bin
+mv build/sided $HOME/.side/cosmovisor/upgrades/v0.9.4/bin/
 ```
