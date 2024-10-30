@@ -6,14 +6,14 @@ coverY: 0
 # Updates
 
 ### Node updates
-⚠️ Version **v2.3.0-mocha** is available
+⚠️ Version **v2.3.1-mocha** is available
 
 ```bash
 cd $HOME || return
 rm -rf $HOME/celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd $HOME/celestia-app || return
-git checkout v2.3.0-mocha
+git checkout v2.3.1-mocha
 
 make build
 
