@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd $HOME/celestia-app || return
-git checkout v2.3.1-mocha
+git checkout v3.0.0-mocha
 
 make install
 
@@ -168,7 +168,7 @@ cd $HOME
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-git checkout v0.16.2-mocha
+git checkout v0.20.0-mocha
 make build
 sudo mv build/celestia $HOME/go/bin
 make cel-key
@@ -219,6 +219,7 @@ ExecStart=$(which celestia) bridge start \\
 --metrics.tls=true \\
 --metrics \\
 --metrics.endpoint otel.celestia-mocha.com
+--archival
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535
