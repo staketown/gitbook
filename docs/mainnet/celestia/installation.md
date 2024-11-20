@@ -218,7 +218,8 @@ ExecStart=$(which celestia) bridge start \\
 --gateway.port 26659 \\
 --metrics.tls=true \\
 --metrics \\
---metrics.endpoint otel.celestia.observer
+--metrics.endpoint otel.celestia.observer \\
+--archival
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535
