@@ -160,7 +160,7 @@ celestia-appd tx staking create-validator \
 -y
 ```
 
-# Install Bridge Node
+# Install Bridge Node (Shwap)
 
 Download and build binaries
 ```bash
@@ -168,7 +168,7 @@ cd $HOME
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-git checkout v0.17.2
+git checkout v0.20.2
 make build
 sudo mv build/celestia $HOME/go/bin
 make cel-key
