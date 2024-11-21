@@ -5,17 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v9.0.0-rc4** is available
+⚠️ Version **v10.0.0-rc1** is available
 
 ```bash
 cd $HOME || return
 rm -rf archway
 git clone https://github.com/archway-network/archway.git
 cd archway || return
-git checkout v9.0.0-rc4
+git checkout v10.0.0-rc1
 
 make build
 
-mkdir -p $HOME/.archway/cosmovisor/upgrades/wasmd_50_amino_patch/bin
-mv build/archwayd $HOME/.archway/cosmovisor/upgrades/wasmd_50_amino_patch/bin/
+mkdir -p $HOME/.archway/cosmovisor/upgrades/v10.0.0/bin
+mv build/archwayd $HOME/.archway/cosmovisor/upgrades/v10.0.0/bin/
 ```
