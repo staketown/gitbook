@@ -422,27 +422,3 @@ Check bridge node logs
 ```bash
 journalctl -u celestia-bridge.service -f -o cat
 ```
-
-### Orchestrator useful commands
-
-Check the EVM address that is linked to your validator.
-
-```bash
-celestia-appd query qgb evm <YOUR_VALIDATOR_ADDRESS>
-```
-or
-```bash
-celestia-appd query qgb evm $(celestia-appd keys show wallet --bech val -a)
-```
-
-Change validator EVM address
-```bash
-celestia-appd tx qgb register \
-<YOUR_VALIDATOR_ADDRESS> \
-<NEW_EVM_ADDRESS> \
---from <YOUR_WALLET_ADDRESS> \
---gas-adjustment 1.4 \
---gas auto \
---gas-prices 0.002utia \
--y
-```
