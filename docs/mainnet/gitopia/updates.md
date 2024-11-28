@@ -5,17 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v4.0.0** is available
+⚠️ Version **v5.0.1** is available
 
 ```bash
 cd $HOME || return
 rm -rf gitopia
 git clone https://github.com/gitopia/gitopia.git
 cd gitopia || return
-git checkout v4.0.0
+git checkout v5.0.1
 
 make build
 
-mkdir -p $HOME/.gitopia/cosmovisor/upgrades/v4/bin
-mv build/gitopiad $HOME/.gitopia/cosmovisor/upgrades/v4/bin/
+mkdir -p $HOME/.gitopia/cosmovisor/upgrades/v5/bin
+mv build/gitopiad $HOME/.gitopia/cosmovisor/upgrades/v5/bin/
 ```
