@@ -7,7 +7,7 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `elystestnet-1`
+* Network Chain ID: `elysicstestnet-1`
 * Denom: `uelys`
 * Binary: `elysd`
 * Working directory: `.elys`
