@@ -44,9 +44,11 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.elys/config/config.toml"
 SEEDS=""
-PEERS="b64643dc38d426362a4f7c98b6acabe37ffb5654@65.108.203.61:38656"
+PEERS="edafad92bdd58699e60c4f626613abefdfe5003d@144.76.15.125:38656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
+sed -i "s/^db_backend *=.*/db_backend = \"pebbledb\"/" $CONFIG_TOML
+sed -i "s/^app-db-backend *=.*/app-db-backend = \"pebbledb\"/" $APP_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
 sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0003uelys,0.001ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349,0.001ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9"|g' $CONFIG_TOML
