@@ -8,7 +8,7 @@ coverY: 0
 Install with one line script
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/elys/test_install.sh)
+bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/elys/main_install.sh)
 ```
 
 Manual installation
@@ -29,12 +29,12 @@ git checkout v1.0.0
 make install
 
 elysd config keyring-backend os
-elysd config chain-id elysicstestnet-1
-elysd init "Your Moniker" --chain-id elysicstestnet-1
+elysd config chain-id elys-1
+elysd init "Your Moniker" --chain-id elys-1
 
 # Download genesis and addrbook
-curl -Ls https://snapshots-testnet.stake-town.com/elys/genesis.json > $HOME/.elys/config/genesis.json
-curl -Ls https://snapshots-testnet.stake-town.com/elys/addrbook.json > $HOME/.elys/config/addrbook.json
+curl -Ls https://snapshots-1.stake-town.com/elys/genesis.json > $HOME/.elys/config/genesis.json
+curl -Ls https://snapshots-1.stake-town.com/elys/addrbook.json > $HOME/.elys/config/addrbook.json
 
 APP_TOML="~/.elys/config/app.toml"
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 elysd tendermint unsafe-reset-all --home $HOME/.elys --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/elys/elysicstestnet-1_latest.tar.lz4
+URL=https://snapshots-1.stake-town.com/elys/elys-1_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.elys
 [[ -f $HOME/.elys/data/upgrade-info.json ]] && cp $HOME/.elys/data/upgrade-info.json $HOME/.elys/cosmovisor/genesis/upgrade-info.json
 ```
@@ -136,7 +136,7 @@ elysd tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=elysicstestnet-1 \
+--chain-id=elys-1 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \

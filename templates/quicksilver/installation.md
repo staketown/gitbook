@@ -83,20 +83,6 @@ curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/{{WORKING_DIR}}
 [[ -f $HOME/{{WORKING_DIR}}/data/upgrade-info.json ]] && cp $HOME/{{WORKING_DIR}}/data/upgrade-info.json $HOME/{{WORKING_DIR}}/cosmovisor/genesis/upgrade-info.json
 ```
 
-**(Optional) Configure timeouts for processing blocks**
-
-```bash
-CONFIG_TOML="~/{{WORKING_DIR}}/config/config.toml"
-sed -i 's/timeout_propose =.*/timeout_propose = "100ms"/g' $CONFIG_TOML
-sed -i 's/timeout_propose_delta =.*/timeout_propose_delta = "500ms"/g' $CONFIG_TOML
-sed -i 's/timeout_prevote =.*/timeout_prevote = "100ms"/g' $CONFIG_TOML
-sed -i 's/timeout_prevote_delta =.*/timeout_prevote_delta = "500ms"/g' $CONFIG_TOML
-sed -i 's/timeout_precommit =.*/timeout_precommit = "100ms"/g' $CONFIG_TOML
-sed -i 's/timeout_precommit_delta =.*/timeout_precommit_delta = "500ms"/g' $CONFIG_TOML
-sed -i 's/timeout_commit =.*/timeout_commit = "1s"/g' $CONFIG_TOML
-sed -i 's/skip_timeout_commit =.*/skip_timeout_commit = false/g' $CONFIG_TOML
-```
-
 Enable and start service
 
 ```bash

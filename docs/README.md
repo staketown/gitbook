@@ -8,6 +8,7 @@
 * [Aura](mainnet/aura)
 * [C4E](mainnet/c4e)
 * [Celestia](mainnet/celestia)
+* [Elys](mainnet/elys)
 * [Evmos](mainnet/evmos)
 * [Gitopia](mainnet/gitopia)
 * [Juno](mainnet/juno)
