@@ -7,11 +7,11 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `elysicstestnet-1`
+* Network Chain ID: `elys-1`
 * Denom: `uelys`
 * Binary: `elysd`
 * Working directory: `.elys`
-* Explorers: [LINK](https://explorer.kjnodes.com/elys-testnet)
+* Explorers: [LINK](https://explorer.kjnodes.com/elys)
 * Faucet: Ask in discord channel
 
 ## Overview
