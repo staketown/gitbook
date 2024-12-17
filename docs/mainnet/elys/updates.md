@@ -5,4 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ **No updates so far**
+⚠️ Version **v1.2.0** is available
+
+```bash
+cd $HOME || return
+rm -rf elys
+git clone https://github.com/elys-network/elys.git
+cd elys || return
+git checkout v1.2.0
+
+make build
+
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v1.2.0/bin
+mv build/elysd $HOME/.elys/cosmovisor/upgrades/v1.2.0/bin/
+```
