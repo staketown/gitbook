@@ -16,6 +16,6 @@ git checkout v6.7.2-rc1
 
 make build
 
-mkdir -p $HOME/.umee/cosmovisor/upgrades/v6.7.2/bin
-mv build/umeed $HOME/.umee/cosmovisor/upgrades/v6.7.2/bin/
+mkdir -p $HOME/.umee/cosmovisor/upgrades/v6.7.2-rc1/bin
+mv build/umeed $HOME/.umee/cosmovisor/upgrades/v6.7.2-rc1/bin/
 ```
