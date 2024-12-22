@@ -12,10 +12,10 @@ cd $HOME || return
 rm -rf juno
 git clone https://github.com/CosmosContracts/juno.git
 cd juno || return
-git checkout v25.0.0
+git checkout v26.0.0
 
 make build
 
-mkdir -p $HOME/.juno/cosmovisor/upgrades/v25/bin
-mv bin/junod $HOME/.juno/cosmovisor/upgrades/v25/bin/
+mkdir -p $HOME/.juno/cosmovisor/upgrades/v26/bin
+mv bin/junod $HOME/.juno/cosmovisor/upgrades/v26/bin/
 ```
