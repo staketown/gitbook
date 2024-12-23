@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/planq
 git clone https://github.com/planq-network/planq.git
 cd $HOME/planq || return
-git checkout v2.0.4
+git checkout v2.0.5
 
 make install
 
