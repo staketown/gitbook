@@ -5,7 +5,7 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v1.5.0** is available
+⚠️ Version **v1.6.0** is available
 
 ```bash
 cd $HOME || return
@@ -16,6 +16,6 @@ git checkout v1.5.0
 
 make build
 
-mkdir -p $HOME/.elys/cosmovisor/upgrades/v1.5.0/bin
-mv build/elysd $HOME/.elys/cosmovisor/upgrades/v1.5.0/bin/
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v1.6.0/bin
+mv build/elysd $HOME/.elys/cosmovisor/upgrades/v1.6.0/bin/
 ```
