@@ -12,7 +12,7 @@ cd $HOME || return
 rm -rf elys
 git clone https://github.com/elys-network/elys.git
 cd elys || return
-git checkout v1.5.0
+git checkout v1.6.0
 
 make build
 
