@@ -29,7 +29,6 @@
 * [Archway](testnet/archway)
 * [C4E](testnet/c4e)
 * [Celestia](testnet/celestia)
-* [Cross Finance](testnet/crossfi)
 * [Elys](testnet/elys)
 * [Evmos](testnet/evmos)
 * [Juno](testnet/juno)
