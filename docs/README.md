@@ -34,6 +34,7 @@
 * [Juno](testnet/juno)
 * [Lava](testnet/lava)
 * [Ojo](testnet/ojo)
+* [Native](testnet/native)
 * [Persistence](testnet/persistence)
 * [Prysm](testnet/prysm)
 * [Quicksilver](testnet/quicksilver)
