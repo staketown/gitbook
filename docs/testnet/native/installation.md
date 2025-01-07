@@ -90,7 +90,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable gonatived
 sudo systemctl start gonatived
 
-sudo journalctl -u gonative -f -o cat
+sudo journalctl -u gonatived -f -o cat
 ```
 
 > After successful synchronisation we recommend to turn off **snapshot\_interval** and state sync, this will save space on your hardware.
@@ -129,7 +129,7 @@ Create validator
 ```bash
 gonative tx staking create-validator \
 --amount=1000000untiv \
---pubkey=$(gonative tendermint show-validator) \
+--pubkey=$(gonative comet show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \

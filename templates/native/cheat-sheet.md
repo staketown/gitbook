@@ -62,7 +62,7 @@ Create validator
 ```bash
 {{BINARY}} tx staking create-validator \
 --amount={{AMOUNT}} \
---pubkey=$({{BINARY}} tendermint show-validator) \
+--pubkey=$({{BINARY}} comet show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \

@@ -90,7 +90,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable {{SERVICE}}
 sudo systemctl start {{SERVICE}}
 
-sudo journalctl -u {{BINARY}} -f -o cat
+sudo journalctl -u {{SERVICE}} -f -o cat
 ```
 
 > After successful synchronisation we recommend to turn off **snapshot\_interval** and state sync, this will save space on your hardware.
@@ -129,7 +129,7 @@ Create validator
 ```bash
 {{BINARY}} tx staking create-validator \
 --amount={{AMOUNT}} \
---pubkey=$({{BINARY}} tendermint show-validator) \
+--pubkey=$({{BINARY}} comet show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \

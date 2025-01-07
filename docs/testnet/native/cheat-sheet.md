@@ -62,7 +62,7 @@ Create validator
 ```bash
 gonative tx staking create-validator \
 --amount=1000000untiv \
---pubkey=$(gonative tendermint show-validator) \
+--pubkey=$(gonative comet show-validator) \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
