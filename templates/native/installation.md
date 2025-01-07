@@ -26,7 +26,7 @@ git clone {{PROJECT_GIT_URL}}
 cd $HOME/{{PROJECT_DIR}} || return
 git checkout {{BINARY_VERSION}}
 
-make build && mv $HOME/{{PROJECT_DIR}}/out/{{BINARY}} $HOME/go/bin
+make build && mv $HOME/{{PROJECT_DIR}}/{{BUILD_OUTPUT_DIR}}/{{BINARY}} $HOME/go/bin
 
 {{BINARY}} config set client keyring-backend os
 {{BINARY}} config set client chain-id {{CHAIN_ID}}

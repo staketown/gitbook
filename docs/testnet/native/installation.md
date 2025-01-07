@@ -22,9 +22,9 @@ source .bash_profile
 
 cd $HOME || return
 rm -rf $HOME/gonative
-git clone https://github.com/elys-network/elys.git
+git clone https://github.com/gonative-cc/gonative.git
 cd $HOME/gonative || return
-git checkout v1.6.0
+git checkout v0.1.1
 
 make build && mv $HOME/gonative/out/gonative $HOME/go/bin
 
