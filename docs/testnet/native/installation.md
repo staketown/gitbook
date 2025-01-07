@@ -139,6 +139,6 @@ gonative tx staking create-validator \
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---fees= \
+--fees=20000untiv \
 -y
 ```

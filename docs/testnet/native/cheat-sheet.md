@@ -72,7 +72,7 @@ gonative tx staking create-validator \
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --from=<YOUR_WALLET> \
---fees= \
+--fees=20000untiv \
 -y
 ```
 
@@ -85,14 +85,14 @@ gonative tx staking edit-validator \
 --details="<Your details>" \
 --commission-rate=0.1 \
 --from=<YOUR_WALLET> \
---fees= \
+--fees=20000untiv \
 -y
 ```
 
 Unjail your validator
 
 ```bash
-gonative tx slashing unjail --from <YOUR_WALLET> --fees= -y
+gonative tx slashing unjail --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 Check blocks info processed by your validator
@@ -124,31 +124,31 @@ gonative q staking validator $(gonative keys show <YOUR_WALLET_NAME> --bech val 
 Get your rewards from all validators
 
 ```bash
-gonative tx distribution withdraw-all-rewards --from <YOUR_WALLET> --fees= -y
+gonative tx distribution withdraw-all-rewards --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 Get rewards and commissions from your validator
 
 ```bash
-gonative tx distribution withdraw-rewards $(gonative keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --fees= -y
+gonative tx distribution withdraw-rewards $(gonative keys show <YOUR_WALLET_NAME> --bech val -a) --commission --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 Delegate tokens to your validator
 
 ```bash
-gonative tx staking delegate $(gonative keys show <YOUR_WALLET_NAME> --bech val -a) 1000000untiv --from <YOUR_WALLET> --fees= -y
+gonative tx staking delegate $(gonative keys show <YOUR_WALLET_NAME> --bech val -a) 1000000untiv --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 Delegate tokens to validator
 
 ```bash
-gonative tx staking delegate <VALOPER_ADDRESS> 1000000untiv --from <YOUR_WALLET> --fees= -y
+gonative tx staking delegate <VALOPER_ADDRESS> 1000000untiv --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 Redelegate tokens to another validator
 
 ```bash
-gonative tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000untiv --from <WALLET> --fees= -y
+gonative tx staking redelegate <SRC_VALOPER_ADDRESS> <TARGET_VALOPER_ADDRESS> 1000000untiv --from <WALLET> --fees=20000untiv -y
 ```
 
 Unbound tokens from validator
@@ -156,13 +156,13 @@ Unbound tokens from validator
 > ⚠️ it’s can take a while, \~21 days, depends on network’s parameters
 
 ```bash
-gonative tx staking unbond <VALOPER_ADDRESS> 1000000untiv --from <YOUR_WALLET> --fees= -y
+gonative tx staking unbond <VALOPER_ADDRESS> 1000000untiv --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 Send tokens to another wallet
 
 ```bash
-gonative tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000untiv --from <YOUR_WALLET_ADDRESS> --fees= -y
+gonative tx bank send <YOUR_WALLET_ADDRESS> <TARGET_WALLET_ADDRESS> 1000000untiv --from <YOUR_WALLET_ADDRESS> --fees=20000untiv -y
 ```
 
 Check info about transaction by hash **TX\_HASH**
@@ -182,7 +182,7 @@ gonative tx gov submit-proposal \
 --deposit=1000000untiv \
 --type="Text" \
 --from=<WALLET_ADDRESS> \
---fees= \
+--fees=20000untiv \
 -y
 ```
 
@@ -201,31 +201,31 @@ gonative query gov proposal <proposal_id>
 Deposit proposal by proposal id
 
 ```bash
-gonative tx gov deposit 1 1000000untiv --from <YOUR_WALLET> --fees= -y
+gonative tx gov deposit 1 1000000untiv --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 Vote as, **YES**
 
 ```bash
-gonative tx gov vote 1 yes --from <YOUR_WALLET> --fees= -y
+gonative tx gov vote 1 yes --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 Vote as, **NO**
 
 ```bash
-gonative tx gov vote 1 no --from <YOUR_WALLET> --fees= -y
+gonative tx gov vote 1 no --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 Vote as, **NO\_WITH\_VETO**
 
 ```bash
-gonative tx gov vote 1 no_with_veto --from <YOUR_WALLET> --fees= -y
+gonative tx gov vote 1 no_with_veto --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 Vote as, **ABSTAIN**
 
 ```bash
-gonative tx gov vote 1 abstain --from <YOUR_WALLET> --fees= -y
+gonative tx gov vote 1 abstain --from <YOUR_WALLET> --fees=20000untiv -y
 ```
 
 ### Utils
