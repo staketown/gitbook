@@ -40,7 +40,7 @@ APP_TOML="~/.gonative/config/app.toml"
 # TODO: switch to pebble once it's fixed. https://github.com/cosmos/cosmos-sdk/issues/23133
 sed -i "s/^app-db-backend *=.*/app-db-backend = \"goleveldb\"/" $APP_TOML
 CONFIG_TOML="~/.gonative/config/config.toml"
-sed -i "s/^db_backend *=.*/db_backend = \"pebbledb\"/" $CONFIG_TOML
+sed -i "s/^db_backend *=.*/db_backend = \"goleveldb\"/" $CONFIG_TOML
 SEEDS=""
 PEERS="236946946eacbf6ab8a6f15c99dac1c80db6f8a5@65.108.203.61:52656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
