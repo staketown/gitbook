@@ -16,5 +16,4 @@ coverY: 0
 
 ## Overview
 
-> **Minimum Hardware Requirements:** 4CPU 8RAM 100GB \
-> **Recommended Hardware Requirements:** 8CPU 16RAM 200GB
+> **Recommended Hardware Requirements:** Quad Core or larger AMD or Intel (amd64) CPU 32GB RAM 1TB NVMe

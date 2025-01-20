@@ -60,28 +60,19 @@ babylond q bank balances $(babylond keys show <YOUR_WALLET_NAME> -a)
 Create validator
 
 ```bash
-babylond tx staking create-validator \
---amount=1000000uabbn \
---pubkey=$(babylond tendermint show-validator) \
---moniker="<Your moniker>" \
---identity=<Your identity> \
---details="<Your details>" \
---chain-id=bbn-test-5 \
---commission-rate=0.05 \
---commission-max-rate=0.20 \
---commission-max-change-rate=0.1 \
---min-self-delegation=1 \
---from=<YOUR_WALLET> \
+babylond tx checkpointing create-validator /path/to/validator.json \
+--chain-id=bbn-test-5  \
 --gas-prices=0.025ubbn \
 --gas-adjustment=1.6 \
 --gas=auto \
+--from=<YOUR_WALLET> \
 -y
 ```
 
 Edit validator
 
 ```bash
-babylond tx staking edit-validator \
+babylond tx checkpointing edit-validator \
 --new-moniker="<Your moniker>" \
 --identity=<your identity> \
 --details="<Your details>" \
