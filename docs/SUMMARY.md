@@ -115,12 +115,6 @@
 
 ## Testnet
 
-* [0G](testnet/0g/README.md)
-  * [Installation](testnet/0g/installation.md)
-  * [Updates](testnet/0g/updates.md)
-  * [Sync](testnet/0g/sync.md)
-  * [Public API](testnet/0g/public-api.md)
-  * [Cheat Sheet](testnet/0g/cheat-sheet.md)
 * [Arkeo Network](testnet/arkeo-network/README.md)
   * [Installation](testnet/arkeo-network/installation.md)
   * [Updates](testnet/arkeo-network/updates.md)
@@ -133,6 +127,12 @@
   * [Sync](testnet/archway/sync.md)
   * [Public API](testnet/archway/public-api.md)
   * [Cheat Sheet](testnet/archway/cheat-sheet.md)
+* [Babylon](testnet/babylon/README.md)
+  * [Installation](testnet/babylon/installation.md)
+  * [Updates](testnet/babylon/updates.md)
+  * [Sync](testnet/babylon/sync.md)
+  * [Public API](testnet/babylon/public-api.md)
+  * [Cheat Sheet](testnet/babylon/cheat-sheet.md)
 * [C4E](testnet/c4e/README.md)
   * [Installation](testnet/c4e/installation.md)
   * [Updates](testnet/c4e/updates.md)
