@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd $HOME/celestia-app || return
-git checkout v3.2.0-mocha
+git checkout v3.3.0-mocha
 
 make install
 
@@ -168,7 +168,7 @@ cd $HOME
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-git checkout v0.20.4-mocha
+git checkout v0.21.3-mocha
 make build
 sudo mv build/celestia $HOME/go/bin
 make cel-key
@@ -192,8 +192,7 @@ Initialize Bridge node
 celestia bridge init \
 --keyring.keyname bridge-wallet \
 --core.ip http://localhost \
---core.rpc.port 26657 \
---core.grpc.port 9090 \
+--core.port 9090 \
 --p2p.network mocha \
 --rpc.port 26658 \
 --gateway.port 26659
@@ -211,8 +210,7 @@ User=$USER
 ExecStart=$(which celestia) bridge start \\
 --keyring.keyname bridge-wallet \\
 --core.ip http://localhost \\
---core.rpc.port 26657 \\
---core.grpc.port 9090 \\
+--core.port 9090 \\
 --p2p.network mocha \\
 --rpc.port 26658 \\
 --gateway.port 26659 \\
