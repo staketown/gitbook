@@ -9,10 +9,10 @@ coverY: 0
 
 ```bash
 cd $HOME || return
-wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.7.1/quicksilverd-v1.7.1-amd64
+wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.7.6-testnet/quicksilverd-v1.7.6-testnet-amd64
 chmod +x quicksilverd
 mv quicksilverd $HOME/go/bin
 
-mkdir -p $HOME/.quicksilverd/cosmovisor/upgrades/v1.7.0/bin
-cp $HOME/go/bin/quicksilverd $HOME/.quicksilverd/cosmovisor/upgrades/v1.7.0/bin/
+mkdir -p $HOME/.quicksilverd/cosmovisor/upgrades/v1.7.6-testnet/bin
+cp $HOME/go/bin/quicksilverd $HOME/.quicksilverd/cosmovisor/upgrades/v1.7.6-testnet/bin/
 ```
