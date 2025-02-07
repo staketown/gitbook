@@ -192,8 +192,7 @@ Initialize Bridge node
 celestia bridge init \
 --keyring.keyname bridge-wallet \
 --core.ip http://localhost \
---core.rpc.port 26657 \
---core.grpc.port 9090 \
+--core.port 9090 \
 --p2p.network celestia \
 --rpc.port 26658 \
 --gateway.port 26659
@@ -211,8 +210,7 @@ User=$USER
 ExecStart=$(which celestia) bridge start \\
 --keyring.keyname bridge-wallet \\
 --core.ip http://localhost \\
---core.rpc.port 26657 \\
---core.grpc.port 9090 \\
+--core.port 9090 \\
 --p2p.network celestia \\
 --rpc.port 26658 \\
 --gateway.port 26659 \\
