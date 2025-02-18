@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/lava
 git clone https://github.com/lavanet/lava
 cd $HOME/lava || return
-git checkout v4.2.0
+git checkout v5.2.0
 
 export LAVA_BINARY=lavad && make install
 
