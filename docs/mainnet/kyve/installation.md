@@ -43,8 +43,8 @@ sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
 sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.kyve/config/config.toml"
-SEEDS=""
-PEERS="25695d17ec014c39054ac0026db3228053a6a2db@65.108.195.213:40656"
+SEEDS="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:11056"
+PEERS="24feaba7bf73a2e80d4bec88c1004b9377e28495@65.108.195.213:57656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
