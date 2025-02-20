@@ -28,8 +28,8 @@ git checkout v1.5.0
 
 make install ENV=mainnet
 
-kyved config keyring-backend os
-kyved config chain-id kyve-1
+kyved config set client keyring-backend os
+kyved config set client chain-id kyve-1
 kyved init "Your Moniker" --chain-id kyve-1
 
 # Download genesis and addrbook
