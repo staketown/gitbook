@@ -21,11 +21,8 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME
-wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.4/wardend_Linux_x86_64.zip
-unzip wardend_Linux_x86_64.zip -d ~/temp_warden
-mv ~/temp_warden/wardend ~/go/bin/
-rm -rf ~/temp_warden
-rm ~/wardend_Linux_x86_64.zip
+wget -O ~/go/bin/wardend https://github.com/warden-protocol/wardenprotocol/releases/download/v0.6.2/wardend-0.6.2-linux-amd64
+chmod +x ~/go/bin/wardend
 
 wardend config keyring-backend os
 wardend config chain-id chiado_10010-1
