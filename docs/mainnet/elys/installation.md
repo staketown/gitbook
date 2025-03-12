@@ -44,7 +44,7 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.elys/config/config.toml"
 SEEDS=""
-PEERS="edafad92bdd58699e60c4f626613abefdfe5003d@144.76.15.125:38656"
+PEERS="454c0999c525c1350f103151dbc49bdf5c5edd9b@65.108.195.213:38656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 sed -i "s/^db_backend *=.*/db_backend = \"pebbledb\"/" $CONFIG_TOML
