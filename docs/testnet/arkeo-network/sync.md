@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="e6b058d1d6be000d67b87e9d11cb0de1bba1e477@65.109.65.248:42656"
+PEERS="e6b058d1d6be000d67b87e9d11cb0de1bba1e477@65.108.124.43:42656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.arkeo/config/config.toml
 
 CONFIG_TOML=$HOME/.arkeo/config/config.toml
