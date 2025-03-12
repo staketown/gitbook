@@ -20,5 +20,5 @@ https://arkeo-testnet-api.stake-town.com:443
 ### **GRPC Endpoint**
 
 ```bash
-arkeo-testnet-grpc.stake-town.com:10690
+arkeo-testnet-grpc.stake-town.com:443
 ```
