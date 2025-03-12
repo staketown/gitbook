@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v2.2.0** is available
+⚠️ Version **v2.3.0** is available
 
 ```bash
 cd $HOME || return
 rm -rf elys
 git clone https://github.com/elys-network/elys.git
 cd elys || return
-git checkout v2.2.0
+git checkout v2.3.0
 
 make build
 
