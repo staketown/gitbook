@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v2.1.0** is available
+⚠️ Version **v2.1.2** is available
 
 ```bash
 cd $HOME || return
 rm -rf planq
 git clone https://github.com/planq-network/planq.git
 cd planq || return
-git checkout v2.1.0
+git checkout v2.1.2
 
 make build
 
