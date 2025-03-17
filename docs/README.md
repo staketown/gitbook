@@ -26,7 +26,6 @@
 ### Testnets
 
 * [Arkeo](testnet/arkeo-network)
-* [Archway](testnet/archway)
 * [Babylon](testnet/babylon)
 * [C4E](testnet/c4e)
 * [Celestia](testnet/celestia)
