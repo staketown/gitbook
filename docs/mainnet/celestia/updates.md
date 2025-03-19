@@ -22,7 +22,7 @@ mv build/celestia-appd $HOME/.celestia-app/cosmovisor/genesis/bin/
 
 ### Bridge node updates
 
-⚠️ Version **v0.21.5** is available (Shwap)
+⚠️ Version **v0.21.9** is available (Shwap)
 
 ```bash
 # Stop bridge node
@@ -33,7 +33,7 @@ cd $HOME
 rm -rf celestia-node 
 git clone https://github.com/celestiaorg/celestia-node.git 
 cd celestia-node
-git checkout v0.21.5
+git checkout v0.21.9
 make build
 sudo mv build/celestia $HOME/go/bin
 make cel-key
