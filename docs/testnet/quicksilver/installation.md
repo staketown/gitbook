@@ -21,9 +21,12 @@ bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/
 source .bash_profile
 
 cd $HOME || return
-wget -O quicksilverd https://github.com/quicksilver-zone/quicksilver/releases/download/v1.7.6-testnet2/quicksilverd-v1.7.6-testnet2-amd64
-chmod +x quicksilverd
-mv quicksilverd $HOME/go/bin
+rm -rf quicksilver
+git clone https://github.com/ingenuity-build/quicksilver.git
+cd $HOME/quicksilver || return
+git checkout v1.8.0-rc.0
+
+make install
 
 quicksilverd config keyring-backend os
 quicksilverd config chain-id rhye-3
