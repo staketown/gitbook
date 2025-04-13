@@ -12,10 +12,10 @@ cd $HOME || return
 rm -rf elys
 git clone https://github.com/elys-network/elys.git
 cd elys || return
-git checkout v3.0.0-rc3
+git checkout v3.0.0-rc4
 
 make build
 
-mkdir -p $HOME/.elys/cosmovisor/upgrades/v3-rc3/bin
-mv build/elysd $HOME/.elys/cosmovisor/upgrades/v3-rc3/bin/
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v3-rc4/bin
+mv build/elysd $HOME/.elys/cosmovisor/upgrades/v3-rc4/bin/
 ```
