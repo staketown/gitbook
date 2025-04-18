@@ -24,13 +24,13 @@ cd $HOME || return
 rm -rf $HOME/juno
 git clone https://github.com/CosmosContracts/juno.git
 cd $HOME/juno || return
-git checkout v28.0.1
+git checkout v28.0.2
 
 make install
 
 junod config keyring-backend os
-junod config chain-id uni-6
-junod init "Your Moniker" --chain-id uni-6
+junod config chain-id uni-7
+junod init "Your Moniker" --chain-id uni-7
 
 # Download genesis and addrbook
 curl -Ls https://snapshots-testnet.stake-town.com/juno/genesis.json > $HOME/.juno/config/genesis.json
@@ -44,12 +44,12 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.juno/config/config.toml"
 SEEDS="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:12656"
-PEERS="32905b940f032e176e7ef439bc5c1fa619f2cecf@65.108.203.61:33656"
+PEERS="1b8aeda9294507be1d606c352b0ac39febbe4d62@65.108.124.43:33656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0ujunox"|g' $CONFIG_TOML
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0025ujunox"|g' $CONFIG_TOML
 sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
 
@@ -81,7 +81,7 @@ EOF
 # Snapshots
 junod tendermint unsafe-reset-all --home $HOME/.juno --keep-addr-book
 
-URL=https://snapshots-testnet.stake-town.com/juno/uni-6_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/juno/uni-7_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.juno
 [[ -f $HOME/.juno/data/upgrade-info.json ]] && cp $HOME/.juno/data/upgrade-info.json $HOME/.juno/cosmovisor/genesis/upgrade-info.json
 ```
@@ -150,7 +150,7 @@ junod tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=uni-6 \
+--chain-id=uni-7 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \

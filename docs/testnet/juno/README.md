@@ -7,7 +7,7 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `uni-6`
+* Network Chain ID: `uni-7`
 * Denom: `ujunox`
 * Binary: `junod`
 * Working directory: `.juno`

@@ -19,7 +19,7 @@ sudo systemctl stop junod
 cp $HOME/.juno/data/priv_validator_state.json $HOME/.juno/priv_validator_state.json.backup
 rm -rf $HOME/.juno/data
 
-URL=https://snapshots-testnet.stake-town.com/juno/uni-6_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/juno/uni-7_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.juno
 
 mv $HOME/.juno/priv_validator_state.json.backup $HOME/.juno/data/priv_validator_state.json
@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="32905b940f032e176e7ef439bc5c1fa619f2cecf@65.108.203.61:33656"
+PEERS="1b8aeda9294507be1d606c352b0ac39febbe4d62@65.108.124.43:33656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.juno/config/config.toml
 
 CONFIG_TOML=$HOME/.juno/config/config.toml
