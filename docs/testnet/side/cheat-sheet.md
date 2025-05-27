@@ -66,7 +66,7 @@ sided tx staking create-validator \
 --moniker="<Your moniker>" \
 --identity=<Your identity> \
 --details="<Your details>" \
---chain-id=sidechain-testnet-4 \
+--chain-id=sidechain-testnet-5 \
 --commission-rate=0.05 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.1 \

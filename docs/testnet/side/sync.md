@@ -19,7 +19,7 @@ sudo systemctl stop sided
 cp $HOME/.side/data/priv_validator_state.json $HOME/.side/priv_validator_state.json.backup
 rm -rf $HOME/.side/data
 
-URL=https://snapshots-testnet.stake-town.com/side/sidechain-testnet-4_latest.tar.lz4
+URL=https://snapshots-testnet.stake-town.com/side/sidechain-testnet-5_latest.tar.lz4
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.side
 
 mv $HOME/.side/priv_validator_state.json.backup $HOME/.side/data/priv_validator_state.json 
