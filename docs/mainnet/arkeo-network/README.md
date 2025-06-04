@@ -7,11 +7,11 @@ coverY: 0
 
 ## Summary
 
-* Network Chain ID: `arkeo-testnet-3`
+* Network Chain ID: `arkeo-main-v1`
 * Denom: `uarkeo`
 * Binary: `arkeod`
 * Working directory: `.arkeo`
-* Explorers: [LINK](https://testnet.arkeo.explorers.guru/)
+* Explorers: -
 * Faucet: Ask in discord channel
 
 ## Overview
