@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="3b3384dc98b0e0d8bb12eb21c396c19ce0e46cb0@138.201.21.197:50656"
+PEERS="2da913aa78101b31fc6aa24bca0ef26c1f9d986c@65.108.129.253:50656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.quicksilverd/config/config.toml
 
 CONFIG_TOML=$HOME/.quicksilverd/config/config.toml

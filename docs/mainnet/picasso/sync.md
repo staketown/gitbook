@@ -43,7 +43,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-PEERS="7082a715395427a519e611ed1454b0965fd95ef5@138.201.21.197:37656"
+PEERS="f36ea8178f94baf30268cf669caab0d8b314c08b@65.108.129.253:37656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.banksy/config/config.toml
 
 CONFIG_TOML=$HOME/.banksy/config/config.toml

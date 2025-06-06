@@ -44,7 +44,7 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.banksy/config/config.toml"
 SEEDS=""
-PEERS="7082a715395427a519e611ed1454b0965fd95ef5@138.201.21.197:37656"
+PEERS="f36ea8178f94baf30268cf669caab0d8b314c08b@65.108.129.253:37656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)

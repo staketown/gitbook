@@ -44,7 +44,7 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.gitopia/config/config.toml"
 SEEDS=""
-PEERS="d5525675ceb88d2c4f4df828ec01d237bcc11950@138.201.21.197:26656"
+PEERS="b58329e14fa00a7f67ef0d160b41bb026ca51cc8@65.108.129.253:26656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)

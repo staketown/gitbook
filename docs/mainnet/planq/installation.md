@@ -44,7 +44,7 @@ sed -i 's|^pruning-interval *=.*|pruning-interval = 19|g' $APP_TOML
 
 CONFIG_TOML="~/.planqd/config/config.toml"
 SEEDS=""
-PEERS="3374ff118b1f01b52ea6f52fe2914f11abfb2581@138.201.21.197:51656"
+PEERS="bf85bba541296abdee74aed59c3d660650699403@65.108.129.253:51656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 external_address=$(wget -qO- eth0.me)
