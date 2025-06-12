@@ -5,8 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v2.0.0-rc.4** is available
+⚠️ Version **v2.0.0-rc.5** is available
 
 ```bash
-No updates
+cd $HOME || return
+rm -rf $HOME/side
+git clone https://github.com/sideprotocol/side.git
+cd $HOME/side || return
+git checkout v2.0.0-rc.5
+
+make install
+
+mkdir -p $HOME/.side/cosmovisor/upgrades/v2.0.0-rc.5/bin
+cp $HOME/go/bin/sided $HOME/.side/cosmovisor/upgrades/v2.0.0-rc.5/bin/
 ```
