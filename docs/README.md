@@ -19,6 +19,7 @@
 * [Planq](mainnet/planq)
 * [Quasar](mainnet/quasar)
 * [Quicksilver](mainnet/quicksilver)
+* [Side Protocol](mainnet/side)
 * [Source](mainnet/source)
 * [Umee](mainnet/umee)
 
