@@ -6,14 +6,14 @@ coverY: 0
 # Updates
 
 ### Node updates
-⚠️ Version **v3.8.1** is available
+⚠️ Version **v3.8.2** is available
 
 ```bash
 cd $HOME || return
 rm -rf $HOME/celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd $HOME/celestia-app || return
-git checkout v3.8.1
+git checkout v3.8.2
 
 make build
 
