@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd $HOME/celestia-app || return
-git checkout v4.0.3-mocha
+git checkout v4.0.6-mocha
 
 make install
 
