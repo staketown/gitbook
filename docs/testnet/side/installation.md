@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/side
 git clone https://github.com/sideprotocol/side.git
 cd $HOME/side || return
-git checkout v2.0.0-rc.5
+git checkout v2.0.0-rc.6
 
 make install
 
