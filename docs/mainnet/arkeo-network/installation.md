@@ -24,9 +24,9 @@ cd $HOME || return
 rm -rf $HOME/arkeo
 git clone https://github.com/arkeonetwork/arkeo.git
 cd arkeo || return
-git checkout master
+git checkout v1.0.14
 
-TAG=testnet make install 
+make install 
 
 arkeod config set client keyring-backend os
 arkeod config set client chain-id arkeo-testnet-3
