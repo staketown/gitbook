@@ -6,14 +6,14 @@ coverY: 0
 # Updates
 
 ### Node updates
-⚠️ Version **v4.0.10** is available
+⚠️ Version **v5.0.1** is available
 
 ```bash
 cd $HOME || return
 rm -rf $HOME/celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd $HOME/celestia-app || return
-git checkout v4.0.10
+git checkout v5.0.1
 
 make build
 
@@ -22,7 +22,7 @@ mv build/celestia-appd $HOME/.celestia-app/cosmovisor/genesis/bin/
 
 ### Bridge node updates
 
-⚠️ Version **v0.23.5** is available (Shwap)
+⚠️ Version **v0.24.1** is available (Shwap)
 
 ```bash
 # Stop bridge node
@@ -33,7 +33,7 @@ cd $HOME
 rm -rf celestia-node 
 git clone https://github.com/celestiaorg/celestia-node.git 
 cd celestia-node
-git checkout v0.23.5
+git checkout v0.24.1
 make build
 sudo mv build/celestia $HOME/go/bin
 make cel-key

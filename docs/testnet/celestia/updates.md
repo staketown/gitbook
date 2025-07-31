@@ -43,5 +43,5 @@ sudo mv cel-key $HOME/go/bin
 celestia bridge config-update --p2p.network mocha
 
 # Start bridge node
-sudo systemctl restart celestia-bridge.service
+sudo systemctl restart celestia-bridge.service && sudo journalctl -u celestia-bridge.service -f -o cat
 ```
