@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v1.9.1** is available
+⚠️ Version **v1.9.3** is available
 
 ```bash
 cd $HOME || return
 rm -rf quicksilver
 git clone https://github.com/ingenuity-build/quicksilver.git
 cd $HOME/quicksilver || return
-git checkout v1.9.1
+git checkout v1.9.3
 
 make install
 
