@@ -5,17 +5,17 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v1.8.0-rc.1** is available
+⚠️ Version **v1.9.1** is available
 
 ```bash
 cd $HOME || return
 rm -rf quicksilver
 git clone https://github.com/ingenuity-build/quicksilver.git
 cd $HOME/quicksilver || return
-git checkout v1.8.0-rc.1
+git checkout v1.9.1
 
 make install
 
-mkdir -p $HOME/.quicksilverd/cosmovisor/upgrades/v1.8.0-rc.1/bin
-cp $HOME/go/bin/quicksilverd $HOME/.quicksilverd/cosmovisor/upgrades/v1.8.0-rc.1/bin/
+mkdir -p $HOME/.quicksilverd/cosmovisor/upgrades/v1.9.0/bin
+cp $HOME/go/bin/quicksilverd $HOME/.quicksilverd/cosmovisor/upgrades/v1.9.0/bin/
 ```
