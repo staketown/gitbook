@@ -194,8 +194,7 @@ celestia bridge init \
 --core.ip http://localhost \
 --core.port 9090 \
 --p2p.network mocha \
---rpc.port 26658 \
---gateway.port 26659
+--rpc.port 26658
 ```
 
 Create service
