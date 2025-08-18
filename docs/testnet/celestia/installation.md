@@ -213,7 +213,6 @@ ExecStart=$(which celestia) bridge start \\
 --core.port 9090 \\
 --p2p.network mocha \\
 --rpc.port 26658 \\
---gateway.port 26659 \\
 --metrics.tls=true \\
 --metrics \\
 --metrics.endpoint otel.mocha.celestia.observer \\
