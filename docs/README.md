@@ -29,7 +29,6 @@
 * [Babylon](testnet/babylon)
 * [C4E](testnet/c4e)
 * [Celestia](testnet/celestia)
-* [Elys](testnet/elys)
 * [Juno](testnet/juno)
 * [Lava](testnet/lava)
 * [Ojo](testnet/ojo)
