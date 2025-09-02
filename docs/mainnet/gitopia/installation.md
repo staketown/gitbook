@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/gitopia
 git clone https://github.com/gitopia/gitopia.git
 cd $HOME/gitopia || return
-git checkout v5.1.0
+git checkout v6.0.0
 
 make install
 
