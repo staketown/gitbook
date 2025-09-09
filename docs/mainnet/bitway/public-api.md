@@ -1,5 +1,5 @@
 ---
-cover: ../../.gitbook/assets/bitway-banner.png
+cover: ../../.gitbook/assets/bitway-banner.jpeg
 coverY: 0
 ---
 

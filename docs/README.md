@@ -6,6 +6,7 @@
 
 * [Archway](mainnet/archway)
 * [Aura](mainnet/aura)
+* [Bitway](mainnet/bitway)
 * [C4E](mainnet/c4e)
 * [Celestia](mainnet/celestia)
 * [Elys](mainnet/elys)
@@ -19,7 +20,6 @@
 * [Planq](mainnet/planq)
 * [Quasar](mainnet/quasar)
 * [Quicksilver](mainnet/quicksilver)
-* [Side Protocol](mainnet/bitway)
 * [Source](mainnet/source)
 * [Umee](mainnet/umee)
 
