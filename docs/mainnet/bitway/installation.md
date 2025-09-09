@@ -11,7 +11,7 @@ Install with one line script
 bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/bitway/main_install.sh)
 ```
 
-Manual installation
+Manual installation 
 
 ```bash
 sudo apt update
