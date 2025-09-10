@@ -20,7 +20,7 @@ sudo apt install -y curl git jq lz4 build-essential unzip
 bash <(curl -s "https://raw.githubusercontent.com/staketown/cosmos/master/utils/go_install.sh")
 source .bash_profile
 
-cd $HOME || return
+cd $HOME || return 
 rm -rf $HOME/bitway
 git clone https://github.com/bitwaylabs/bitway.git
 cd $HOME/bitway || return
