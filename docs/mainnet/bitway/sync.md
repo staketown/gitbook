@@ -7,7 +7,7 @@ coverY: 0
 
 ## **Snapshot**
 
-> updated every 6 hours, starting from 00:00 UTC
+> updated every 6 hours, starting from 00:00 UTC 
 
 ```bash
 # install dependencies, if needed

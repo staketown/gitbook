@@ -5,7 +5,7 @@ coverY: 0
 
 # Installation
 
-Install with one line script
+Install with one line script 
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/staketown/cosmos/master/bitway/main_install.sh)

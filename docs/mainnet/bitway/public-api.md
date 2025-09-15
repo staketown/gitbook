@@ -3,7 +3,7 @@ cover: ../../.gitbook/assets/bitway-banner.jpeg
 coverY: 0
 ---
 
-# Public API
+# Public API 
 
 ### **RPC Endpoint**
 

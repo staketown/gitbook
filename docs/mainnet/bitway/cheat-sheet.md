@@ -5,7 +5,7 @@ coverY: 0
 
 # Cheat Sheet
 
-### Wallet operations
+### Wallet operations 
 
 Create wallet
 
