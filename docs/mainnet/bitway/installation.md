@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/bitway
 git clone https://github.com/bitwaylabs/bitway.git
 cd $HOME/bitway || return
-git checkout v2.0.0
+git checkout v2.0.1
 
 make install
 
