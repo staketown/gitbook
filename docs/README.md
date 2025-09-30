@@ -4,7 +4,6 @@
 
 ### Mainnet
 
-* [Archway](mainnet/archway)
 * [Aura](mainnet/aura)
 * [Bitway](mainnet/bitway)
 * [C4E](mainnet/c4e)

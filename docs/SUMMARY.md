@@ -10,12 +10,6 @@
 
 ## Mainnet
 
-* [Archway](mainnet/archway/README.md)
-  * [Installation](mainnet/archway/installation.md)
-  * [Updates](mainnet/archway/updates.md)
-  * [Sync](mainnet/archway/sync.md)
-  * [Public API](mainnet/archway/public-api.md)
-  * [Cheat Sheet](mainnet/archway/cheat-sheet.md)
 * [Aura](mainnet/aura/README.md)
   * [Installation](mainnet/aura/installation.md)
   * [Updates](mainnet/aura/updates.md)
