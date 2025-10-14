@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/kyve
 git clone https://github.com/KYVENetwork/chain.git kyve
 cd $HOME/kyve || return
-git checkout v2.1.0
+git checkout v2.2.0
 
 make install ENV=mainnet
 
