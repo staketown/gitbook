@@ -24,7 +24,7 @@ cd $HOME || return
 rm -rf $HOME/persistenceCore
 git clone https://github.com/persistenceOne/persistenceCore.git
 cd $HOME/persistenceCore || return
-git checkout v14.0.0
+git checkout v14.0.1
 
 make install
 
