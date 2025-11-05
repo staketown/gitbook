@@ -24,17 +24,6 @@
 
 ### Testnets
 
-* [Arkeo](testnet/arkeo-network)
-* [Babylon](testnet/babylon)
-* [C4E](testnet/c4e)
 * [Celestia](testnet/celestia)
 * [Juno](testnet/juno)
-* [Lava](testnet/lava)
-* [Ojo](testnet/ojo)
-* [Native](testnet/native)
 * [Persistence](testnet/persistence)
-* [Prysm](testnet/prysm)
-* [Quicksilver](testnet/quicksilver)
-* [Side Protocol](testnet/side)
-* [Umee](testnet/umee)
-* [Warden Protocol](testnet/warden)
