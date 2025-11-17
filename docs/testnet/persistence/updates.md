@@ -5,14 +5,14 @@ coverY: 0
 
 # Updates
 
-⚠️ Version **v15.0.0-rc0** is available
+⚠️ Version **v16.0.0-rc0** is available
 
 ```bash
 cd $HOME || return
 rm -rf persistenceCore
 git clone https://github.com/persistenceOne/persistenceCore.git
 cd persistenceCore || return
-git checkout v15.0.0-rc0
+git checkout v16.0.0-rc0
 
 make build
 
