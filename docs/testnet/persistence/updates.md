@@ -16,6 +16,6 @@ git checkout v16.0.0-rc0
 
 make build
 
-mkdir -p $HOME/.persistenceCore/cosmovisor/upgrades/v15.0.0-rc0/bin
-mv bin/persistenceCore $HOME/.persistenceCore/cosmovisor/upgrades/v15.0.0-rc0/bin/
+mkdir -p $HOME/.persistenceCore/cosmovisor/upgrades/v16.0.0-rc0/bin
+mv bin/persistenceCore $HOME/.persistenceCore/cosmovisor/upgrades/v16.0.0-rc0/bin/
 ```
