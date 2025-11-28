@@ -8,6 +8,26 @@ coverY: 0
 ### **RPC Endpoint**
 
 ```bash
+https://celestia-archival-rpc.stake-town.com:443
+```
+
+### **API Endpoint**
+
+```bash
+https://celestia-archival-api.stake-town.com:443
+```
+
+### **GRPC Endpoint**
+
+```bash
+celestia-archival-grpc.stake-town.com:443
+```
+
+# Public Pruned API
+
+### **RPC Endpoint**
+
+```bash
 https://celestia-rpc.stake-town.com:443
 ```
 
@@ -21,26 +41,6 @@ https://celestia-api.stake-town.com:443
 
 ```bash
 celestia-grpc.stake-town.com:443
-```
-
-# Public Pruned API
-
-### **RPC Endpoint**
-
-```bash
-https://celestia-pruned-rpc.stake-town.com:443
-```
-
-### **API Endpoint**
-
-```bash
-https://celestia-pruned-api.stake-town.com:443
-```
-
-### **GRPC Endpoint**
-
-```bash
-celestia-pruned-grpc.stake-town.com:443
 ```
 
 # Public API for Bridge nodes
